@@ -234,6 +234,7 @@ em.accent{color:var(--blue)}
 .row-body{padding-left:56px}
 }
 
+
 /* Find your door quiz */
 .quiz-note{margin-top:16px;font-size:15px;color:var(--faint)}
 .quiz-steps{max-width:760px;margin-top:56px}
@@ -242,6 +243,7 @@ em.accent{color:var(--blue)}
 .quiz-count{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin:18px 0 10px}
 .q{border:0;margin:0;padding:0}
 .q-title{font-family:var(--display);font-weight:800;font-size:clamp(26px,3.4vw,42px);line-height:1.1;letter-spacing:-.03em;margin-bottom:28px;padding:0}
+.q-help{margin:-14px 0 22px;color:var(--faint);font-size:16px}
 .opt{display:block;margin:0 0 10px;cursor:pointer}
 .opt input{position:absolute;opacity:0;width:1px;height:1px}
 .opt span{display:block;padding:18px 22px;border:1.5px solid rgba(234,228,218,.25);border-radius:10px;font-size:18px;transition:border-color .15s,background .15s}
@@ -253,7 +255,8 @@ em.accent{color:var(--blue)}
 .result{max-width:760px;margin-top:56px}
 .result-card{border-radius:10px;padding:32px}
 .result-card .k{margin:0 0 10px;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
-.result-card h2{margin-bottom:12px}
+.result-card h2{margin-bottom:10px}
+.r-track{margin:0 0 8px;font-family:var(--display);font-weight:700;font-size:18px}
 .result-card p:last-child{margin:0;font-size:18px}
 .lead{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 .lead label{display:flex;flex-direction:column;gap:8px;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
@@ -261,5 +264,8 @@ em.accent{color:var(--blue)}
 .lead input,.lead textarea{font:inherit;font-family:var(--body);font-size:17px;letter-spacing:0;text-transform:none;color:var(--shell);background:transparent;border:1.5px solid rgba(234,228,218,.3);border-radius:10px;padding:14px 16px}
 .lead input:focus,.lead textarea:focus{outline:none;border-color:var(--blue)}
 .lead .btn{justify-self:start;cursor:pointer;white-space:nowrap}
+.lead .btn:disabled{opacity:.6;cursor:wait}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.form-error{grid-column:1/-1;margin:0;color:var(--must);font-size:16px}
 button.btn{cursor:pointer}
 .linkbtn{background:none;border:0;color:var(--blue);cursor:pointer;padding:12px 0}
