@@ -194,3 +194,8 @@ em.accent{color:var(--blue)}
 .more[open] .more-open{display:none}
 .more[open] .more-close{display:inline}
 .more summary:hover{background:transparent;color:var(--black);box-shadow:inset 0 0 0 1.5px var(--black)}
+
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.tags span{border:1.5px solid currentColor;border-radius:999px;padding:7px 13px}
+.snippet{max-width:38em;margin-top:22px;padding-top:20px;border-top:2px solid currentColor}
+.snippet p{margin:0;font-size:18px}
