@@ -241,6 +241,17 @@ em.accent{color:var(--blue)}
 
 
 
+
+/* Door picker band */
+.picker-sec{border-top:1px solid var(--line)}
+.picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.pick{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;min-height:150px;padding:22px;border-radius:10px;text-decoration:none;color:var(--black);font-family:var(--display);font-weight:700;font-size:18px;line-height:1.25;letter-spacing:-.01em;transition:transform .2s ease}
+.pick:hover{transform:translateY(-3px);color:var(--black)}
+.pick.bg-tea,.pick.bg-tea:hover{color:var(--shell)}
+.pick .go{font-size:22px}
+.pick-unsure{background:transparent;color:var(--shell);border:1.5px solid rgba(234,228,218,.4)}
+.pick-unsure:hover{color:var(--shell);border-color:var(--shell)}
+
 /* Find your door quiz */
 .quiz-note{margin-top:16px;font-size:15px;color:var(--faint)}
 .quiz-steps{max-width:760px;margin-top:56px}

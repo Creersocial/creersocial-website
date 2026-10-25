@@ -285,6 +285,10 @@ field.addEventListener('change',function(e){
 });
 document.getElementById('qBack').addEventListener('click',function(){if(pos>0){pos--;render();}});
 document.getElementById('startBtn').addEventListener('click',function(){document.getElementById('intro').hidden=true;document.getElementById('steps').hidden=false;pos=0;render();});
+// Arriving from a door link elsewhere on the site (?door=advisory) skips the first question
+(function(){var m=location.search.match(/[?&]door=([a-z]+)/);if(!m)return;var dd=m[1];
+  if(['advisory','representation','partnerships','experiences','unsure'].indexOf(dd)<0)return;
+  A.intent=dd;document.getElementById('intro').hidden=true;document.getElementById('steps').hidden=false;pos=1;render();})();
 
 function show(){
   R=decide(A);var d=DOORS[R.door],tr=TRACKS[R.track],c=COPY[R.outcome],fm=FORM[R.door];
