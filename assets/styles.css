@@ -173,7 +173,7 @@ em.accent{color:var(--blue)}
 .bg-tea .door-cta:hover{background:transparent;color:var(--shell);border-color:var(--shell)}
 
 /* Case studies */
-.case .wrap.case-grid{display:flex;flex-wrap:wrap;gap:48px;align-items:center;padding-top:96px;padding-bottom:96px}
+.case .wrap.case-grid{display:flex;flex-wrap:wrap;gap:40px;align-items:center;padding-top:64px;padding-bottom:64px}
 .case-main{flex:999 1 560px;min-width:0}
 .case .label{color:inherit}
 .case-lede{font-size:20px;max-width:36em;margin:20px 0 0}
@@ -183,4 +183,14 @@ em.accent{color:var(--blue)}
 .ticks li{padding:10px 0 10px 26px;border-bottom:1px solid rgba(29,29,27,.25);position:relative;font-size:17px}
 .ticks li::before{content:"";position:absolute;left:2px;top:19px;width:10px;height:10px;border-radius:50%;background:currentColor}
 .case-stat{font-family:var(--display);font-weight:800;font-size:clamp(72px,9vw,120px);line-height:.9;letter-spacing:-.05em;margin:4px 0 12px}
-.case-img{flex:1 1 240px;max-width:300px;width:100%;min-width:0;margin:0 auto}
+.case-img{flex:1 1 180px;max-width:200px;width:100%;min-width:0;margin:0 auto}
+
+.more{margin-top:28px}
+.more summary{display:inline-flex;align-items:center;gap:10px;cursor:pointer;list-style:none;font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:15px 24px;border-radius:999px;background:var(--black);color:var(--shell)}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"+";font-size:18px;line-height:1}
+.more[open] summary::after{content:"−"}
+.more .more-close{display:none}
+.more[open] .more-open{display:none}
+.more[open] .more-close{display:inline}
+.more summary:hover{background:transparent;color:var(--black);box-shadow:inset 0 0 0 1.5px var(--black)}
