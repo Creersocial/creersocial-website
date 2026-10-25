@@ -171,3 +171,16 @@ em.accent{color:var(--blue)}
 .door-cta:hover{background:transparent;color:var(--black);border-color:var(--black)}
 .bg-tea .door-cta{background:var(--shell);border-color:var(--shell);color:var(--black)}
 .bg-tea .door-cta:hover{background:transparent;color:var(--shell);border-color:var(--shell)}
+
+/* Case studies */
+.case .wrap.case-grid{display:flex;flex-wrap:wrap;gap:48px;align-items:center;padding-top:96px;padding-bottom:96px}
+.case-main{flex:999 1 560px;min-width:0}
+.case .label{color:inherit}
+.case-lede{font-size:20px;max-width:36em;margin:20px 0 0}
+.case-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px 48px;margin-top:40px;border-top:2px solid currentColor;padding-top:28px}
+.case-cols h3{margin:0 0 12px}
+.ticks{margin:0;padding:0;list-style:none}
+.ticks li{padding:10px 0 10px 26px;border-bottom:1px solid rgba(29,29,27,.25);position:relative;font-size:17px}
+.ticks li::before{content:"";position:absolute;left:2px;top:19px;width:10px;height:10px;border-radius:50%;background:currentColor}
+.case-stat{font-family:var(--display);font-weight:800;font-size:clamp(72px,9vw,120px);line-height:.9;letter-spacing:-.05em;margin:4px 0 12px}
+.case-img{flex:1 1 240px;max-width:300px;width:100%;min-width:0;margin:0 auto}
