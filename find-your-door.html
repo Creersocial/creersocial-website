@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Find Your Door | Créer Social</title>
+<meta name="description" content="Answer five quick questions and we will recommend the right way to work with Créer Social.">
+<link rel="canonical" href="https://creersocial.com/find-your-door">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Find Your Door | Créer Social">
+<meta property="og:description" content="Answer five quick questions and we will recommend the right way to work with Créer Social.">
+<meta property="og:url" content="https://creersocial.com/find-your-door">
+<meta property="og:image" content="https://creersocial.com/assets/img/duo_pink.jpg">
+<meta name="theme-color" content="#1D1D1B">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,800&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap">
+<a class="logo" href="index.html"><img src="assets/logo/creer-social-logo-creer-blue.svg" alt="Créer Social home" width="205" height="24"></a>
+<nav class="nav" aria-label="Main"><a href="services.html">Services</a><a href="work.html">Work</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="btn" href="find-your-door.html">Find your door</a></nav>
+</div>
+</header>
+<main id="main">
+<section class="hero" style="padding-bottom:96px">
+<div class="wrap">
+<div class="masthead"><span>Find your door</span><span>Five questions</span><span>About a minute</span></div>
+<div class="quiz" id="quiz">
+  <div class="quiz-intro" data-step="intro">
+    <h1 class="h1" style="margin-top:56px;font-size:clamp(44px,7vw,100px);max-width:11em">Find your door.</h1>
+    <p class="lede">Five quick questions. We'll recommend the right way to work together, then you can request a consultation.</p>
+    <div class="btns"><button class="btn" type="button" data-start>Start</button></div>
+    <p class="quiz-note">Takes about a minute.</p>
+  </div>
+
+  <form class="quiz-steps" id="quizForm" hidden novalidate>
+    <div class="quiz-progress" aria-hidden="true"><span id="qBar"></span></div>
+    <p class="quiz-count" id="qCount" aria-live="polite"></p>
+
+    <fieldset class="q" data-q="who">
+      <legend class="q-title">Which best describes you?</legend>
+      <label class="opt"><input type="radio" name="who" value="founder"><span>A founder or business owner</span></label>
+      <label class="opt"><input type="radio" name="who" value="talent"><span>Talent, an expert or a creative who is the face of my brand</span></label>
+      <label class="opt"><input type="radio" name="who" value="company"><span>Part of a brand or company team</span></label>
+      <label class="opt"><input type="radio" name="who" value="event"><span>Planning an event, or part of an organization</span></label>
+    </fieldset>
+
+    <fieldset class="q" data-q="need" hidden>
+      <legend class="q-title">What do you need most right now?</legend>
+      <label class="opt"><input type="radio" name="need" value="advisory"><span>Clarity, strategy and a stronger foundation</span></label>
+      <label class="opt"><input type="radio" name="need" value="representation"><span>Representation for brand partnerships</span></label>
+      <label class="opt"><input type="radio" name="need" value="partnerships"><span>The right partners for my company or a launch</span></label>
+      <label class="opt"><input type="radio" name="need" value="experiences"><span>Sponsors, talent and direction for an event</span></label>
+    </fieldset>
+
+    <fieldset class="q" data-q="stage" hidden>
+      <legend class="q-title">Where is the business today?</legend>
+      <label class="opt"><input type="radio" name="stage" value="1"><span>An idea, or just getting started</span></label>
+      <label class="opt"><input type="radio" name="stage" value="2"><span>Up and running, growing revenue</span></label>
+      <label class="opt"><input type="radio" name="stage" value="3"><span>Established, with consistent revenue</span></label>
+      <label class="opt"><input type="radio" name="stage" value="4"><span>Scaling, or a larger company</span></label>
+    </fieldset>
+
+    <fieldset class="q" data-q="timing" hidden>
+      <legend class="q-title">When would you like to start?</legend>
+      <label class="opt"><input type="radio" name="timing" value="3"><span>Within the next 30 days</span></label>
+      <label class="opt"><input type="radio" name="timing" value="2"><span>In the next one to three months</span></label>
+      <label class="opt"><input type="radio" name="timing" value="1"><span>I'm just exploring for now</span></label>
+    </fieldset>
+
+    <fieldset class="q" data-q="invest" hidden>
+      <legend class="q-title">Our engagements are tailored and represent a real investment in your growth. Where are you with that?</legend>
+      <label class="opt"><input type="radio" name="invest" value="3"><span>I have budget set aside for this</span></label>
+      <label class="opt"><input type="radio" name="invest" value="2"><span>It's a priority, I'm planning for it</span></label>
+      <label class="opt"><input type="radio" name="invest" value="1"><span>Not right now</span></label>
+    </fieldset>
+
+    <div class="quiz-nav">
+      <button class="btn ghost" type="button" id="qBack">Back</button>
+    </div>
+  </form>
+
+  <div class="result" id="result" hidden aria-live="polite">
+    <p class="label" id="rKicker">Your door</p>
+    <div class="result-card" id="rCard">
+      <p class="k" id="rNum"></p>
+      <h2 class="h2" id="rName"></h2>
+      <p id="rDesc"></p>
+    </div>
+    <div id="rReady">
+      <h3 class="h3" style="margin:40px 0 8px">Request a consultation</h3>
+      <p class="muted" style="margin:0 0 20px">Share a few details and our team will reach out within 24 hours to schedule.</p>
+      <form class="lead" id="leadForm">
+        <label>Name<input name="name" required autocomplete="name"></label>
+        <label>Email<input name="email" type="email" required autocomplete="email"></label>
+        <label class="full">Brand, business or Instagram<input name="brand"></label>
+        <label class="full">Anything we should know?<textarea name="note" rows="3"></textarea></label>
+        <button class="btn" type="submit">Request my consultation</button>
+      </form>
+    </div>
+    <div id="rLater" hidden>
+      <h3 class="h3" style="margin:40px 0 8px">Not quite yet? That's okay.</h3>
+      <p class="muted" style="margin:0 0 20px">The best next step is to stay close. Follow along, and reach out when the timing is right.</p>
+      <div class="btns" style="margin-top:0"><a class="btn" href="https://www.instagram.com/creersocial">Follow @creersocial</a><a class="btn ghost" href="services.html">Explore the doors</a></div>
+    </div>
+    <p style="margin-top:36px"><button class="textlink linkbtn" type="button" id="qRestart">Retake the quiz</button></p>
+  </div>
+</div>
+</div>
+</section>
+<script>
+(function(){
+  var EMAIL='contact@creersocial.com';
+  var DOORS={
+    advisory:{num:'Door 01',name:'Créer Advisory',cls:'bg-tea',desc:'Strategy, advisory and creative consulting. We audit, position and build the foundation everything else stands on.'},
+    representation:{num:'Door 02',name:'Créer Representation',cls:'bg-pink',desc:'We build the full infrastructure around you, then represent you for strategic brand partnerships.'},
+    partnerships:{num:'Door 03',name:'Créer Brand Partnerships',cls:'bg-tang',desc:'We find the aligned talent, creators, businesses and communities for your company, shape the partnership and run it.'},
+    experiences:{num:'Door 04',name:'Créer Experiences',cls:'bg-must',desc:'The right sponsors, featured businesses, talent and activations for your event, plus creative direction.'}
+  };
+  var LABELS={who:{founder:'Founder or business owner',talent:'Talent / face of brand',company:'Brand or company team',event:'Event or organization'},
+    need:{advisory:'Clarity and strategy',representation:'Representation',partnerships:'Partners for company or launch',experiences:'Event sponsors and direction'},
+    stage:{'1':'Idea / early','2':'Growing revenue','3':'Established','4':'Scaling / larger company'},
+    timing:{'3':'Within 30 days','2':'1 to 3 months','1':'Exploring'},
+    invest:{'3':'Budget set aside','2':'Planning for it','1':'Not right now'}};
+  var form=document.getElementById('quizForm'),qs=[].slice.call(form.querySelectorAll('.q')),i=0;
+  var intro=document.querySelector('.quiz-intro'),result=document.getElementById('result');
+  function show(n){qs.forEach(function(q,k){q.hidden=k!==n});i=n;
+    document.getElementById('qBar').style.width=((n)/qs.length*100)+'%';
+    document.getElementById('qCount').textContent='Question '+(n+1)+' of '+qs.length;
+    document.getElementById('qBack').style.visibility=n?'visible':'hidden';
+    var first=qs[n].querySelector('input');if(first)first.focus({preventScroll:true});}
+  document.querySelector('[data-start]').addEventListener('click',function(){intro.hidden=true;form.hidden=false;show(0);});
+  form.addEventListener('change',function(e){if(e.target.type!=='radio')return;
+    setTimeout(function(){if(i<qs.length-1)show(i+1);else finish();},220);});
+  document.getElementById('qBack').addEventListener('click',function(){if(i>0)show(i-1);});
+  function val(n){var el=form.querySelector('input[name="'+n+'"]:checked');return el?el.value:'';}
+  var answers={};
+  function finish(){
+    ['who','need','stage','timing','invest'].forEach(function(k){answers[k]=val(k);});
+    var score={advisory:0,representation:0,partnerships:0,experiences:0};
+    score[answers.need]+=3;
+    ({founder:'advisory',talent:'representation',company:'partnerships',event:'experiences'})[answers.who]&&(score[{founder:'advisory',talent:'representation',company:'partnerships',event:'experiences'}[answers.who]]+=2);
+    if(answers.stage==='1')score.advisory+=1;
+    var door=Object.keys(score).sort(function(a,b){return score[b]-score[a]})[0];
+    var ready=(+answers.timing>=2)&&(+answers.invest>=2);
+    var d=DOORS[door];answers.door=d.name;answers.fit=ready?'Ready':'Nurture';
+    document.getElementById('rNum').textContent=d.num;
+    document.getElementById('rName').textContent=d.name;
+    document.getElementById('rDesc').textContent=d.desc;
+    document.getElementById('rCard').className='result-card '+d.cls;
+    document.getElementById('rReady').hidden=!ready;
+    document.getElementById('rLater').hidden=ready;
+    form.hidden=true;result.hidden=false;result.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  document.getElementById('leadForm').addEventListener('submit',function(e){e.preventDefault();
+    var f=new FormData(e.target);
+    var body=['Consultation request from the website','',
+      'Name: '+f.get('name'),'Email: '+f.get('email'),'Brand: '+(f.get('brand')||''),'',
+      'Recommended door: '+answers.door,'Lead fit: '+answers.fit,
+      'Describes them: '+LABELS.who[answers.who],'Needs: '+LABELS.need[answers.need],
+      'Stage: '+LABELS.stage[answers.stage],'Timing: '+LABELS.timing[answers.timing],'Investment: '+LABELS.invest[answers.invest],'',
+      'Notes: '+(f.get('note')||'')].join('\n');
+    window.location.href='mailto:'+EMAIL+'?subject='+encodeURIComponent('Consultation request: '+answers.door+' ('+f.get('name')+')')+'&body='+encodeURIComponent(body);
+  });
+  document.getElementById('qRestart').addEventListener('click',function(){form.reset();result.hidden=true;intro.hidden=true;form.hidden=false;show(0);});
+})();
+</script>
+</main>
+<footer class="site-footer ruled">
+<div class="wrap">
+<img src="assets/logo/creer-social-logo-creer-blue.svg" alt="Créer Social" width="188" height="22">
+<nav aria-label="Footer"><a href="services.html">Services</a><a href="work.html">Work</a><a href="about.html">About</a><a href="https://www.instagram.com/creersocial">Instagram</a><a href="https://www.linkedin.com/in/cr%C3%A9ersocial">LinkedIn</a><a href="mailto:contact@creersocial.com">Email</a></nav>
+<span>© 2026 Créer Social · Los Angeles</span>
+</div>
+</footer>
+</body>
+</html>
