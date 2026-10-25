@@ -352,3 +352,5 @@ a.card:hover{transform:translateY(-3px)}
 .aka{display:block;margin-top:6px;font-family:var(--body);font-style:italic;font-weight:400;font-size:.5em;letter-spacing:0;line-height:1.3}
 
 .foot-logo{display:inline-block;padding:10px 0}
+
+.core-line{margin:22px 0 0;font-family:var(--display);font-weight:700;font-size:clamp(20px,2.2vw,26px);line-height:1.3;letter-spacing:-.01em;color:var(--tea);max-width:30em}
