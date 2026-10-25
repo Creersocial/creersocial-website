@@ -244,13 +244,14 @@ em.accent{color:var(--blue)}
 
 /* Door picker band */
 .picker-sec{border-top:1px solid var(--line)}
-.picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.pick{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;min-height:150px;padding:22px;border-radius:10px;text-decoration:none;color:var(--black);font-family:var(--display);font-weight:700;font-size:18px;line-height:1.25;letter-spacing:-.01em;transition:transform .2s ease}
-.pick:hover{transform:translateY(-3px);color:var(--black)}
-.pick.bg-tea,.pick.bg-tea:hover{color:var(--shell)}
-.pick .go{font-size:22px}
-.pick-unsure{background:transparent;color:var(--shell);border:1.5px solid rgba(234,228,218,.4)}
-.pick-unsure:hover{color:var(--shell);border-color:var(--shell)}
+.picker-grid{display:flex;flex-wrap:wrap;gap:40px 72px;align-items:flex-start}
+.picker-grid > div{flex:1 1 320px;min-width:0}
+.pick-list{flex:1.4 1 420px;min-width:0;border-top:1px solid var(--line)}
+.pick-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;border-bottom:1px solid var(--line);color:var(--shell);text-decoration:none;font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:-.01em}
+.pick-row .go{color:var(--blue);font-size:20px;transition:transform .2s ease}
+.pick-row:hover{color:var(--blue)}
+.pick-row:hover .go{transform:translateX(4px)}
+
 
 /* Find your door quiz */
 .quiz-note{margin-top:16px;font-size:15px;color:var(--faint)}
