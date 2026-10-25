@@ -339,3 +339,12 @@ em.accent{color:var(--blue)}
 .form-error{grid-column:1/-1;margin:0;color:var(--must);font-size:16px}
 button.btn{cursor:pointer}
 .linkbtn{background:none;border:0;color:var(--blue);cursor:pointer;padding:12px 0}
+
+/* Clickable work cards on Home */
+a.card{text-decoration:none;color:var(--shell);transition:transform .2s ease}
+a.card.bg-pink,a.card.bg-must,a.card.bg-tang,a.card.bg-pink:hover,a.card.bg-must:hover,a.card.bg-tang:hover{color:var(--black)}
+a.card.bg-tea,a.card.bg-tea:hover,a.card.outline:hover{color:var(--shell)}
+a.card:hover{transform:translateY(-3px)}
+.card-more{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin-top:auto;padding-top:10px}
+.card.wide .card-more{flex-basis:100%;padding-top:0}
+.row,.feature{scroll-margin-top:24px}

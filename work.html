@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,800&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap">
-<link rel="stylesheet" href="assets/styles.css?v=1792967829">
+<link rel="stylesheet" href="assets/styles.css?v=1792968147">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -36,7 +36,7 @@
 </div>
 </section>
 
-<section class="feature">
+<section class="feature" id="kelly">
 <div class="wrap feature-grid">
 <div class="feature-txt">
 <p class="row-num" style="margin:0 0 18px">01 · Featured</p>
@@ -54,41 +54,47 @@
 <section class="section" style="padding-top:24px">
 <div class="wrap">
 <div class="index">
-<details class="row">
+<details class="row" id="era">
 <summary><span class="row-num">02</span><span class="row-name">ERA Coalition Forward, "Unfinished"</span><span class="row-svc">Experiences · Brand Partnerships</span><span class="row-stat">$88K raised</span><span class="row-icon" aria-hidden="true"></span></summary>
 <div class="row-body"><p>Créer Social was brought into "Unfinished," a Santa Monica evening honoring Gloria Steinem, to lead in-kind sponsor, silent auction and guest outreach. The evening raised $88K for gender equality, with $69K committed before the doors opened.</p></div>
 </details>
-<details class="row">
+<details class="row" id="sessions">
 <summary><span class="row-num">03</span><span class="row-name">The Créer Social Sessions</span><span class="row-svc">Experiences</span><span class="row-stat">Sold out in 48 hrs</span><span class="row-icon" aria-hidden="true"></span></summary>
 <div class="row-body"><p>Our own room for founders, talent and brands. Every Session has sold out within 48 hours, with brand partners like Donna's Recipe, Bicycle Playing Cards and Tab &amp; Chance. Behind it, we built an internal community CRM that tracks every guest and partner, now a growing list of 300+ members.</p><img src="assets/img/table_mustard.jpg" alt="" class="row-img"></div>
 </details>
-<details class="row">
+<details class="row" id="usbc">
 <summary><span class="row-num">04</span><span class="row-name">US Black Chambers</span><span class="row-svc">Brand Partnerships</span><span class="row-stat"></span><span class="row-icon" aria-hidden="true"></span></summary>
 <div class="row-body"><p>Creative direction, copy, content and a campaign for the US Black Chambers accelerator fund.</p></div>
 </details>
-<details class="row">
+<details class="row" id="everytable">
 <summary><span class="row-num">05</span><span class="row-name">Everytable</span><span class="row-svc">Brand Partnerships</span><span class="row-stat"></span><span class="row-icon" aria-hidden="true"></span></summary>
 <div class="row-body"><p>Campaign and partnership work for Everytable, the Los Angeles food company built on making healthy meals accessible to everyone.</p></div>
 </details>
-<details class="row">
+<details class="row" id="sxsw">
 <summary><span class="row-num">06</span><span class="row-name">Two tech founders at SXSW</span><span class="row-svc">Talent Representation</span><span class="row-stat"></span><span class="row-icon" aria-hidden="true"></span></summary>
 <div class="row-body"><p>We positioned and represented two founders from the tech world and secured their South by Southwest appearances.</p></div>
 </details>
-<details class="row">
+<details class="row" id="harvest">
 <summary><span class="row-num">07</span><span class="row-name">The Spiritual Harvest</span><span class="row-svc">Advisory</span><span class="row-stat">24K in 30 days</span><span class="row-icon" aria-hidden="true"></span></summary>
 <div class="row-body"><p>Community strategy and growth that brought 24,000 members in within 30 days, averaging 1.3 million views a month.</p></div>
 </details>
-<details class="row">
+<details class="row" id="lifestyle">
 <summary><span class="row-num">08</span><span class="row-name">An actress and advocate's lifestyle brand</span><span class="row-svc">Brand Partnerships</span><span class="row-stat"></span><span class="row-icon" aria-hidden="true"></span></summary>
 <div class="row-body"><p>Creative development and campaign execution for the lifestyle brand of an actress and disability advocate.</p></div>
 </details>
-<details class="row">
+<details class="row" id="vocalist">
 <summary><span class="row-num">09</span><span class="row-name">A vocalist's brand world</span><span class="row-svc">Advisory</span><span class="row-stat"></span><span class="row-icon" aria-hidden="true"></span></summary>
 <div class="row-body"><p>Brand world, creative direction guidelines, shoot direction and a performance and staging guide for a working vocalist.</p></div>
 </details>
 </div>
 </div>
 </section>
+<script>
+(function(){function go(){var id=location.hash.slice(1);if(!id)return;var el=document.getElementById(id);if(!el)return;
+  var d=el.tagName==='DETAILS'?el:el.querySelector('details');if(d)d.open=true;
+  setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+  go();window.addEventListener('hashchange',go);})();
+</script>
 <section class="blue section">
 <div class="wrap">
 <p class="label" style="color:var(--black)">Work with us</p>
