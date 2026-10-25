@@ -236,6 +236,7 @@ em.accent{color:var(--blue)}
 
 
 
+
 /* Find your door quiz */
 .quiz-note{margin-top:16px;font-size:15px;color:var(--faint)}
 .quiz-steps{max-width:760px;margin-top:56px}
@@ -258,6 +259,7 @@ em.accent{color:var(--blue)}
 .result-card .k{margin:0 0 10px;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase}
 .result-card h2{margin-bottom:10px}
 .r-track{margin:0 0 8px;font-family:var(--display);font-weight:700;font-size:18px}
+.result-card .r-invest{margin:16px 0 0;padding-top:14px;border-top:1px solid currentColor;font-family:var(--display);font-weight:600;font-size:15px}
 .result-card p:last-child{margin:0;font-size:18px}
 .why{margin-top:36px}
 .why h3{margin:0 0 6px}
