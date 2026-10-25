@@ -248,7 +248,7 @@ em.accent{color:var(--blue)}
 .arches{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
 .door-wrap{position:relative;display:block;aspect-ratio:3/5;border-radius:999px 999px 10px 10px;perspective:1100px;text-decoration:none;background:#0f0f0e;box-shadow:inset 0 0 0 1.5px rgba(234,228,218,.12)}
 .door-light{position:absolute;inset:0;border-radius:inherit;background:radial-gradient(ellipse at 30% 60%,rgba(234,228,218,.95),rgba(176,196,222,.55) 35%,rgba(15,15,14,0) 75%);opacity:0;transition:opacity .6s ease}
-.door-leaf{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 20px;border-radius:inherit;color:var(--black);transform-origin:left center;transition:transform .6s cubic-bezier(.2,.7,.2,1),box-shadow .6s;backface-visibility:hidden}
+.door-leaf{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px 20px;border-radius:inherit;color:var(--black);transform-origin:left center;transition:transform .6s cubic-bezier(.2,.7,.2,1),box-shadow .6s;-webkit-backface-visibility:hidden;backface-visibility:hidden;will-change:transform}
 .door-leaf::before{content:"";position:absolute;inset:14px;border-radius:999px 999px 6px 6px;border:1.5px solid currentColor;opacity:.28;pointer-events:none}
 .door-leaf.bg-tea{color:var(--shell)}
 .door-unsure{background:#1D1D1B;border:1.5px dashed rgba(234,228,218,.5);color:var(--shell)}
