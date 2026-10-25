@@ -237,6 +237,8 @@ em.accent{color:var(--blue)}
 
 
 
+
+
 /* Find your door quiz */
 .quiz-note{margin-top:16px;font-size:15px;color:var(--faint)}
 .quiz-steps{max-width:760px;margin-top:56px}
@@ -260,13 +262,14 @@ em.accent{color:var(--blue)}
 .result-card h2{margin-bottom:10px}
 .r-track{margin:0 0 8px;font-family:var(--display);font-weight:700;font-size:18px}
 .result-card .r-invest{margin:16px 0 0;padding-top:14px;border-top:1px solid currentColor;font-family:var(--display);font-weight:600;font-size:15px}
-.result-card p:last-child{margin:0;font-size:18px}
+.result-card p{font-size:18px}
 .why{margin-top:36px}
 .why h3{margin:0 0 6px}
 .why .ticks li{border-color:var(--line);color:var(--dim)}
 .why .ticks li::before{background:var(--blue)}
 .lead{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 .lead label{display:flex;flex-direction:column;gap:8px;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.lead label[hidden]{display:none}
 .lead label.full{grid-column:1/-1}
 .lead input,.lead textarea{font:inherit;font-family:var(--body);font-size:17px;letter-spacing:0;text-transform:none;color:var(--shell);background:transparent;border:1.5px solid rgba(234,228,218,.3);border-radius:10px;padding:14px 16px}
 .lead input:focus,.lead textarea:focus{outline:none;border-color:var(--blue)}

@@ -34,9 +34,9 @@
 <div class="quiz" id="quiz">
   <div class="quiz-intro" id="intro">
     <h1 class="h1" style="margin-top:56px;font-size:clamp(44px,7vw,100px);max-width:11em">Find your door.</h1>
-    <p class="lede">A few quick questions about where you are and what you're building. We'll recommend the right way to work together, and you can request a complimentary 15-minute discovery call with our team.</p>
+    <p class="lede">A few quick questions about where you are and what you're building. We'll recommend the right way to work together and the best next step.</p>
     <div class="btns"><button class="btn" type="button" id="startBtn">Start</button></div>
-    <p class="quiz-note">About two minutes. No pricing pressure, just the right fit.</p>
+    <p class="quiz-note">About two minutes.</p>
   </div>
 
   <div class="quiz-steps" id="steps" hidden>
@@ -65,16 +65,17 @@
       <form class="lead" id="leadForm">
         <label>Name<input name="name" required autocomplete="name"></label>
         <label>Email<input name="email" type="email" required autocomplete="email"></label>
-        <label>Phone (optional)<input name="phone" type="tel" autocomplete="tel"></label>
-        <label>Website or Instagram<input name="link"></label>
-        <label class="full">What are you building, and what would a win look like six months from now?<textarea name="note" rows="3" required></textarea></label>
+        <label id="phoneWrap">Phone (optional)<input name="phone" type="tel" autocomplete="tel"></label>
+        <label><span id="linkLabel">Website or Instagram</span><input name="link" id="linkInput"></label>
+        <label class="full" id="extraWrap" hidden><span id="extraLabel"></span><input name="extra" id="extraInput"></label>
+        <label class="full"><span id="noteLabel"></span><textarea name="note" id="noteInput" rows="3"></textarea></label>
         <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="btn" type="submit" id="leadBtn"></button>
         <p class="form-error" id="leadErr" role="alert" hidden></p>
       </form>
     </div>
     <div id="thanks" hidden>
-      <h3 class="h3" style="margin:40px 0 8px">Thank you. We have your request.</h3>
+      <h3 class="h3" style="margin:40px 0 8px" id="thanksTitle"></h3>
       <p class="muted" id="thanksText"></p>
       <div class="btns"><a class="btn ghost" href="work.html">See our work</a><a class="btn ghost" href="https://www.instagram.com/creersocial">Follow @creersocial</a></div>
     </div>
@@ -87,7 +88,7 @@
 (function(){
 var EMAIL='contact@creersocial.com';
 
-/* ---------- Questions ---------- */
+/* ================= Questions ================= */
 var Q={
   intent:{t:'What brings you to Créer Social?',o:[
     ['advisory','I\'m building a business and want clear strategy and direction'],
@@ -96,7 +97,7 @@ var Q={
     ['experiences','I\'m planning an event and need sponsors, talent or direction'],
     ['unsure','I\'m not sure yet, I\'d like help figuring it out']]},
   unsure:{t:'Which of these sounds most like you right now?',o:[
-    ['advisory','I have a business or idea, and I need a clear plan'],
+    ['advisory','I have a business or an idea, and I need a clear plan'],
     ['representation','I have real expertise or an audience, and brands should be calling'],
     ['partnerships','I represent a company that wants to grow through partnerships'],
     ['experiences','I have an event or gathering coming up']]},
@@ -117,7 +118,7 @@ var Q={
   r_deals:{t:'Where are you with brand partnerships today?',o:[
     ['pro','I\'ve done brand deals and have a media kit and rates'],
     ['some','I\'ve done a few, nothing formal yet'],
-    ['none','None yet, but I know brands should be calling']]},
+    ['none','None yet']]},
 
   p_type:{t:'What kind of company are you?',o:[
     ['founderled','A founder-led brand'],
@@ -138,45 +139,136 @@ var Q={
     ['sponsors','Help secure sponsors']]},
 
   timing:{t:'When would you like to begin?',o:[
-    ['3','Within the next 30 days'],['2','In the next one to three months'],['1','Later this year, or just exploring']]},
+    ['3','Within the next 30 days'],['2','In the next one to three months'],['1','Later this year, or I\'m just exploring']]},
   decider:{t:'Who will make the decision to move forward?',o:[
-    ['2','I will'],['1','I\'ll decide with a partner or team'],['0','I\'m gathering information for someone else']]},
+    ['2','I will'],['1','I\'ll decide with a partner or team'],['0','Someone else, I\'m gathering information']]},
   invest:{t:'What investment range feels right for this work?',h:'A range helps us recommend the right engagement. If you\'re not sure, we\'ll guide you.',o:[
     ['1','Under $2,500'],['2','$2,500 to $5,000'],['3','$5,000 to $10,000'],['4','$10,000 or more'],['0','Not sure yet, I\'d value guidance']]}
 };
 var BRANCH={advisory:['a_stage','a_need'],representation:['r_auth','r_deals'],partnerships:['p_type','p_need'],experiences:['e_stage','e_role']};
 var CLOSE=['timing','decider','invest'];
 
-/* ---------- Doors and tracks ---------- */
+/* ================= Doors and tracks ================= */
 var DOORS={advisory:['Door 01','Créer Advisory','bg-tea'],representation:['Door 02','Créer Representation','bg-pink'],partnerships:['Door 03','Créer Brand Partnerships','bg-tang'],experiences:['Door 04','Créer Experiences','bg-must']};
+// min = the investment band where the track starts (1 under $2.5K, 2 $2.5-5K, 3 $5-10K, 4 $10K+)
 var TRACKS={
-  ctl:{p:'$2,500',n:'Close The Leak',d:'One focused strategy session and a written plan, to solve the challenge holding your business back.',min:2},
-  foundation:{p:'$4,500 a month',n:'The Foundation',d:'A six-month advisory partnership: an audit, ecosystem map and positioning plan, then weekly strategy and accountability.',min:2},
-  talent:{p:'$5,000',n:'The Talent Build',d:'Your positioning, media kit website, partnership map and rates, the foundation for being represented.',min:3},
-  catapult:{p:'$6,000 a month',n:'The Catapult',d:'Advisory plus partnership cultivation: collaborations, co-brands, sponsorships, retail and placement.',min:3},
-  campaign:{p:'$7,500',n:'Partnership Campaign',d:'We match the right talent and partners for your launch, shape the deals and run them.',min:3},
-  retainer:{p:'$10,000 a month',n:'Partnership Retainer',d:'Ongoing creator, community and partnership strategy for your company.',min:4},
-  event:{p:'$5,000',n:'Event Partnership Strategy',d:'A map of the exact sponsors, businesses and talent for your event, with activation and revenue ideas your team can run.',min:3},
-  experience:{p:'$10,000',n:'Experience Strategy and Creative Direction',d:'Partnership strategy plus concept and creative direction, with our production partners building it.',min:4},
-  sourcing:{n:'Sponsorship Sourcing',d:'We find and secure the right sponsors for your event or program.',min:1}
+  ctl:{n:'Close The Leak',p:'$2,500',min:2,d:'One focused strategy session and a written plan, to solve the challenge holding your business back.'},
+  foundation:{n:'The Foundation',p:'$4,500 a month',min:2,d:'A six-month advisory partnership: an audit, ecosystem map and positioning plan, then weekly strategy and accountability.'},
+  talent:{n:'The Talent Build',p:'$5,000',min:3,d:'Your positioning, media kit website, partnership map and rates, the foundation for being represented.'},
+  catapult:{n:'The Catapult',p:'$6,000 a month',min:3,d:'Advisory plus partnership cultivation: collaborations, co-brands, sponsorships, retail and placement.'},
+  campaign:{n:'Partnership Campaign',p:'$7,500',min:3,d:'We match the right talent and partners for your launch, shape the deals and run them.'},
+  retainer:{n:'Partnership Retainer',p:'$10,000 a month',min:4,d:'Ongoing creator, community and partnership strategy for your company.'},
+  event:{n:'Event Partnership Strategy',p:'$5,000',min:3,d:'A map of the exact sponsors, businesses and talent for your event, with activation and revenue ideas your team can run.'},
+  experience:{n:'Experience Strategy and Creative Direction',p:'$10,000',min:4,d:'Partnership strategy plus concept and creative direction, with our production partners building it.'},
+  sourcing:{n:'Sponsorship Sourcing',p:'',min:1,d:'We find and secure the right sponsors for your event or program, on a commission basis.'}
+};
+// When the budget fits a smaller track in the same door, step down to it
+var STEPDOWN={foundation:'ctl',retainer:'catapult',experience:'event'};
+
+/* ================= Decision rules (pure function) =================
+   Outcome is one of:
+   call        discovery call offered
+   under       investment well below the track's starting point (2+ bands): no call
+   later       timing is later this year or exploring: no call
+   decider     not the decision maker: no call, invite the decision maker
+   guidance    budget not set AND early stage: no call yet
+*/
+function decide(A){
+  var door=A.intent==='unsure'?A.unsure:A.intent,t,why=[];
+  var inv=+A.invest,guide=A.invest==='0',tm=+A.timing,dc=+A.decider,traction=1;
+
+  if(door==='advisory'){
+    var st=+A.a_stage;traction=st>=2?2:0;
+    if(A.a_need==='growth'&&st>=2){door='partnerships';t='catapult';}
+    else if(A.a_need==='focused'||st===1)t='ctl';
+    else t='foundation';
+    why.push(['','You\'re at an early stage, so clarity comes first','You\'ve launched and are finding traction','You have an established business with steady revenue','You\'re scaling and ready for the next level'][st]);
+    why.push({focused:'You want to solve one specific challenge quickly',partner:'You want a long-term strategic partner, not a one-time fix',growth:st>=2?'You want strategy and partnerships working together':'Partnerships come after the foundation, so we start with clarity'}[A.a_need]);
+  }else if(door==='representation'){
+    t='talent';
+    traction=(A.r_auth==='early'&&A.r_deals==='none')?0:2;
+    why.push({expert:'Your expertise is the foundation brands look for',founder:'You\'re the face of your company, and that authority is an asset',creator:'Your engaged community is valuable to the right brands',early:'You\'re early, so building your foundation now sets up every deal after'}[A.r_auth]);
+    why.push({pro:'You have experience with brand deals, so we can move quickly to representation',some:'You\'ve proven brands want you, and now it needs structure',none:'Every representation starts with positioning, a media kit and a partnership map'}[A.r_deals]);
+  }else if(door==='partnerships'){
+    traction=2;
+    t=A.p_need==='campaign'?'campaign':(A.p_need==='ongoing'&&A.p_type==='established'?'retainer':'catapult');
+    why.push({founderled:'You\'re a founder-led brand, where the right partners can change everything',established:'You\'re an established company ready to grow through partnerships',startup:'You have a launch ahead, the best moment to bring in the right partners'}[A.p_type]);
+    why.push({campaign:'You need the right partners for a specific moment',ongoing:'You want partnerships to be an ongoing growth channel',strategy:'You want strategy and partnerships built together'}[A.p_need]);
+  }else{
+    traction=A.e_stage==='concept'?1:2;
+    t=({advise:'event',direct:'experience',sponsors:'sourcing'})[A.e_role];
+    why.push({concept:'Your event is still taking shape, the best time to build the right partnerships in',set:'Your date and venue are set, so the partnership map can move fast',planning:'Your team is in motion and ready for the right partners'}[A.e_stage]);
+    why.push({advise:'You want expert direction while your team executes',direct:'You want the concept and creative direction shaped from the start',sponsors:'Securing sponsors is the priority, and our fee is tied to what we secure'}[A.e_role]);
+  }
+
+  // 1. Step down to a smaller track in the same door when the budget fits it better
+  if(!guide&&STEPDOWN[t]&&inv<TRACKS[t].min)t=STEPDOWN[t];
+  var min=TRACKS[t].min,gap=guide?0:Math.max(0,min-inv);
+
+  // 2. Outcome gates, in order
+  var outcome;
+  // A single fixed-price session must meet its price; larger engagements allow one range of flex
+  var severe=!guide&&(gap>=2||(t==='ctl'&&gap>=1));
+  if(severe) outcome='under';
+  else if(tm===1) outcome='later';
+  else if(dc===0) outcome='decider';
+  else if(guide&&traction===0) outcome='guidance';
+  else outcome='call';
+
+  // 3. Tier, for your inbox
+  var tier;
+  if(outcome!=='call') tier={under:'Under budget',later:'Nurture',decider:'Nurture',guidance:'Nurture'}[outcome];
+  else if(!guide&&gap===0&&tm===3&&dc===2) tier='Priority';
+  else tier='Good fit';
+
+  var strengths=[],flags=[];
+  if(!guide&&gap===0)strengths.push('Investment range fits the track');
+  if(!guide&&gap===1)flags.push('Investment one range below the track\'s starting point');
+  if(severe)flags.push('Investment well below the track\'s starting point');
+  if(guide)flags.push('Budget not set, wants guidance');
+  if(tm===3)strengths.push('Ready within 30 days');
+  if(tm===1)flags.push('Timeline later this year or exploring');
+  if(dc===2)strengths.push('Decision maker');
+  if(dc===1)flags.push('Shared decision');
+  if(dc===0)flags.push('Not the decision maker');
+  if(traction===2)strengths.push('Real traction or authority');
+  if(traction===0)flags.push('Very early stage');
+
+  why.push(tm===3?'You\'re ready to begin within the next 30 days':(tm===2?'Your timing gives us room to plan this well':'There\'s time to get the foundation right before you begin'));
+  return {door:door,track:t,outcome:outcome,tier:tier,gap:gap,why:why.filter(Boolean),strengths:strengths,flags:flags};
+}
+window.__creerDecide=decide; // used for testing every path
+
+/* ================= Copy for each outcome and door ================= */
+var COPY={
+  call:{title:'Request your discovery call',intro:'Share a few details. Our team personally reviews every request and reaches out to aligned projects to schedule a complimentary 15-minute discovery call.',btn:'Request my discovery call',
+        thanksT:'Thank you. We have your request.',thanks:'Our team personally reviews every request. If we\'re aligned, we\'ll reach out by email to schedule your complimentary 15-minute discovery call.'},
+  under:{title:'When the timing is right',intro:'Based on the range you shared, a discovery call may not be the best use of your time just yet. We would love to work together when your investment aligns. Leave your details and we\'ll keep you close.',btn:'Keep me in the loop',
+        thanksT:'Thank you. You\'re on our list.',thanks:'We\'ll keep you close. When your investment aligns, come back and retake the quiz, and we\'ll pick it up from there.'},
+  later:{title:'Let\'s stay connected',intro:'It sounds like you\'re still planning, which is a great place to start. Leave your details and we\'ll keep you close, with an invitation to talk when you\'re ready to begin.',btn:'Keep me in the loop',
+        thanksT:'Thank you. You\'re on our list.',thanks:'We\'ll keep you close. When you\'re ready to begin, retake the quiz and request your discovery call.'},
+  decider:{title:'Let\'s include the decision maker',intro:'Discovery calls work best with the person making the decision. Leave your details and share this page with them, so they can request a call directly.',btn:'Keep me in the loop',
+        thanksT:'Thank you. We have your details.',thanks:'Share this page with the decision maker so they can request a discovery call directly.'},
+  guidance:{title:'Let\'s stay connected',intro:'You\'re early, and that\'s the best time to build it right. Leave your details and we\'ll share ways to get started with us, from our Sessions to a focused first step.',btn:'Keep me in the loop',
+        thanksT:'Thank you. You\'re on our list.',thanks:'We\'ll be in touch with ways to get started.'}
+};
+var FORM={
+  advisory:{link:'Website or Instagram',note:'Tell us about your business and the challenge you want solved.'},
+  representation:{link:'Instagram, TikTok or website',note:'Tell us about your work and the kinds of brands you\'d love to partner with.'},
+  partnerships:{link:'Company website',extra:'Company name',note:'Tell us about your company and what you want partnerships to achieve.'},
+  experiences:{link:'Event or organization website',extra:'Event date and expected attendance',note:'Tell us about your event and what success looks like.'}
 };
 
-/* ---------- Flow ---------- */
-var A={},path=[],pos=0;
+/* ================= Flow ================= */
+var A={},pos=0,R=null;
 var field=document.getElementById('qField');
-function buildPath(){
-  var door=A.intent==='unsure'?A.unsure:A.intent;
-  var p=['intent'];if(A.intent==='unsure')p.push('unsure');
-  if(door)p=p.concat(BRANCH[door]).concat(CLOSE);
-  return p;
-}
-function totalSteps(){var p=buildPath();return A.intent?p.length:(1+2+CLOSE.length);}
+function buildPath(){var door=A.intent==='unsure'?A.unsure:A.intent;var p=['intent'];if(A.intent==='unsure')p.push('unsure');if(door)p=p.concat(BRANCH[door]).concat(CLOSE);return p;}
+function totalSteps(){return A.intent?buildPath().length:6;}
 function render(){
-  path=buildPath();var id=path[pos],q=Q[id];
+  var path=buildPath(),id=path[pos],q=Q[id];
   var html='<legend class="q-title">'+q.t+'</legend>'+(q.h?'<p class="q-help">'+q.h+'</p>':'');
   q.o.forEach(function(o){html+='<label class="opt"><input type="radio" name="'+id+'" value="'+o[0]+'"'+(A[id]===o[0]?' checked':'')+'><span>'+o[1]+'</span></label>';});
-  field.innerHTML=html;
-  var tot=totalSteps();
+  field.innerHTML=html;var tot=totalSteps();
   document.getElementById('qBar').style.width=(pos/tot*100)+'%';
   document.getElementById('qCount').textContent='Question '+(pos+1)+' of '+tot;
   document.getElementById('qBack').style.visibility=pos?'visible':'hidden';
@@ -184,108 +276,57 @@ function render(){
 }
 field.addEventListener('change',function(e){
   var id=e.target.name;A[id]=e.target.value;
-  if(id==='intent'||id==='unsure'){ // reset downstream answers when the path changes
-    Object.keys(A).forEach(function(k){if(k!=='intent'&&k!=='unsure')delete A[k];});
-    if(id==='intent'&&A.intent!=='unsure')delete A.unsure;
-  }
-  setTimeout(function(){path=buildPath();if(pos<path.length-1){pos++;render();}else finish();},200);
+  if(id==='intent'||id==='unsure'){Object.keys(A).forEach(function(k){if(k!=='intent'&&k!=='unsure')delete A[k];});if(id==='intent'&&A.intent!=='unsure')delete A.unsure;}
+  setTimeout(function(){var path=buildPath();if(pos<path.length-1){pos++;render();}else show();},200);
 });
 document.getElementById('qBack').addEventListener('click',function(){if(pos>0){pos--;render();}});
 document.getElementById('startBtn').addEventListener('click',function(){document.getElementById('intro').hidden=true;document.getElementById('steps').hidden=false;pos=0;render();});
 
-/* ---------- Recommendation and readiness ---------- */
-function finish(){
-  var door=A.intent==='unsure'?A.unsure:A.intent,t,why=[],strengths=[],flags=[];
-  var inv=+A.invest,guide=A.invest==='0',tm=+A.timing,dc=+A.decider,traction=0;
-
-  if(door==='advisory'){
-    var st=+A.a_stage;traction=st>=3?2:(st===2?1:0);
-    if(A.a_need==='growth'&&st>=2){door='partnerships';t='catapult';}
-    else if(A.a_need==='focused'||st===1)t='ctl';
-    else t='foundation';
-    why.push(['','You\'re at an early stage, so clarity comes first','You\'ve launched and are finding traction','You have an established business with steady revenue','You\'re scaling and ready for the next level'][st]);
-    why.push({focused:'You want to solve one specific challenge quickly',partner:'You want a long-term strategic partner, not a one-time fix',growth:'You want strategy and partnerships working together'}[A.a_need]);
-  }
-  else if(door==='representation'){
-    t='talent';
-    traction=({expert:2,founder:2,creator:1,early:0})[A.r_auth]+({pro:1,some:1,none:0})[A.r_deals];
-    why.push({expert:'Your expertise is the foundation brands look for',founder:'You\'re the face of your company, and that authority is an asset',creator:'Your engaged community is valuable to the right brands',early:'You\'re early, so building your foundation now sets up every deal after'}[A.r_auth]);
-    why.push({pro:'You have experience with brand deals, so we can move quickly to representation',some:'You\'ve proven brands want you, and now it needs structure',none:'Every representation starts with positioning, a media kit and a partnership map'}[A.r_deals]);
-  }
-  if(door==='partnerships'&&!t){
-    traction=({founderled:1,established:2,startup:1})[A.p_type];
-    if(A.p_need==='campaign')t='campaign';
-    else if(A.p_need==='ongoing')t=(A.p_type==='established'&&(inv>=4||guide))?'retainer':'catapult';
-    else t='catapult';
-    why.push({founderled:'You\'re a founder-led brand, where the right partners can change everything',established:'You\'re an established company ready to grow through partnerships',startup:'You have a launch ahead, the best moment to bring in the right partners'}[A.p_type]);
-    why.push({campaign:'You need the right partners for a specific moment',ongoing:'You want partnerships to be an ongoing growth channel',strategy:'You want strategy and partnerships built together'}[A.p_need]);
-  } else if(door==='partnerships'){traction=Math.max(traction,1);}
-  if(door==='experiences'){
-    traction=({concept:1,set:2,planning:2})[A.e_stage];
-    t=({advise:'event',direct:'experience',sponsors:'sourcing'})[A.e_role];
-    if(t==='experience'&&inv&&inv<4)t='event';
-    why.push({concept:'Your event is still taking shape, the best time to build the right partnerships in',set:'Your date and venue are set, so the partnership map can move fast',planning:'Your team is in motion and ready for the right partners'}[A.e_stage]);
-    why.push({advise:'You want expert direction while your team executes',direct:'You want the concept and creative direction shaped from the start',sponsors:'Securing sponsors is the priority'}[A.e_role]);
-  }
-  // Budget-aware adjustment within advisory
-  if(t==='foundation'&&inv===1)t='ctl';
-
-  // Readiness score (0 to 10): timing, decision, investment fit, traction
-  var min=TRACKS[t].min,invPts;
-  if(guide){invPts=2;flags.push('Budget not set, wants guidance');}
-  else if(inv>=min){invPts=3;strengths.push('Investment range fits the suggested track');}
-  else if(inv===min-1){invPts=1;flags.push('Investment range slightly below the suggested track');}
-  else {invPts=0;flags.push('Investment range below the suggested track');}
-  var tPts=({3:3,2:2,1:0})[tm];
-  if(tm===3)strengths.push('Ready to start within 30 days');else if(tm===1)flags.push('Exploring, timeline later this year');
-  var dPts=({2:2,1:1,0:0})[dc];
-  if(dc===2)strengths.push('Decision maker');else if(dc===0)flags.push('Gathering information for someone else');
-  if(traction>=2)strengths.push('Strong traction or authority');else if(traction===0)flags.push('Early stage');
-  var score=tPts+dPts+invPts+Math.min(traction,2);
-  var tier=score>=8?'Priority':(score>=5?'Good fit':'Nurture');
-  if(tm===1&&(invPts===0||traction===0)&&!(dc===2&&invPts>=2))tier='Nurture';
-  var severe=!guide&&inv>0&&inv<=min-2;
-  if(severe){tier='Under budget';flags.push('Severely under budget for the suggested track');}
-
-  why.push(tm===3?'You\'re ready to begin within the next 30 days':(tm===2?'Your timing gives us room to plan this well':'There\'s time to get the foundation right before you begin'));
-
-  A.door=DOORS[door][1];A.track=TRACKS[t].n;A.tier=tier;A.score=score;A.strengths=strengths;A.flags=flags;A.doorKey=door;
-  var d=DOORS[door];
+function show(){
+  R=decide(A);var d=DOORS[R.door],tr=TRACKS[R.track],c=COPY[R.outcome],fm=FORM[R.door];
   document.getElementById('rNum').textContent=d[0];
   document.getElementById('rName').textContent=d[1];
-  document.getElementById('rTrack').textContent='Suggested starting point: '+TRACKS[t].n;
-  document.getElementById('rDesc').textContent=TRACKS[t].d;
+  document.getElementById('rTrack').textContent='Suggested starting point: '+tr.n;
+  document.getElementById('rDesc').textContent=tr.d;
   document.getElementById('rCard').className='result-card '+d[2];
-  document.getElementById('rWhy').innerHTML=why.filter(Boolean).map(function(w){return '<li>'+w+'</li>';}).join('');
-  var inv_el=document.getElementById('rInvest');
-  if(severe&&TRACKS[t].p){inv_el.hidden=false;inv_el.textContent='Engagements for '+TRACKS[t].n+' typically begin at '+TRACKS[t].p+'.';}else{inv_el.hidden=true;}
-  var nurture=tier==='Nurture'||severe;
-  document.getElementById('leadTitle').textContent=severe?'When the timing is right':nurture?'Let\'s stay connected':'Request your discovery call';
-  document.getElementById('leadIntro').textContent=severe?'Based on the range you shared, a discovery call may not be the best use of your time just yet. We would love to work together when your investment aligns. Leave your details and we will keep you close, with an open invitation to reconnect.':nurture?'It sounds like you\'re still in the planning stage, which is a great place to start. Share your details and we\'ll keep you close, with an invitation to talk when the timing is right.':'Share a few details. Our team personally reviews every request and reaches out to aligned projects to schedule a complimentary 15-minute discovery call.';
-  document.getElementById('leadBtn').textContent=nurture?'Keep me in the loop':'Request my discovery call';
+  var ri=document.getElementById('rInvest');
+  if(R.outcome==='under'&&tr.p){ri.hidden=false;ri.textContent='Engagements for '+tr.n+' typically begin at '+tr.p+'.';}else ri.hidden=true;
+  document.getElementById('rWhy').innerHTML=R.why.map(function(w){return '<li>'+w+'</li>';}).join('');
+  document.getElementById('leadTitle').textContent=c.title;
+  document.getElementById('leadIntro').textContent=c.intro;
+  document.getElementById('leadBtn').textContent=c.btn;
+  // Form fields fit the door and the outcome: full details for calls, a light form otherwise
+  var isCall=R.outcome==='call';
+  document.getElementById('linkLabel').textContent=fm.link+(isCall?'':' (optional)');
+  var ew=document.getElementById('extraWrap');ew.hidden=!(isCall&&fm.extra);document.getElementById('extraLabel').textContent=fm.extra||'';
+  document.getElementById('phoneWrap').hidden=!isCall;
+  document.getElementById('noteLabel').textContent=isCall?fm.note:'Anything you\'d like us to know? (optional)';
+  document.getElementById('noteInput').required=isCall;
   document.getElementById('steps').hidden=true;document.getElementById('result').hidden=false;
   document.getElementById('leadWrap').hidden=false;document.getElementById('thanks').hidden=true;
   document.getElementById('result').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-/* ---------- Submit ---------- */
-function label(id){if(!A[id]||!Q[id])return '';for(var k=0;k<Q[id].o.length;k++)if(Q[id].o[k][0]===A[id])return Q[id].o[k][1];return '';}
+/* ================= Submit ================= */
+function label(id){var q=Q[id];if(!A[id]||!q)return '';for(var k=0;k<q.o.length;k++)if(q.o[k][0]===A[id])return q.o[k][1];return '';}
 document.getElementById('leadForm').addEventListener('submit',function(e){
   e.preventDefault();var f=e.target;if(!f.reportValidity())return;var fd=new FormData(f);if(fd.get('_honey'))return;
-  var btn=document.getElementById('leadBtn'),err=document.getElementById('leadErr');btn.disabled=true;var orig=btn.textContent;btn.textContent='Sending…';err.hidden=true;
-  var data={_subject:'['+A.tier+'] '+A.door+' · '+A.track+' · '+fd.get('name'),_template:'table',_captcha:'false',_replyto:fd.get('email'),
-    'Lead tier':A.tier+' (readiness '+A.score+' of 10)','Recommended door':A.door,'Suggested track':A.track,
-    'Strengths':A.strengths.join('; ')||'None noted','Watch':A.flags.join('; ')||'Nothing flagged',
-    'Name':fd.get('name'),'Email':fd.get('email'),'Phone':fd.get('phone')||'','Website or Instagram':fd.get('link')||'',
-    'What they are building':fd.get('note')};
+  var btn=document.getElementById('leadBtn'),err=document.getElementById('leadErr'),orig=btn.textContent;btn.disabled=true;btn.textContent='Sending…';err.hidden=true;
+  var d=DOORS[R.door][1],tr=TRACKS[R.track].n,fm=FORM[R.door];
+  var data={_subject:'['+R.tier+'] '+d+' · '+tr+' · '+fd.get('name'),_template:'table',_captcha:'false',_replyto:fd.get('email'),
+    'Lead tier':R.tier,'Next step shown':{call:'Discovery call request',under:'Under budget, stay connected',later:'Later timing, stay connected',decider:'Not decision maker, invite them',guidance:'Early, stay connected'}[R.outcome],
+    'Recommended door':d,'Suggested track':tr,'Strengths':R.strengths.join('; ')||'None noted','Watch':R.flags.join('; ')||'Nothing flagged',
+    'Name':fd.get('name'),'Email':fd.get('email'),'Phone':fd.get('phone')||''};
+  data[fm.link]=fd.get('link')||'';if(fm.extra&&fd.get('extra'))data[fm.extra]=fd.get('extra');
+  data['Their note']=fd.get('note')||'';
   buildPath().forEach(function(id){data['Q: '+Q[id].t]=label(id);});
   fetch('https://formsubmit.co/ajax/'+EMAIL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
   .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)==='false')throw new Error(j.message||'error');});})
-  .then(function(){document.getElementById('leadWrap').hidden=true;document.getElementById('thanks').hidden=false;
-    document.getElementById('thanksText').textContent=(A.tier==='Nurture'||A.tier==='Under budget')?'We\'ll keep you close. When the timing is right, come back anytime.':'Our team personally reviews every request. If we\'re aligned, we\'ll reach out by email to schedule your complimentary 15-minute discovery call.';})
+  .then(function(){var c=COPY[R.outcome];document.getElementById('leadWrap').hidden=true;document.getElementById('thanks').hidden=false;
+    document.getElementById('thanksTitle').textContent=c.thanksT;document.getElementById('thanksText').textContent=c.thanks;})
   .catch(function(){btn.disabled=false;btn.textContent=orig;err.hidden=false;err.innerHTML='Something went wrong sending your request. Please email us at <a href="mailto:'+EMAIL+'">'+EMAIL+'</a>.';});
 });
-document.getElementById('qRestart').addEventListener('click',function(){A={};pos=0;document.getElementById('leadForm').reset();document.getElementById('leadBtn').disabled=false;document.getElementById('leadErr').hidden=true;document.getElementById('result').hidden=true;document.getElementById('steps').hidden=false;render();});
+document.getElementById('qRestart').addEventListener('click',function(){A={};pos=0;R=null;var lf=document.getElementById('leadForm');lf.reset();document.getElementById('leadBtn').disabled=false;document.getElementById('leadErr').hidden=true;document.getElementById('result').hidden=true;document.getElementById('steps').hidden=false;render();});
 })();
 </script>
 </main>
