@@ -167,3 +167,7 @@ em.accent{color:var(--blue)}
 .site-footer nav a{color:var(--shell);text-decoration:none;padding:10px 0}
 @media (max-width:640px){.door{min-height:0}.door .d{margin-bottom:16px}}
 
+.door-cta{margin-top:28px;background:var(--black);border-color:var(--black);color:var(--shell)}
+.door-cta:hover{background:transparent;color:var(--black);border-color:var(--black)}
+.bg-tea .door-cta{background:var(--shell);border-color:var(--shell);color:var(--black)}
+.bg-tea .door-cta:hover{background:transparent;color:var(--shell);border-color:var(--shell)}
