@@ -120,7 +120,7 @@ em.accent{color:var(--blue)}
 .logos{display:flex;flex-wrap:wrap;justify-content:center;gap:18px 44px;font-family:var(--display);font-weight:800;font-size:clamp(18px,2vw,26px);letter-spacing:-.02em;margin:0;padding:0;list-style:none}
 
 /* Gallery */
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
 .gallery img{height:340px;width:100%;object-fit:cover;border-radius:10px}
 
 /* Founder */
