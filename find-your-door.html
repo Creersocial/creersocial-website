@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,800&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap">
-<link rel="stylesheet" href="assets/styles.css?v=1792990731">
+<link rel="stylesheet" href="assets/styles.css?v=1792990936">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -80,7 +80,7 @@
     <div id="thanks" hidden>
       <h3 class="h3" style="margin:40px 0 8px" id="thanksTitle"></h3>
       <p class="muted" id="thanksText"></p>
-      <div class="btns" id="bookWrap" hidden style="margin-top:20px"><a class="btn" id="bookBtn" href="#" target="_blank" rel="noopener">Book your discovery call</a></div>
+      <div class="btns" id="bookWrap" hidden style="margin-top:20px"><a class="btn" id="bookBtn" href="#" target="_blank" rel="noopener">Choose your time →</a></div>
       <div class="btns"><a class="btn ghost" href="work.html">See our work</a><a class="btn ghost" href="https://www.instagram.com/creersocial">Follow @creersocial</a></div>
     </div>
     <p style="margin-top:36px"><button class="linkbtn textlink" type="button" id="qRestart">Start over</button></p>
@@ -221,12 +221,14 @@ function decide(A){
   else if(t==='sourcing'&&A.e_stage==='concept') outcome='guidance'; // commission work starts once the event is real
   else outcome='call';
   // Close The Leak is a fixed, focused session, so it skips the discovery call
+  // A budget that fits never waits: later timing still gets the call
+  if(outcome==='later'&&!guide&&gap===0) outcome=dc===0?'decider':'call';
   if(outcome==='call'&&t==='ctl') outcome='session';
 
   // 3. Tier, for your inbox
   var tier;
   if(outcome!=='call'&&outcome!=='session') tier={under:'Under budget',later:'Nurture',decider:'Nurture',guidance:'Nurture'}[outcome];
-  else if(!guide&&gap===0&&tm>=2&&dc>=1) tier='Priority'; // budget fits, within a few months, decision maker or shared
+  else if(!guide&&gap===0&&dc>=1) tier='Priority'; // budget fits and they make (or share) the decision: book directly
   else tier='Good fit';
 
   var strengths=[],flags=[];
@@ -262,6 +264,9 @@ var COPY={
 };
 COPY.session={title:'Reserve your Close The Leak session',intro:'Close The Leak is a focused first step, so there\'s no discovery call needed. It\'s a one-time investment of $2,500. Share your details and preferred dates, and our Client Services team will reach out within 24 hours to confirm your time and complete your booking.',btn:'Request my session',
         thanksT:'Thank you. Your request is in.',thanks:'Our Client Services team will reach out within 24 hours to confirm your session time and complete your booking.'};
+// Priority leads book directly
+COPY.book={title:'Book your discovery call',intro:'You\'re a strong fit. Share a few details, then choose a time for your complimentary 25-minute discovery call.',btn:'Continue to booking',
+        thanksT:'You\'re all set. Choose your time.',thanks:'Pick a time that works for you for your complimentary 25-minute discovery call. We\'ve also emailed you the booking link.'};
 var SESSION_DATES='Preferred dates and times (sessions run Monday to Friday, 11am to 4pm PT)';
 var FORM={
   advisory:{link:'Website or Instagram',note:'Tell us about your business and the challenge you want solved.'},
@@ -303,7 +308,9 @@ document.getElementById('startBtn').addEventListener('click',function(){document
   A.intent=dd;document.getElementById('intro').hidden=true;document.getElementById('steps').hidden=false;pos=1;render();})();
 
 function show(){
-  R=decide(A);var d=DOORS[R.door],tr=TRACKS[R.track],c=COPY[R.outcome],fm=FORM[R.door];
+  R=decide(A);var d=DOORS[R.door],tr=TRACKS[R.track],fm=FORM[R.door];
+  R.direct=R.outcome==='call'&&R.tier==='Priority'&&BOOKING_URL.indexOf('https://')===0;
+  var c=COPY[R.direct?'book':R.outcome];
   document.getElementById('rNum').textContent=d[0];
   document.getElementById('rName').textContent=d[1];
   document.getElementById('rTrack').textContent='Suggested starting point: '+tr.n;
@@ -354,9 +361,9 @@ document.getElementById('leadForm').addEventListener('submit',function(e){
     fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(row)}).catch(function(){});
   }
   function done(){
-    var c=COPY[R.outcome];document.getElementById('leadWrap').hidden=true;document.getElementById('thanks').hidden=false;
+    var c=COPY[R.direct?'book':R.outcome];document.getElementById('leadWrap').hidden=true;document.getElementById('thanks').hidden=false;
     var bw=document.getElementById('bookWrap');
-    if(R.outcome==='call'&&R.tier==='Priority'&&BOOKING_URL.indexOf('https://')===0){bw.hidden=false;document.getElementById('bookBtn').href=BOOKING_URL;}else bw.hidden=true;
+    if(R.direct){bw.hidden=false;document.getElementById('bookBtn').href=BOOKING_URL;}else bw.hidden=true;
     document.getElementById('thanksTitle').textContent=c.thanksT;document.getElementById('thanksText').textContent=c.thanks;}
   // 2. Email the lead to the inbox
   fetch('https://formsubmit.co/ajax/'+EMAIL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
