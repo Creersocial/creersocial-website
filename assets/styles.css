@@ -372,3 +372,5 @@ a.card:hover{transform:translateY(-3px)}
 .apart.three{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .founder .more summary{background:transparent;color:var(--shell);box-shadow:inset 0 0 0 1.5px rgba(234,228,218,.5)}
 .founder .more summary:hover{background:transparent;color:var(--shell);box-shadow:inset 0 0 0 1.5px var(--shell)}
+.head-row > .picker-head{margin-bottom:0}
+@media (max-width:640px){.picker-sec .head-row{gap:16px}}
