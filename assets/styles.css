@@ -374,3 +374,4 @@ a.card:hover{transform:translateY(-3px)}
 .founder .more summary:hover{background:transparent;color:var(--shell);box-shadow:inset 0 0 0 1.5px var(--shell)}
 .head-row > .picker-head{margin-bottom:0}
 @media (max-width:640px){.picker-sec .head-row{gap:16px}}
+[hidden]{display:none!important}

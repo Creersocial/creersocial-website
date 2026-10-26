@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,800&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap">
-<link rel="stylesheet" href="assets/styles.css?v=1792981179">
+<link rel="stylesheet" href="assets/styles.css?v=1792981878">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -172,6 +172,7 @@ var STEPDOWN={foundation:'ctl',retainer:'catapult',experience:'event'};
 /* ================= Decision rules (pure function) =================
    Outcome is one of:
    call        discovery call offered
+   session     Close The Leak: no discovery call; they confirm the session and we email the booking link
    under       investment well below the track's starting point (2+ bands): no call
    later       timing is later this year or exploring: no call
    decider     not the decision maker: no call, invite the decision maker
@@ -218,10 +219,12 @@ function decide(A){
   else if(dc===0) outcome='decider';
   else if(guide&&traction===0) outcome='guidance';
   else outcome='call';
+  // Close The Leak is a fixed, focused session, so it skips the discovery call
+  if(outcome==='call'&&t==='ctl') outcome='session';
 
   // 3. Tier, for your inbox
   var tier;
-  if(outcome!=='call') tier={under:'Under budget',later:'Nurture',decider:'Nurture',guidance:'Nurture'}[outcome];
+  if(outcome!=='call'&&outcome!=='session') tier={under:'Under budget',later:'Nurture',decider:'Nurture',guidance:'Nurture'}[outcome];
   else if(!guide&&gap===0&&tm===3&&dc===2) tier='Priority';
   else tier='Good fit';
 
@@ -256,6 +259,9 @@ var COPY={
   guidance:{title:'Let\'s stay connected',intro:'You\'re early, and that\'s the best time to build it right. Leave your details and we\'ll share ways to get started with us, from our Sessions to a focused first step.',btn:'Keep me in the loop',
         thanksT:'Thank you. You\'re on our list.',thanks:'We\'ll be in touch with ways to get started.'}
 };
+COPY.session={title:'Reserve your Close The Leak session',intro:'Close The Leak is a focused first step, so there\'s no discovery call needed. It\'s a one-time investment of $2,500. Share your details and preferred dates, and our Client Services team will reach out within 24 hours to confirm your time and complete your booking.',btn:'Request my session',
+        thanksT:'Thank you. Your request is in.',thanks:'Our Client Services team will reach out within 24 hours to confirm your session time and complete your booking.'};
+var SESSION_DATES='Preferred dates and times (sessions run Monday to Friday, 10am to 4pm PT)';
 var FORM={
   advisory:{link:'Website or Instagram',note:'Tell us about your business and the challenge you want solved.'},
   representation:{link:'Instagram, TikTok or website',note:'Tell us about your work and the kinds of brands you\'d love to partner with.'},
@@ -304,11 +310,13 @@ function show(){
   document.getElementById('leadIntro').textContent=c.intro;
   document.getElementById('leadBtn').textContent=c.btn;
   // Form fields fit the door and the outcome: full details for calls, a light form otherwise
-  var isCall=R.outcome==='call';
+  var isCall=R.outcome==='call'||R.outcome==='session';
   document.getElementById('linkLabel').textContent=fm.link+(isCall?'':' (optional)');
-  var ew=document.getElementById('extraWrap');ew.hidden=!(isCall&&fm.extra);document.getElementById('extraLabel').textContent=fm.extra||'';
+  var isSession=R.outcome==='session',ex=isSession?SESSION_DATES:fm.extra;
+  var ew=document.getElementById('extraWrap');ew.hidden=!(isCall&&ex);document.getElementById('extraLabel').textContent=ex||'';
+  document.getElementById('extraInput').required=isSession;document.getElementById('extraInput').placeholder=isSession?'e.g. Tue or Thu mornings':'';
   document.getElementById('phoneWrap').hidden=!isCall;
-  document.getElementById('noteLabel').textContent=isCall?fm.note:'Anything you\'d like us to know? (optional)';
+  document.getElementById('noteLabel').textContent=R.outcome==='session'?'What\'s the one challenge you want to solve in this session?':isCall?fm.note:'Anything you\'d like us to know? (optional)';
   document.getElementById('noteInput').required=isCall;
   document.getElementById('steps').hidden=true;document.getElementById('result').hidden=false;
   document.getElementById('leadWrap').hidden=false;document.getElementById('thanks').hidden=true;
@@ -322,11 +330,11 @@ document.getElementById('leadForm').addEventListener('submit',function(e){
   e.preventDefault();var f=e.target;if(!f.reportValidity())return;var fd=new FormData(f);if(fd.get('_honey'))return;
   var btn=document.getElementById('leadBtn'),err=document.getElementById('leadErr'),orig=btn.textContent;btn.disabled=true;btn.textContent='Sending…';err.hidden=true;
   var d=DOORS[R.door][1],tr=TRACKS[R.track].n,fm=FORM[R.door];
-  var data={_subject:'['+R.tier+'] '+d+' · '+tr+' · '+fd.get('name'),_template:'table',_captcha:'false',_replyto:fd.get('email'),
-    'Lead tier':R.tier,'Next step shown':{call:'Discovery call request',under:'Under budget, stay connected',later:'Later timing, stay connected',decider:'Not decision maker, invite them',guidance:'Early, stay connected'}[R.outcome],
+  var data={_subject:'['+(R.outcome==='session'?'Close The Leak request':R.tier)+'] '+d+' · '+tr+' · '+fd.get('name'),_template:'table',_captcha:'false',_replyto:fd.get('email'),
+    'Lead tier':R.tier,'Next step shown':{call:'Discovery call request',session:'Close The Leak, confirm time and complete booking',under:'Under budget, stay connected',later:'Later timing, stay connected',decider:'Not decision maker, invite them',guidance:'Early, stay connected'}[R.outcome],
     'Recommended door':d,'Suggested track':tr,'Strengths':R.strengths.join('; ')||'None noted','Watch':R.flags.join('; ')||'Nothing flagged',
     'Name':fd.get('name'),'Email':fd.get('email'),'Phone':fd.get('phone')||''};
-  data[fm.link]=fd.get('link')||'';if(fm.extra&&fd.get('extra'))data[fm.extra]=fd.get('extra');
+  data[fm.link]=fd.get('link')||'';var exL=R.outcome==='session'?'Preferred session dates':fm.extra;if(exL&&fd.get('extra'))data[exL]=fd.get('extra');
   data['Heard about us']=fd.get('source')||'';data['Referred by']=fd.get('referrer')||'';
   data['Their note']=fd.get('note')||'';
   buildPath().forEach(function(id){data['Q: '+Q[id].t]=label(id);});
@@ -337,12 +345,12 @@ document.getElementById('leadForm').addEventListener('submit',function(e){
       var row={tier:R.tier,outcome:R.outcome,next:data['Next step shown'],door:d,track:tr,name:fd.get('name'),email:fd.get('email'),phone:fd.get('phone')||'',
         link:fd.get('link')||'',extra:fd.get('extra')||'',source:fd.get('source')||'',referrer:fd.get('referrer')||'',note:fd.get('note')||'',
         strengths:data['Strengths'],watch:data['Watch'],answers:buildPath().map(function(id){return Q[id].t+': '+label(id);}).join(' | '),
-        book:(R.tier==='Priority'&&BOOKING_URL.indexOf('https://')===0)?BOOKING_URL:''};
+        book:(R.outcome==='call'&&R.tier==='Priority'&&BOOKING_URL.indexOf('https://')===0)?BOOKING_URL:''};
       fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(row)}).catch(function(){});
     }
     var c=COPY[R.outcome];document.getElementById('leadWrap').hidden=true;document.getElementById('thanks').hidden=false;
     var bw=document.getElementById('bookWrap');
-    if(R.tier==='Priority'&&BOOKING_URL.indexOf('https://')===0){bw.hidden=false;document.getElementById('bookBtn').href=BOOKING_URL;}else bw.hidden=true;
+    if(R.outcome==='call'&&R.tier==='Priority'&&BOOKING_URL.indexOf('https://')===0){bw.hidden=false;document.getElementById('bookBtn').href=BOOKING_URL;}else bw.hidden=true;
     document.getElementById('thanksTitle').textContent=c.thanksT;document.getElementById('thanksText').textContent=c.thanks;})
   .catch(function(){btn.disabled=false;btn.textContent=orig;err.hidden=false;err.innerHTML='Something went wrong sending your request. Please email us at <a href="mailto:'+EMAIL+'">'+EMAIL+'</a>.';});
 });
