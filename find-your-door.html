@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,800&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap">
-<link rel="stylesheet" href="assets/styles.css?v=1792986037">
+<link rel="stylesheet" href="assets/styles.css?v=1792986060">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -338,21 +338,25 @@ document.getElementById('leadForm').addEventListener('submit',function(e){
   data['Heard about us']=fd.get('source')||'';data['Referred by']=fd.get('referrer')||'';
   data['Their note']=fd.get('note')||'';
   buildPath().forEach(function(id){data['Q: '+Q[id].t]=label(id);});
-  fetch('https://formsubmit.co/ajax/'+EMAIL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
-  .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)==='false')throw new Error(j.message||'error');});})
-  .then(function(){
-    if(SHEET_URL.indexOf('https://')===0){
-      var row={tier:R.tier,outcome:R.outcome,next:data['Next step shown'],door:d,track:tr,name:fd.get('name'),email:fd.get('email'),phone:fd.get('phone')||'',
-        link:fd.get('link')||'',extra:fd.get('extra')||'',source:fd.get('source')||'',referrer:fd.get('referrer')||'',note:fd.get('note')||'',
-        strengths:data['Strengths'],watch:data['Watch'],answers:buildPath().map(function(id){return Q[id].t+': '+label(id);}).join(' | '),
-        book:(R.outcome==='call'&&R.tier==='Priority'&&BOOKING_URL.indexOf('https://')===0)?BOOKING_URL:''};
-      fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(row)}).catch(function(){});
-    }
+  var hasSheet=SHEET_URL.indexOf('https://')===0;
+  // 1. Log to the leads sheet first (also sends the confirmation email), independent of the inbox email
+  if(hasSheet){
+    var row={tier:R.tier,outcome:R.outcome,next:data['Next step shown'],door:d,track:tr,name:fd.get('name'),email:fd.get('email'),phone:fd.get('phone')||'',
+      link:fd.get('link')||'',extra:fd.get('extra')||'',source:fd.get('source')||'',referrer:fd.get('referrer')||'',note:fd.get('note')||'',
+      strengths:data['Strengths'],watch:data['Watch'],answers:buildPath().map(function(id){return Q[id].t+': '+label(id);}).join(' | '),
+      book:(R.outcome==='call'&&R.tier==='Priority'&&BOOKING_URL.indexOf('https://')===0)?BOOKING_URL:''};
+    fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(row)}).catch(function(){});
+  }
+  function done(){
     var c=COPY[R.outcome];document.getElementById('leadWrap').hidden=true;document.getElementById('thanks').hidden=false;
     var bw=document.getElementById('bookWrap');
     if(R.outcome==='call'&&R.tier==='Priority'&&BOOKING_URL.indexOf('https://')===0){bw.hidden=false;document.getElementById('bookBtn').href=BOOKING_URL;}else bw.hidden=true;
-    document.getElementById('thanksTitle').textContent=c.thanksT;document.getElementById('thanksText').textContent=c.thanks;})
-  .catch(function(){btn.disabled=false;btn.textContent=orig;err.hidden=false;err.innerHTML='Something went wrong sending your request. Please email us at <a href="mailto:'+EMAIL+'">'+EMAIL+'</a>.';});
+    document.getElementById('thanksTitle').textContent=c.thanksT;document.getElementById('thanksText').textContent=c.thanks;}
+  // 2. Email the lead to the inbox
+  fetch('https://formsubmit.co/ajax/'+EMAIL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+  .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)==='false')throw new Error(j.message||'error');});})
+  .then(done)
+  .catch(function(){if(hasSheet){done();return;}btn.disabled=false;btn.textContent=orig;err.hidden=false;err.innerHTML='Something went wrong sending your request. Please email us at <a href="mailto:'+EMAIL+'">'+EMAIL+'</a>.';});
 });
 document.getElementById('qRestart').addEventListener('click',function(){A={};pos=0;R=null;var lf=document.getElementById('leadForm');lf.reset();document.getElementById('leadBtn').disabled=false;document.getElementById('leadErr').hidden=true;document.getElementById('result').hidden=true;document.getElementById('steps').hidden=false;render();});
 })();
