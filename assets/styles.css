@@ -380,3 +380,11 @@ a.card:hover{transform:translateY(-3px)}
 .lead select{-webkit-appearance:none;appearance:none;font-weight:400;line-height:1.5;width:100%;padding-right:44px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23EAE4DA' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
 .lead input,.lead select{line-height:1.5;box-sizing:border-box;width:100%}
 @media (max-width:640px){.lead{grid-template-columns:1fr}}
+
+/* Trusted-by marquee: white logos scroll on Muted Black, about a 20 second cycle */
+.trusted{background:var(--black);color:var(--shell)}
+.marquee{display:flex;overflow:hidden}
+.marquee .logos{flex-wrap:nowrap;justify-content:flex-start;align-items:center;gap:0 48px;padding-right:48px;flex-shrink:0;animation:trusted-scroll 20s linear infinite}
+.marquee .logos img{display:block;height:30px;width:auto}
+@keyframes trusted-scroll{to{transform:translateX(-100%)}}
+@media (prefers-reduced-motion:reduce){.marquee{overflow-x:auto}.marquee .logos{animation:none}.marquee .logos[aria-hidden="true"]{display:none}}
