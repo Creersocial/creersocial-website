@@ -368,3 +368,5 @@ a.card:hover{transform:translateY(-3px)}
 .track .d{color:var(--dim);font-size:16px}
 .track:hover .t{color:var(--blue)}
 @media (max-width:800px){.track{grid-template-columns:1fr;gap:4px}}
+
+.apart.three{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
