@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,800&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap">
-<link rel="stylesheet" href="assets/styles.css?v=1792988973">
+<link rel="stylesheet" href="assets/styles.css?v=1792989461">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -43,7 +43,7 @@
     <div class="quiz-progress" aria-hidden="true"><span id="qBar"></span></div>
     <p class="quiz-count" id="qCount" aria-live="polite"></p>
     <form id="qForm" novalidate><fieldset class="q" id="qField"></fieldset></form>
-    <div class="quiz-nav"><button class="btn ghost" type="button" id="qBack">Back</button></div>
+    <div class="quiz-nav"><button class="btn ghost" type="button" id="qBack">Back</button><button class="btn" type="button" id="qNext" hidden>Next</button></div>
   </div>
 
   <div class="result" id="result" hidden>
@@ -282,13 +282,18 @@ function render(){
   document.getElementById('qBar').style.width=(pos/tot*100)+'%';
   document.getElementById('qCount').textContent='Question '+(pos+1)+' of '+tot;
   document.getElementById('qBack').style.visibility=pos?'visible':'hidden';
+  document.getElementById('qNext').hidden=!A[id];
   var f=field.querySelector('input');if(f)f.focus({preventScroll:true});
 }
+function advance(){var path=buildPath();if(pos<path.length-1){pos++;render();}else show();}
 field.addEventListener('change',function(e){
   var id=e.target.name;A[id]=e.target.value;
   if(id==='intent'||id==='unsure'){Object.keys(A).forEach(function(k){if(k!=='intent'&&k!=='unsure')delete A[k];});if(id==='intent'&&A.intent!=='unsure')delete A.unsure;}
-  setTimeout(function(){var path=buildPath();if(pos<path.length-1){pos++;render();}else show();},200);
+  setTimeout(advance,200);
 });
+// Tapping the answer that's already selected (after going back) moves forward too
+field.addEventListener('click',function(e){var t=e.target;if(t.tagName==='INPUT'&&A[t.name]===t.value)setTimeout(advance,200);});
+document.getElementById('qNext').addEventListener('click',function(){var id=buildPath()[pos];if(A[id])advance();});
 document.getElementById('qBack').addEventListener('click',function(){if(pos>0){pos--;render();}});
 document.getElementById('startBtn').addEventListener('click',function(){document.getElementById('intro').hidden=true;document.getElementById('steps').hidden=false;pos=0;render();});
 // Arriving from a door link elsewhere on the site (?door=advisory) skips the first question

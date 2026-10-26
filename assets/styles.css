@@ -375,3 +375,4 @@ a.card:hover{transform:translateY(-3px)}
 .head-row > .picker-head{margin-bottom:0}
 @media (max-width:640px){.picker-sec .head-row{gap:16px}}
 [hidden]{display:none!important}
+.quiz-nav{display:flex;gap:12px;flex-wrap:wrap}
