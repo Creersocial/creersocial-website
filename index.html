@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,800&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap">
-<link rel="stylesheet" href="assets/styles.css?v=1793060164">
+<link rel="stylesheet" href="assets/styles.css?v=1793061145">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -77,8 +77,8 @@
 <script>
 (function(){var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.querySelectorAll('.door-wrap').forEach(function(a){a.addEventListener('click',function(e){
-  if(reduce||e.metaKey||e.ctrlKey)return;e.preventDefault();a.classList.add('opening');var href=a.getAttribute('href');
-  setTimeout(function(){window.location.href=href;},650);});});
+  if(reduce||e.metaKey||e.ctrlKey)return;e.preventDefault();a.classList.add('opening');void a.offsetWidth;var href=a.getAttribute('href');
+  setTimeout(function(){window.location.href=href;},450);});});
 window.addEventListener('pageshow',function(){document.querySelectorAll('.door-wrap.opening').forEach(function(a){a.classList.remove('opening');});});})();
 </script>
 

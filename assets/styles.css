@@ -254,8 +254,8 @@ em.accent{color:var(--blue)}
 .door-unsure{background:#1D1D1B;border:1.5px dashed rgba(234,228,218,.5);color:var(--shell)}
 .door-wrap:hover .door-leaf,.door-wrap:focus-visible .door-leaf{transform:rotateY(-20deg);box-shadow:-16px 0 36px rgba(0,0,0,.4)}
 .door-wrap:hover .door-light,.door-wrap:focus-visible .door-light{opacity:.35}
-.door-wrap.opening .door-leaf{transform:rotateY(-82deg);box-shadow:-30px 0 50px rgba(0,0,0,.5)}
-.door-wrap.opening .door-light{opacity:1}
+.door-wrap.opening .door-leaf{transform:rotateY(-82deg);box-shadow:-30px 0 50px rgba(0,0,0,.5);transition-duration:.35s}
+.door-wrap.opening .door-light{opacity:1;transition-duration:.35s}
 .door-wrap:focus-visible{outline:2px solid var(--must);outline-offset:4px}
 .arch-num{position:absolute;top:22%;left:0;right:0;text-align:center;font-family:var(--display);font-weight:800;font-size:clamp(28px,3vw,40px);letter-spacing:-.03em}
 .arch-knob{position:absolute;right:22px;top:56%;width:10px;height:10px;border-radius:50%;background:currentColor;opacity:.75}
