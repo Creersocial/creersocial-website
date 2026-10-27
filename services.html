@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,800&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap">
-<link rel="stylesheet" href="assets/styles.css?v=1792992977">
+<link rel="stylesheet" href="assets/styles.css?v=1793060164">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -36,25 +36,25 @@
 <nav class="pills" aria-label="Doors"><a class="bg-tea" href="#advisory">01 Advisory</a><a class="bg-pink" href="#representation">02 Representation</a><a class="bg-tang" href="#partnerships">03 Brand Partnerships</a><a class="bg-must" href="#experiences">04 Experiences</a></nav>
 </div>
 </section>
-<section class="door-sec bg-tea" id="advisory">
+<section class="door-sec bg-tea reveal" id="advisory">
 <div class="wrap">
 <div class="intro"><p class="label">Door 01 · For founders and brands</p><h2>Créer Advisory</h2><p>Strategy, advisory, consulting and creative consulting. We audit, position and build the foundation everything else stands on.</p></div>
 <div class="list"><div class="svc"><div class="txt"><h3>Close The Leak</h3><p>One 80-minute recorded strategy session, plus a written summary within 48 hours. Credit toward a retainer if you upgrade within 30 days.</p></div></div><div class="svc"><div class="txt"><h3>The Foundation</h3><p>Month one: discovery, audit, ecosystem map and positioning plan. Months two to six: a weekly advisory call, no more than three tasks at a time, accountability and biweekly written recaps.</p></div></div><a class="btn door-cta" href="find-your-door.html?door=advisory">Start with Advisory →</a></div>
 </div>
 </section>
-<section class="door-sec bg-pink" id="representation">
+<section class="door-sec bg-pink reveal" id="representation">
 <div class="wrap">
 <div class="intro"><p class="label">Door 02 · For talent and founders with authority</p><h2>Créer Representation</h2><p>We build the full infrastructure around a person, then represent them for strategic brand partnerships.</p><p style="font-size:16px">We represent people, not companies: experts, creatives and founders who are the face of their brand.</p></div>
 <div class="list"><div class="svc"><div class="txt"><h3>The Talent Build</h3><p>The required first step. A business and platform audit, a positioning document, a media kit website plus PDF, a ranked partnership map of target brands, and a rate card.</p></div></div><div class="svc"><div class="txt"><h3>Representation</h3><p>Weekly content audits and recaps, biweekly strategy calls, targeted brand outreach, negotiation, contracts and deal management.</p></div></div><a class="btn door-cta" href="find-your-door.html?door=representation">Start with Representation →</a></div>
 </div>
 </section>
-<section class="door-sec bg-tang" id="partnerships">
+<section class="door-sec bg-tang reveal" id="partnerships">
 <div class="wrap">
 <div class="intro"><p class="label">Door 03 · For companies</p><h2>Créer Brand Partnerships</h2><p>From founder-led brands to large tech companies: we find the aligned talent, creators, businesses and communities, shape the partnership and run it.</p></div>
 <div class="list"><div class="svc"><div class="txt"><h3>The Catapult</h3><p>For founder-led brands. Everything in The Foundation, plus partnership cultivation from month two: collaborations, co-brands, sponsorships, retail and placement.</p></div></div><div class="svc"><div class="txt"><h3>Partnership Campaign</h3><p>For a launch or campaign. We match the right talent and partners, shape the deal, run outreach and contracts, and report results.</p></div></div><div class="svc"><div class="txt"><h3>Partnership Retainer</h3><p>For larger companies. Ongoing creator, community and local business partnership strategy, plus curated rooms. Scoped by proposal.</p></div></div><a class="btn door-cta" href="find-your-door.html?door=partnerships">Start with Brand Partnerships →</a></div>
 </div>
 </section>
-<section class="door-sec bg-must" id="experiences">
+<section class="door-sec bg-must reveal" id="experiences">
 <div class="wrap">
 <div class="intro"><p class="label">Door 04 · For events and organizations</p><h2>Créer Experiences</h2><p>The right sponsors, featured businesses, talent and activations for your event, plus creative direction. We design it. Our production partners build it.</p></div>
 <div class="list"><div class="svc"><div class="txt"><h3>Event Partnership Strategy</h3><p>A partnership map of exact sponsors, businesses and talent, activation and revenue concepts, a sponsor deck outline and advisory calls. Your team executes.</p></div></div><div class="svc"><div class="txt"><h3>Experience Strategy and Creative Direction</h3><p>Everything above, plus concept and creative direction, curated vendors and talent, and direction of the production partner. Two to three projects a year.</p></div></div><div class="svc"><div class="txt"><h3>Sponsorship Sourcing</h3><p>We find and secure the sponsors for your event or program.</p></div></div><a class="btn door-cta" href="find-your-door.html?door=experiences">Start with Experiences →</a></div>
@@ -94,5 +94,73 @@ window.addEventListener('pageshow',function(){document.querySelectorAll('.door-w
 <span>© 2026 Créer Social · Los Angeles</span>
 </div>
 </footer>
+<script>
+(function(){
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.documentElement.classList.add('js');
+var reveals=document.querySelectorAll('.reveal');
+if(reveals.length){
+  reveals.forEach(function(el){
+    var sibs=[];var sib=el.parentNode?el.parentNode.firstChild:null;
+    while(sib){if(sib.nodeType===1&&sib.classList.contains('reveal')){sibs.push(sib);}sib=sib.nextSibling;}
+    var idx=sibs.indexOf(el);
+    if(idx>0){el.style.transitionDelay=(Math.min(idx,4)*70)+'ms';}
+  });
+  if(reduce||!('IntersectionObserver' in window)){
+    reveals.forEach(function(el){el.classList.add('in-view');});
+  }else{
+    var ro=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in-view');ro.unobserve(en.target);}});
+    },{threshold:0.15});
+    reveals.forEach(function(el){ro.observe(el);});
+  }
+}
+function fmt(n){return n>=1000?n.toLocaleString('en-US'):String(n);}
+function setVal(el,v){el.textContent=(el.getAttribute('data-countup-prefix')||'')+fmt(v)+(el.getAttribute('data-countup-suffix')||'');}
+var counts=document.querySelectorAll('[data-countup]');
+counts.forEach(function(el){
+  var to=parseInt(el.getAttribute('data-countup-to'),10)||0;
+  el._countTo=to;el._counting=false;el._countGen=0;
+  if(reduce){setVal(el,to);}
+});
+if(counts.length&&!reduce&&'IntersectionObserver' in window){
+  var co=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      var el=en.target;
+      if(en.isIntersecting&&!el._counting){
+        el._counting=true;el._countGen+=1;var gen=el._countGen;
+        var to=el._countTo;var start=null;
+        (function frame(ts){
+          if(gen!==el._countGen)return;
+          if(!start)start=ts;
+          var p=Math.min((ts-start)/1000,1);
+          var e=1-Math.pow(1-p,3);
+          setVal(el,Math.round(e*to));
+          if(p<1){requestAnimationFrame(frame);}else{el._counting=false;}
+        })(performance.now());
+      }else if(!en.isIntersecting){
+        setVal(el,0);el._counting=false;el._countGen+=1;
+      }
+    });
+  },{threshold:0.5});
+  counts.forEach(function(el){setVal(el,0);co.observe(el);});
+}
+if(!reduce){
+  var header=document.querySelector('.site-header');
+  var hero=document.querySelector('.hero');
+  var hideAfter=hero?(hero.offsetTop+hero.offsetHeight):300;
+  var lastY=window.scrollY||0,ticking=false;
+  function onScroll(){
+    var y=window.scrollY||0;
+    if(!header){ticking=false;return;}
+    if(y<=8){header.classList.remove('header-hidden');}
+    else if(y>lastY+4&&y>hideAfter){header.classList.add('header-hidden');}
+    else if(y<lastY-4){header.classList.remove('header-hidden');}
+    lastY=y;ticking=false;
+  }
+  window.addEventListener('scroll',function(){if(!ticking){window.requestAnimationFrame(onScroll);ticking=true;}},{passive:true});
+}
+})();
+</script>
 </body>
 </html>
