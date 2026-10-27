@@ -69,10 +69,8 @@
 </section>
 <script>
 (function(){var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-var touch=window.matchMedia&&matchMedia('(hover: none)').matches;
 document.querySelectorAll('.door-wrap').forEach(function(a){a.addEventListener('click',function(e){
-  if(reduce||e.metaKey||e.ctrlKey)return;e.preventDefault();a.classList.add('opening');void a.offsetWidth;var href=a.getAttribute('href');
-  setTimeout(function(){window.location.href=href;},touch?300:500);});});
+  if(reduce||e.metaKey||e.ctrlKey)return;e.preventDefault();a.classList.add('opening');void a.offsetWidth;window.location.href=a.getAttribute('href');});});
 window.addEventListener('pageshow',function(){document.querySelectorAll('.door-wrap.opening').forEach(function(a){a.classList.remove('opening');});});})();
 </script>
 <section class="section">
