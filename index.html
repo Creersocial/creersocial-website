@@ -18,6 +18,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,800&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap">
 <link rel="stylesheet" href="assets/styles.css?v=1793061145">
+<style>
+.def-meaning{position:relative;}
+.def-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
+.def-meaning-size{visibility:hidden;}
+.def-meaning-typedwrap{position:absolute;left:0;top:0;white-space:nowrap;}
+.def-meaning-caret{display:none;width:2px;height:1em;margin-left:3px;background:currentColor;vertical-align:-0.15em;}
+.def-meaning.typing .def-meaning-caret{display:inline-block;animation:defCaretBlink 0.8s step-end infinite;}
+@keyframes defCaretBlink{0%,100%{opacity:1;}50%{opacity:0;}}
+@media (prefers-reduced-motion:reduce){.def-meaning.typing .def-meaning-caret{animation:none;}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -48,7 +58,7 @@
 <section class="blue define" aria-label="Definition">
 <div class="wrap">
 <p class="word">créer <span>(verb) /kré·er/</span></p>
-<p>to create.</p>
+<p class="def-meaning"><span class="def-sr">to create.</span><span class="def-meaning-size" aria-hidden="true">to create.</span><span class="def-meaning-typedwrap" aria-hidden="true"><span class="def-meaning-typed">to create.</span><span class="def-meaning-caret"></span></span></p>
 </div>
 </section>
 
@@ -215,6 +225,33 @@ if(!reduce){
   }
   window.addEventListener('scroll',function(){if(!ticking){window.requestAnimationFrame(onScroll);ticking=true;}},{passive:true});
 }
+})();
+</script>
+<script>
+(function(){
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var band=document.querySelector('.define');
+var typed=document.querySelector('.def-meaning-typed');
+var meaning=document.querySelector('.def-meaning');
+if(!band||!typed||!meaning||reduce||!('IntersectionObserver' in window)){return;}
+var full='to create.';
+typed.textContent='';
+var io=new IntersectionObserver(function(entries){
+entries.forEach(function(en){
+if(en.isIntersecting){
+io.disconnect();
+meaning.classList.add('typing');
+var i=0;
+(function step(){
+i+=1;
+typed.textContent=full.slice(0,i);
+if(i<full.length){setTimeout(step,100);}
+else{meaning.classList.remove('typing');}
+})();
+}
+});
+},{threshold:0.4});
+io.observe(band);
 })();
 </script>
 </body>
