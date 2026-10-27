@@ -89,7 +89,7 @@
 var touch=window.matchMedia&&matchMedia('(hover: none)').matches;
 document.querySelectorAll('.door-wrap').forEach(function(a){a.addEventListener('click',function(e){
   if(reduce||e.metaKey||e.ctrlKey)return;e.preventDefault();a.classList.add('opening');void a.offsetWidth;var href=a.getAttribute('href');
-  setTimeout(function(){window.location.href=href;},touch?300:700);});});
+  setTimeout(function(){window.location.href=href;},touch?300:500);});});
 window.addEventListener('pageshow',function(){document.querySelectorAll('.door-wrap.opening').forEach(function(a){a.classList.remove('opening');});});})();
 </script>
 
