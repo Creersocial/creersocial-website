@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;1,800&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap">
-<link rel="stylesheet" href="assets/styles.css?v=1793092761">
+<link rel="stylesheet" href="assets/styles.css?v=1793102761">
 <style>
 .def-meaning{position:relative;}
 .def-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;}
@@ -83,12 +83,29 @@
 <nav class="arches" aria-label="Start the quiz"><a class="door-wrap" href="find-your-door.html?door=advisory"><span class="door-light" aria-hidden="true"></span><span class="door-leaf bg-tea"><span class="arch-num">01</span><span class="arch-knob" aria-hidden="true"></span><span class="arch-txt">I'm building a business</span><span class="arch-go">Open <span aria-hidden="true">→</span></span></span></a><a class="door-wrap" href="find-your-door.html?door=representation"><span class="door-light" aria-hidden="true"></span><span class="door-leaf bg-pink"><span class="arch-num">02</span><span class="arch-knob" aria-hidden="true"></span><span class="arch-txt">I'm the face of my brand</span><span class="arch-go">Open <span aria-hidden="true">→</span></span></span></a><a class="door-wrap" href="find-your-door.html?door=partnerships"><span class="door-light" aria-hidden="true"></span><span class="door-leaf bg-tang"><span class="arch-num">03</span><span class="arch-knob" aria-hidden="true"></span><span class="arch-txt">My company wants partners</span><span class="arch-go">Open <span aria-hidden="true">→</span></span></span></a><a class="door-wrap" href="find-your-door.html?door=experiences"><span class="door-light" aria-hidden="true"></span><span class="door-leaf bg-must"><span class="arch-num">04</span><span class="arch-knob" aria-hidden="true"></span><span class="arch-txt">I'm planning an event</span><span class="arch-go">Open <span aria-hidden="true">→</span></span></span></a><a class="door-wrap" href="find-your-door.html?door=unsure"><span class="door-light" aria-hidden="true"></span><span class="door-leaf door-unsure"><span class="arch-num">?</span><span class="arch-knob" aria-hidden="true"></span><span class="arch-txt">I'm not sure yet</span><span class="arch-go">Open <span aria-hidden="true">→</span></span></span></a></nav>
 <p class="swipe-hint" aria-hidden="true">Swipe to see every door →</p>
 </div>
+<div class="picker-lantern" aria-hidden="true"></div>
 </section>
 <script>
 (function(){var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.querySelectorAll('.door-wrap').forEach(function(a){a.addEventListener('click',function(e){
   if(reduce||e.metaKey||e.ctrlKey)return;e.preventDefault();a.classList.add('opening');void a.offsetWidth;window.location.href=a.getAttribute('href');});});
 window.addEventListener('pageshow',function(){document.querySelectorAll('.door-wrap.opening').forEach(function(a){a.classList.remove('opening');});});})();
+</script>
+<script>
+(function(){
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+var hoverCapable=window.matchMedia&&matchMedia('(hover:hover)').matches;
+var sec=document.querySelector('.picker-sec');
+if(!sec||reduce||!hoverCapable||!('requestAnimationFrame' in window))return;
+var ticking=false,x=0,y=0;
+function apply(){sec.style.setProperty('--lx',x+'px');sec.style.setProperty('--ly',y+'px');ticking=false;}
+sec.addEventListener('mousemove',function(e){
+var r=sec.getBoundingClientRect();x=e.clientX-r.left;y=e.clientY-r.top;
+if(!ticking){window.requestAnimationFrame(apply);ticking=true;}
+},{passive:true});
+sec.addEventListener('mouseenter',function(){sec.classList.add('lantern-on');});
+sec.addEventListener('mouseleave',function(){sec.classList.remove('lantern-on');});
+})();
 </script>
 
 

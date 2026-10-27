@@ -408,3 +408,17 @@ section[id]{scroll-margin-top:96px}
 .arrival-light{position:fixed;inset:0;z-index:100;pointer-events:none;background:radial-gradient(ellipse at 50% 40%,rgba(234,228,218,.95),rgba(176,196,222,.55) 45%,rgba(176,196,222,.25) 70%,rgba(29,29,27,0) 100%);animation:arrival-fade .8s ease-out forwards}
 @keyframes arrival-fade{from{opacity:1}to{opacity:0}}
 @media (prefers-reduced-motion:reduce){.arrival-light{display:none}}
+
+/* Picker life: breathing hallway plus lantern light, both soft and slow */
+.picker-sec{position:relative}
+.picker-lantern{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .4s ease;background:radial-gradient(circle 340px at var(--lx,50%) var(--ly,50%),rgba(234,228,218,.16),rgba(176,196,222,.10) 45%,rgba(15,15,14,0) 70%)}
+.picker-sec.lantern-on .picker-lantern{opacity:1}
+@keyframes door-breathe{0%,100%{opacity:0}50%{opacity:.22}}
+.door-wrap:not(:hover) .door-light{animation:door-breathe 6s ease-in-out infinite}
+.arches .door-wrap:nth-child(1) .door-light{animation-delay:0s}
+.arches .door-wrap:nth-child(2) .door-light{animation-delay:1.2s}
+.arches .door-wrap:nth-child(3) .door-light{animation-delay:2.4s}
+.arches .door-wrap:nth-child(4) .door-light{animation-delay:3.6s}
+.arches .door-wrap:nth-child(5) .door-light{animation-delay:4.8s}
+@media (hover:none){.picker-lantern{display:none}}
+@media (prefers-reduced-motion:reduce){.door-wrap:not(:hover) .door-light{animation:none}.picker-lantern{display:none}}
