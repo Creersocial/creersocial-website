@@ -46,7 +46,7 @@ em.accent{color:var(--blue)}
 .nav a{color:var(--shell);text-decoration:none;padding:12px 0}
 .nav a[aria-current="page"]{color:var(--blue)}
 .nav a.btn{color:var(--black);padding:14px 22px}
-@media (max-width:640px){.nav{gap:2px 18px}.nav a.btn{display:inline-block;padding:10px 16px}}
+@media (max-width:640px){.nav{gap:2px 18px}.nav a.btn{display:none}}
 
 /* Masthead strip */
 .masthead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;border-bottom:1px solid var(--line);padding:22px 0 14px;font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
