@@ -75,12 +75,14 @@
         <label class="full"><span id="noteLabel"></span><textarea name="note" id="noteInput" rows="3"></textarea></label>
         <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="btn" type="submit" id="leadBtn"></button>
+        <p class="muted" id="sendStatus" hidden>Please keep this page open for just a moment while your inquiry sends.</p>
         <p class="form-error" id="leadErr" role="alert" hidden></p>
       </form>
     </div>
     <div id="thanks" hidden>
       <h3 class="h3" style="margin:40px 0 8px" id="thanksTitle"></h3>
       <p class="muted" id="thanksText"></p>
+      <p class="muted" id="thanksStatus" hidden>Please keep this page open for just a moment while your inquiry sends.</p>
       <div class="btns" id="bookWrap" hidden style="margin-top:20px"><a class="btn" id="bookBtn" href="#" target="_blank" rel="noopener">Choose your time →</a></div>
       <div class="btns"><a class="btn ghost" href="work.html">See our work</a><a class="btn ghost" href="https://www.instagram.com/creersocial">Follow @creersocial</a></div>
     </div>
@@ -91,7 +93,7 @@
 </section>
 <script>
 (function(){
-var EMAIL='contact@creersocial.com',SHEET_URL='https://script.google.com/macros/s/AKfycbzAFuRJZ7BbqN-xxV4PHJmWHNXc8BOtzs7ORjNyJ-w7KoMgijj7m0NssinEyn-CGsE/exec',BOOKING_URL='https://calendar.app.google/qYArS3ZExPLcKit38';
+var EMAIL='contact@creersocial.com',FORM_ALIAS='3166003b0fc79c723fc412a275c997b8',SHEET_URL='https://script.google.com/macros/s/AKfycbzAFuRJZ7BbqN-xxV4PHJmWHNXc8BOtzs7ORjNyJ-w7KoMgijj7m0NssinEyn-CGsE/exec',BOOKING_URL='https://calendar.app.google/qYArS3ZExPLcKit38';
 
 /* ================= Questions ================= */
 var Q={
@@ -342,7 +344,7 @@ document.getElementById('sourceSel').addEventListener('change',function(e){var w
 function label(id){var q=Q[id];if(!A[id]||!q)return '';for(var k=0;k<q.o.length;k++)if(q.o[k][0]===A[id])return q.o[k][1];return '';}
 document.getElementById('leadForm').addEventListener('submit',function(e){
   e.preventDefault();var f=e.target;if(!f.reportValidity())return;var fd=new FormData(f);if(fd.get('_honey'))return;
-  var btn=document.getElementById('leadBtn'),err=document.getElementById('leadErr'),orig=btn.textContent;btn.disabled=true;btn.textContent='Sending…';err.hidden=true;
+  var btn=document.getElementById('leadBtn'),err=document.getElementById('leadErr'),orig=btn.textContent;btn.disabled=true;btn.textContent='Sending…';err.hidden=true;document.getElementById('sendStatus').hidden=false;
   var d=DOORS[R.door][1],tr=TRACKS[R.track].n,fm=FORM[R.door];
   var data={_subject:'['+(R.outcome==='session'?'Close The Leak request':R.tier)+'] '+d+' · '+tr+' · '+fd.get('name'),_template:'table',_captcha:'false',_replyto:fd.get('email'),
     'Lead tier':R.tier,'Next step shown':{call:'Discovery call request',session:'Close The Leak, confirm time and complete booking',under:'Under budget, joined community',later:'Later timing, joined community',decider:'Not decision maker, invite them',guidance:'Early, joined community'}[R.outcome],
@@ -359,20 +361,30 @@ document.getElementById('leadForm').addEventListener('submit',function(e){
       link:fd.get('link')||'',extra:fd.get('extra')||'',source:fd.get('source')||'',referrer:fd.get('referrer')||'',note:fd.get('note')||'',
       strengths:data['Strengths'],watch:data['Watch'],answers:buildPath().map(function(id){return Q[id].t+': '+label(id);}).join(' | '),
       book:(R.outcome==='call'&&R.tier==='Priority'&&BOOKING_URL.indexOf('https://')===0)?BOOKING_URL:''};
-    fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(row)}).catch(function(){});
+    fetch(SHEET_URL,{method:'POST',mode:'no-cors',keepalive:true,headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(row)}).catch(function(){});
   }
   function done(){
     var c=COPY[R.direct?'book':R.outcome];document.getElementById('leadWrap').hidden=true;document.getElementById('thanks').hidden=false;
     var bw=document.getElementById('bookWrap');
     if(R.direct){bw.hidden=false;document.getElementById('bookBtn').href=BOOKING_URL;}else bw.hidden=true;
-    document.getElementById('thanksTitle').textContent=c.thanksT;document.getElementById('thanksText').textContent=c.thanks;}
-  // 2. Email the lead to the inbox
-  fetch('https://formsubmit.co/ajax/'+EMAIL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+    document.getElementById('thanksTitle').textContent=c.thanksT;document.getElementById('thanksText').textContent=c.thanks;
+    var ts=document.getElementById('thanksStatus');ts.hidden=false;ts.textContent='Please keep this page open for just a moment while your inquiry sends.';}
+  function sent(){
+    var ts=document.getElementById('thanksStatus');if(ts)ts.textContent='Your inquiry is sent.';}
+  function received(){
+    var ts=document.getElementById('thanksStatus');if(ts)ts.textContent='Your inquiry is received. If you do not hear back, please email us at '+EMAIL+'.';}
+  // 2. Email the lead to the inbox in the background, using the activated FormSubmit alias.
+  // The thanks screen shows at once, so a slow inbox send can no longer trap the visitor
+  // on Sending, and keepalive keeps both sends going if the visitor leaves the page.
+  var inboxDone=false;
+  var slowTimer=setTimeout(function(){if(!inboxDone){var ts=document.getElementById('thanksStatus');if(ts)ts.textContent='Still sending in the background. You can leave this page, your inquiry will still send.';}},10000);
+  fetch('https://formsubmit.co/ajax/'+FORM_ALIAS,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
   .then(function(r){return r.json().then(function(j){if(!r.ok||String(j.success)==='false')throw new Error(j.message||'error');});})
-  .then(done)
-  .catch(function(){if(hasSheet){done();return;}btn.disabled=false;btn.textContent=orig;err.hidden=false;err.innerHTML='Something went wrong sending your request. Please email us at <a href="mailto:'+EMAIL+'">'+EMAIL+'</a>.';});
+  .then(function(){inboxDone=true;clearTimeout(slowTimer);sent();})
+  .catch(function(){inboxDone=true;clearTimeout(slowTimer);if(hasSheet){received();return;}document.getElementById('thanks').hidden=true;document.getElementById('leadWrap').hidden=false;btn.disabled=false;btn.textContent=orig;err.hidden=false;err.innerHTML='Something went wrong sending your request. Please email us at <a href="mailto:'+EMAIL+'">'+EMAIL+'</a>.';});
+  done();
 });
-document.getElementById('qRestart').addEventListener('click',function(){A={};pos=0;R=null;var lf=document.getElementById('leadForm');lf.reset();document.getElementById('leadBtn').disabled=false;document.getElementById('leadErr').hidden=true;document.getElementById('result').hidden=true;document.getElementById('steps').hidden=false;render();});
+document.getElementById('qRestart').addEventListener('click',function(){A={};pos=0;R=null;var lf=document.getElementById('leadForm');lf.reset();document.getElementById('leadBtn').disabled=false;document.getElementById('leadErr').hidden=true;document.getElementById('sendStatus').hidden=true;document.getElementById('thanksStatus').hidden=true;document.getElementById('result').hidden=true;document.getElementById('steps').hidden=false;render();});
 })();
 </script>
 </main>
