@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Créer Social × OpenWorks Los Angeles</title>
-<meta name="description" content="Why Créer Social is the right Los Angeles partner for OpenWorks, and exactly how we would run it.">
+<title>Créer Social × OpenWorks LA</title>
+<meta name="description" content="A turnkey AI ecosystem for Los Angeles founders and small businesses, live today. Why Créer Social is the right OpenWorks partner.">
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Créer Social × OpenWorks Los Angeles">
-<meta property="og:description" content="The room, the builder and the storyteller. How Créer Social would bring practical AI to Los Angeles small businesses.">
+<meta property="og:description" content="The community, the AI-built systems and the content engine, already running. Ready to plug into OpenWorks.">
 <meta property="og:image" content="https://creersocial.com/assets/img/table_mustard.jpg">
 <meta name="theme-color" content="#1D1D1B">
 <link rel="icon" href="favicon.png" type="image/png">
@@ -17,170 +17,326 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;0,800;0,900;1,800&amp;family=PT+Serif:ital,wght@0,400;0,700;1,400&amp;display=swap">
 <link rel="stylesheet" href="assets/styles.css?v=1793102761">
 <style>
+:root{--ink2:#262624;--ink3:#302F2C;--live:#7BD389}
+.k{font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.01em;color:var(--blue);margin:0 0 14px}
+.light .k{color:var(--tea)}
+.sec{padding:120px 0}
+.sec-head{max-width:760px}
+.sec-head p.sub{font-size:20px;color:var(--dim);margin:22px 0 0;max-width:36em}
+.light .sec-head p.sub{color:#3b3a36}
+.ttl{font-family:var(--display);font-weight:800;font-size:clamp(36px,5.2vw,68px);line-height:1;letter-spacing:-.045em;margin:0}
+
+/* top bar */
 .ow-top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:18px;padding-bottom:18px}
 .ow-top .logo img{height:22px}
-.ow-x{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
-.ow-x b{color:var(--shell);font-weight:700}
+.ow-x{font-family:var(--display);font-weight:600;font-size:13px;color:var(--faint)}
+.ow-x b{color:var(--shell)}
 
-/* Hero */
-.hero{padding:56px 0 96px;position:relative;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:end}
-.hero h1{font-weight:900;font-size:clamp(48px,8vw,128px);line-height:.92;letter-spacing:-.05em}
-.hero h1 .i{font-style:italic;font-weight:800;color:var(--blue)}
-.hero .lede{max-width:30em}
-.arch-row{display:flex;gap:12px;align-items:flex-end;justify-content:flex-end}
-.arch{flex:1;max-width:170px;border-radius:999px 999px 18px 18px;overflow:hidden;position:relative;aspect-ratio:1/2.2;border:1.5px solid var(--line)}
-.arch img{width:100%;height:100%;object-fit:cover}
-.arch:nth-child(2){aspect-ratio:1/2.7}
-.arch:nth-child(3){aspect-ratio:1/2.4}
-.arch-tag{position:absolute;left:0;right:0;bottom:14px;text-align:center;font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--black)}
-.arch-tag span{background:var(--shell);padding:6px 10px;border-radius:999px}
-.js .arch{transform:translateY(40px);opacity:0;transition:transform 1s cubic-bezier(.2,.8,.2,1),opacity 1s}
-.js .arch.up{transform:none;opacity:1}
+/* HERO: ecosystem */
+.hero{padding:72px 0 40px}
+.hero h1{font-family:var(--display);font-weight:900;font-size:clamp(44px,7.2vw,112px);line-height:.92;letter-spacing:-.055em;margin:0;max-width:11.5em}
+.hero .sub{font-size:21px;line-height:1.55;color:var(--dim);max-width:34em;margin:30px 0 0}
+.live-pill{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:13px;border:1px solid var(--line);border-radius:999px;padding:8px 16px 8px 12px;margin-bottom:28px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--live);box-shadow:0 0 0 0 rgba(123,211,137,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(123,211,137,.55)}70%{box-shadow:0 0 0 10px rgba(123,211,137,0)}100%{box-shadow:0 0 0 0 rgba(123,211,137,0)}}
 
-/* Stats */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.stat{padding:32px 24px 30px;border-right:1px solid var(--line)}
-.stat:last-child{border-right:0}
-.stat .n{font-family:var(--display);font-weight:900;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.04em}
-.stat .t{margin-top:12px;color:var(--dim);font-size:16px;line-height:1.45}
-.c-tea{color:#5FA393}.c-pink{color:var(--pink)}.c-tang{color:var(--tang)}.c-must{color:var(--must)}
+.eco{position:relative;margin-top:72px;display:grid;grid-template-columns:1fr 1.1fr 1fr;grid-template-rows:auto auto auto;gap:28px 40px;align-items:center}
+.eco svg.wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.eco svg path{fill:none;stroke-width:1.5;stroke-dasharray:5 7}
+.node{position:relative;z-index:1;background:var(--ink2);border:1px solid var(--line);border-radius:120px 120px 18px 18px;padding:34px 24px 22px;text-align:left}
+.node .nt{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
+.node h3{font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:-.02em;margin:0}
+.node p{margin:0;font-size:16px;line-height:1.5;color:var(--dim)}
+.node .status{display:inline-flex;align-items:center;gap:7px;font-family:var(--display);font-weight:600;font-size:12px;color:var(--live)}
+.node .status .dot{width:7px;height:7px}
+.node .bar{position:absolute;left:24px;right:24px;top:0;height:4px;border-radius:0 0 4px 4px}
+.n1{grid-column:1;grid-row:1}.n2{grid-column:3;grid-row:1}.n3{grid-column:1;grid-row:3}.n4{grid-column:3;grid-row:3}.n5{grid-column:2;grid-row:3}.n6{grid-column:2;grid-row:1}
+.core{grid-column:2;grid-row:2;position:relative;z-index:1;justify-self:center;width:min(100%,360px);aspect-ratio:1;border-radius:50%;background:var(--blue);color:var(--black);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px}
+.core::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px dashed rgba(176,196,222,.5);animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.core small{font-family:var(--display);font-weight:600;font-size:13px}
+.core strong{font-family:var(--display);font-weight:900;font-size:clamp(30px,3vw,42px);letter-spacing:-.04em;line-height:.95;margin:10px 0}
+.core span{font-size:15px;line-height:1.4;max-width:15em}
+.js .eco .node,.js .eco .core{opacity:0;transform:translateY(14px) scale(.98);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .eco.on .node,.js .eco.on .core{opacity:1;transform:none}
+.js .eco svg path{stroke-dashoffset:400;transition:stroke-dashoffset 1.6s ease .5s}
+.js .eco.on svg path{stroke-dashoffset:0}
 
-/* Three roles */
-.roles{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
-.role{border-radius:220px 220px 22px 22px;padding:84px 32px 36px;min-height:460px;display:flex;flex-direction:column;justify-content:flex-end;color:var(--black)}
-.role .k{font-family:var(--display);font-weight:900;font-size:64px;line-height:1;letter-spacing:-.04em;margin-bottom:auto;text-align:center}
-.role h3{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-.03em;line-height:1.05;margin-bottom:12px}
-.role p{margin:0;font-size:17px;line-height:1.5}
-.bg-tea{background:var(--tea);color:var(--shell)!important}
-.bg-pink{background:var(--pink)}.bg-tang{background:var(--tang)}.bg-must{background:var(--must)}
+/* Mission */
+.mission{background:var(--shell);color:var(--black)}
+.mission .k{color:var(--tea)}
+.mission-grid{display:grid;grid-template-columns:1.4fr .9fr;gap:72px;align-items:center}
+.letter{font-family:var(--body);font-size:clamp(24px,2.5vw,34px);line-height:1.38;letter-spacing:-.005em;margin:0}
+.letter + .letter{margin-top:24px}
+.sig{margin-top:36px;display:flex;align-items:center;gap:16px}
+.sig img{height:46px;width:auto}
+.sig span{font-family:var(--display);font-weight:600;font-size:14px;color:#3b3a36}
+.mission-photo{position:relative}
+.mission-photo img{border-radius:300px 300px 22px 22px;width:100%;aspect-ratio:3/4;object-fit:cover}
+.mission-photo .tagc{position:absolute;left:-28px;bottom:36px;background:var(--black);color:var(--shell);border-radius:16px;padding:16px 20px;font-family:var(--display);font-weight:700;font-size:15px;line-height:1.3;max-width:220px}
 
-/* Match table */
-.match{margin-top:56px;border-top:2px solid var(--black)}
-.match-row{display:grid;grid-template-columns:1fr 40px 1.3fr;gap:24px;padding:26px 0;border-bottom:1px solid rgba(29,29,27,.18);align-items:start}
-.match-row .need{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.01em;line-height:1.3}
-.match-row .arrow{font-family:var(--display);font-weight:800;font-size:22px;color:var(--tea)}
-.match-row .have{font-size:18px;line-height:1.55}
-.match-head{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--tea);padding:18px 0 4px}
+/* Audience */
+.people{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:56px}
+.who{display:flex;flex-wrap:wrap;gap:10px}
+.who span{font-family:var(--display);font-weight:700;font-size:clamp(18px,1.8vw,24px);letter-spacing:-.02em;padding:12px 20px;border-radius:999px;border:1.5px solid var(--line)}
+.who span:nth-child(5n+1){background:var(--tea);border-color:var(--tea)}
+.who span:nth-child(5n+2){background:var(--pink);border-color:var(--pink);color:var(--black)}
+.who span:nth-child(5n+3){border-color:var(--tang);color:var(--tang)}
+.who span:nth-child(5n+4){background:var(--must);border-color:var(--must);color:var(--black)}
+.who span:nth-child(5n+5){border-color:var(--blue);color:var(--blue)}
+.nums{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+.nums div{padding:26px 0;border-bottom:1px solid var(--line)}
+.nums div:nth-child(odd){padding-right:20px;border-right:1px solid var(--line)}
+.nums div:nth-child(even){padding-left:24px}
+.nums b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(40px,4.4vw,60px);letter-spacing:-.045em;line-height:1}
+.nums span{display:block;margin-top:8px;color:var(--dim);font-size:16px;line-height:1.45}
+.strip{display:grid;grid-template-columns:1.2fr .8fr 1fr;gap:14px;margin-top:56px;height:340px}
+.strip img{width:100%;height:340px;min-height:0;object-fit:cover;border-radius:18px}
+.strip img.l{object-position:22% 50%}
 
-/* Built with AI */
-.built{display:grid;grid-template-columns:repeat(6,1fr);gap:20px;margin-top:56px}
-.card{background:#262624;border:1px solid var(--line);border-radius:22px;padding:32px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
-.card .tag{font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase}
-.card h3{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.03em;line-height:1.08}
-.card p{margin:0;color:var(--dim);font-size:17px;line-height:1.55}
-.card .big{font-family:var(--display);font-weight:900;font-size:56px;letter-spacing:-.04em;line-height:1;color:var(--must)}
-.span3{grid-column:span 3}.span2{grid-column:span 2}.span4{grid-column:span 4}
-.card.kit{flex-direction:row;align-items:center;gap:28px}
-.card.kit img{width:150px;flex:none;filter:drop-shadow(0 20px 40px rgba(0,0,0,.5))}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-.chip{font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:7px 12px;color:var(--shell)}
+/* Fit map */
+.fit{margin-top:64px;border-top:2px solid var(--black)}
+.fit-row{display:grid;grid-template-columns:1fr 120px 1.35fr;align-items:center;padding:24px 0;border-bottom:1px solid rgba(29,29,27,.16)}
+.fit-row .need{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.015em;line-height:1.25}
+.fit-row .have{font-size:18px;line-height:1.55}
+.fit-row .have b{font-family:var(--display);font-weight:700}
+.plug{position:relative;height:16px;margin:0 18px}
+.plug::before{content:"";position:absolute;left:0;right:0;top:7px;height:2px;background:var(--c);transform-origin:left;transform:scaleX(var(--s,1));transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.plug::after{content:"";position:absolute;right:-2px;top:1px;width:14px;height:14px;border-radius:50%;background:var(--c);transform:scale(var(--s,1));transition:transform .4s .6s}
+.plug i{position:absolute;left:-2px;top:2px;width:12px;height:12px;border-radius:50%;border:2px solid var(--c)}
+.js .fit:not(.on) .plug{--s:0}
+.fit-head{display:grid;grid-template-columns:1fr 120px 1.35fr;padding:18px 0 0;font-family:var(--display);font-weight:600;font-size:14px;color:var(--tea)}
 
-/* Sessions */
-.sessions-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.photo-stack{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.photo-stack img{border-radius:18px;width:100%;height:100%;object-fit:cover}
-.photo-stack .tall{grid-row:span 2}
-.ow-ticks{list-style:none;padding:0;margin:28px 0 0}
-.ow-ticks li{padding:16px 0;border-top:1px solid rgba(29,29,27,.18);display:flex;gap:16px;align-items:baseline}
-.ow-ticks li b{font-family:var(--display);font-weight:800;font-size:22px;min-width:3.6em;letter-spacing:-.02em}
+/* Build lab */
+.lab{background:#141413}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:48px}
+.tab{appearance:none;border:1px solid var(--line);background:transparent;color:var(--shell);font-family:var(--display);font-weight:600;font-size:14px;padding:12px 18px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:9px}
+.tab .sw{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.tab[aria-selected="true"]{background:var(--shell);color:var(--black);border-color:var(--shell)}
+.tab:hover{border-color:var(--shell)}
+.stage{margin-top:24px;background:var(--black);border:1px solid var(--line);border-radius:28px;overflow:hidden}
+.panel{display:grid;grid-template-columns:1.45fr 1fr;min-height:560px}
+.panel[hidden]{display:none}
+.screen{padding:40px;background:radial-gradient(120% 90% at 0% 0%,rgba(176,196,222,.10),transparent 60%),var(--ink2);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.notes{padding:44px 40px;display:flex;flex-direction:column;gap:22px;border-left:1px solid var(--line)}
+.notes h3{font-family:var(--display);font-weight:800;font-size:32px;letter-spacing:-.035em;line-height:1.05;margin:0}
+.notes .what{font-size:18px;line-height:1.55;color:var(--dim);margin:0}
+.notes dl{margin:0;display:grid;gap:16px}
+.notes dt{font-family:var(--display);font-weight:600;font-size:13px;color:var(--c,var(--blue));margin-bottom:4px}
+.notes dd{margin:0;font-size:16px;line-height:1.5}
+.badge{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:12px;color:var(--live);border:1px solid rgba(123,211,137,.35);border-radius:999px;padding:6px 12px}
+.badge .dot{width:7px;height:7px}
+.ipnote{font-size:14px;color:var(--faint);margin:18px 0 0}
 
-/* Plan */
-.month{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:48px}
-.dow{font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);padding:0 4px 6px}
-.day{aspect-ratio:1/1;border:1px solid var(--line);border-radius:14px;padding:10px;font-family:var(--display);font-weight:600;font-size:13px;color:var(--faint);display:flex;flex-direction:column;justify-content:space-between}
-.day.on{color:var(--black);border:0}
-.day .what{font-weight:800;font-size:12px;letter-spacing:.02em;line-height:1.15;text-transform:uppercase}
-.legend{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:24px;font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
-.legend i{display:inline-block;width:14px;height:14px;border-radius:4px;margin-right:10px;vertical-align:-2px}
-.yes{display:inline-flex;align-items:center;gap:14px;background:var(--must);color:var(--black);border-radius:999px;padding:14px 24px 14px 14px;font-family:var(--display);font-weight:700;font-size:15px;margin-top:32px}
-.yes span{background:var(--black);color:var(--must);border-radius:999px;padding:8px 14px;font-weight:800;letter-spacing:.1em;font-size:12px}
+/* window chrome */
+.win{width:100%;max-width:640px;background:#fbfaf7;color:#1D1D1B;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.45);overflow:hidden;font-family:var(--display)}
+.win-bar{display:flex;align-items:center;gap:7px;padding:11px 14px;background:#eeebe4;border-bottom:1px solid #ddd8ce}
+.win-bar i{width:10px;height:10px;border-radius:50%;background:#d6d1c7}
+.win-bar span{margin-left:10px;font-size:12px;font-weight:600;color:#6b675f}
+.win-body{padding:20px}
 
-.journey{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:72px;counter-reset:j}
-.step{padding:28px 24px 0 0;border-top:2px solid var(--shell);position:relative}
-.step::before{content:"";position:absolute;top:-9px;left:0;width:16px;height:16px;border-radius:50%;background:var(--c,var(--blue))}
-.step .num{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--c,var(--blue))}
-.step h3{font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.03em;margin:10px 0 10px}
-.step p{margin:0;color:var(--dim);font-size:16px;line-height:1.5}
+/* demo: talk to type */
+.t2t{display:grid;gap:14px}
+.voice{display:flex;gap:12px;align-items:flex-start;background:#1D1D1B;color:var(--shell);border-radius:16px 16px 16px 4px;padding:14px 16px}
+.voice .mic{flex:none;width:34px;height:34px;border-radius:50%;background:var(--pink);display:grid;place-items:center}
+.voice .mic svg{width:16px;height:16px}
+.wave{display:flex;gap:3px;align-items:center;height:18px;margin-bottom:6px}
+.wave b{width:3px;border-radius:2px;background:var(--pink);height:30%}
+.playing .wave b{animation:wv .9s ease-in-out infinite}
+.wave b:nth-child(2n){animation-delay:.15s}.wave b:nth-child(3n){animation-delay:.3s}
+@keyframes wv{50%{height:100%}}
+.voice p{margin:0;font-family:var(--body);font-size:15px;line-height:1.5;min-height:3em}
+.outs{display:grid;grid-template-columns:1.3fr 1fr;gap:12px}
+.out{background:#fff;border:1px solid #e4e0d7;border-radius:12px;padding:14px;opacity:.25;transition:opacity .4s}
+.out.show{opacity:1}
+.out h4{margin:0 0 8px;font-size:11px;font-weight:600;color:#6b675f;display:flex;justify-content:space-between}
+.out h4 em{font-style:normal;color:var(--tea)}
+.out .mail{font-family:var(--body);font-size:13px;line-height:1.5;white-space:pre-line;min-height:9em}
+.out .row{font-size:12px;font-weight:600;display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #eee}
+.out .row:last-child{border:0}
+.out .row span:last-child{color:#6b675f;font-weight:500}
+.chip-s{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:#e3ece9;color:var(--tea)}
+.playbtn{margin-top:4px;justify-self:start;appearance:none;border:0;background:var(--black);color:var(--shell);font-family:var(--display);font-weight:600;font-size:13px;padding:10px 16px;border-radius:999px;cursor:pointer}
 
-.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
-.phase{border-radius:22px;padding:34px;background:var(--black);color:var(--shell)}
-.phase .when{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--must)}
-.phase li{color:var(--dim)}
-.phase h3{font-family:var(--display);font-weight:800;font-size:30px;letter-spacing:-.03em;margin:10px 0 14px;line-height:1.05}
-.phase ul{margin:0;padding-left:18px;font-size:17px;line-height:1.55}
-.phase li{margin:6px 0}
+/* tracker replica */
+.trk{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.trk div{background:#fff;border:1px solid #e4e0d7;border-radius:10px;padding:12px}
+.trk b{display:block;font-size:26px;font-weight:800;letter-spacing:-.03em}
+.trk span{font-size:11px;font-weight:600;color:#6b675f;line-height:1.25;display:block;margin-top:4px}
+.pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:14px}
+.pipe div{font-size:10.5px;font-weight:700;text-align:center;padding:9px 4px;border-radius:8px;background:#efece6;color:#6b675f}
+.pipe div.act{background:var(--tea);color:var(--shell)}
+.client{background:#fff;border:1px solid #e4e0d7;border-radius:10px;padding:12px 14px;display:grid;grid-template-columns:1.3fr 1fr auto;gap:10px;align-items:center;font-size:12px}
+.client b{font-size:13px}
+.checks{display:flex;gap:6px}
+.checks i{width:18px;height:18px;border-radius:5px;background:var(--tea);display:grid;place-items:center;color:#fff;font-style:normal;font-size:11px;font-weight:800}
+.checks i.no{background:#e9e5dd;color:transparent}
 
-.takeaway{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:40px}
-.takeaway div{border-top:2px solid var(--black);padding-top:18px}
-.takeaway b{display:block;font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:-.02em;margin-bottom:8px}
+/* proposal */
+.decks{position:relative;width:100%;max-width:640px;aspect-ratio:16/10.5}
+.decks img{position:absolute;width:86%;border-radius:10px;box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.decks .back{right:0;top:0;opacity:.9}
+.decks .front{left:0;bottom:0}
+.lock{position:absolute;right:16px;top:16px;z-index:2;background:rgba(29,29,27,.85);border:1px solid var(--line);color:var(--shell);font-family:var(--display);font-weight:600;font-size:12px;border-radius:999px;padding:7px 12px;display:flex;gap:7px;align-items:center}
 
-/* Content engine */
-.engine{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:56px}
-.channel{border-radius:26px;padding:40px;position:relative;overflow:hidden;min-height:380px;display:flex;flex-direction:column}
-.channel .handle{font-family:var(--display);font-weight:900;font-size:clamp(34px,4vw,54px);letter-spacing:-.04em;line-height:1}
-.channel .where{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px}
-.channel p{font-size:18px;line-height:1.55;margin:18px 0 0;max-width:30em}
-.channel ul{margin:auto 0 0;padding:24px 0 0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
-.channel li{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.08em;border-radius:999px;padding:9px 14px;background:rgba(29,29,27,.12)}
-.ch-tt{background:var(--pink);color:var(--black)}
-.ch-ig{background:var(--tea);color:var(--shell)}
-.ch-ig li{background:rgba(234,228,218,.14)}
-.pillars{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
-.pillars span{font-family:var(--display);font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--black);border-radius:999px;padding:7px 13px}
-.pillars span.hot{background:var(--black);color:var(--pink)}
-.loop{margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:22px;overflow:hidden}
-.loop div{padding:26px 24px;border-right:1px solid var(--line)}
-.loop div:last-child{border-right:0}
-.loop b{display:block;font-family:var(--display);font-weight:800;font-size:19px;margin-bottom:6px}
-.loop span{color:var(--dim);font-size:16px;line-height:1.5}
+/* phone */
+.phone{width:250px;border-radius:38px;background:#0d0d0c;padding:10px;box-shadow:0 30px 80px rgba(0,0,0,.55);position:relative}
+.phone .scr{border-radius:30px;overflow:hidden;aspect-ratio:9/19.2;position:relative;background:#111}
+.phone .scr img{width:100%;height:100%;object-fit:cover}
+.phone .scr .ig-h img{width:38px;height:38px;flex:none;object-fit:contain}
+.kit-img{width:270px;filter:drop-shadow(0 30px 60px rgba(0,0,0,.55))}
+
+/* fundraiser */
+.fund{width:100%;max-width:560px}
+.fund .big{font-family:var(--display);font-weight:900;font-size:clamp(64px,8vw,112px);letter-spacing:-.06em;line-height:.9;color:var(--must)}
+.fund .lbl{font-family:var(--display);font-weight:600;font-size:14px;color:var(--dim);margin-top:10px}
+.track{margin-top:34px;height:18px;border-radius:999px;background:var(--ink3);position:relative;overflow:hidden}
+.track .a{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--tang);border-radius:999px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.track .b{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--must);border-radius:999px;transition:width 1.4s cubic-bezier(.2,.8,.2,1) .9s;z-index:0}
+.track .a{z-index:1}
+.panel.run .track .a{width:78.4%}
+.panel.run .track .b{width:100%}
+.legend2{display:flex;justify-content:space-between;margin-top:12px;font-family:var(--display);font-weight:600;font-size:13px;color:var(--dim)}
+.legend2 b{color:var(--shell)}
+.stages{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}
+.stages span{font-family:var(--display);font-weight:600;font-size:12px;padding:8px 12px;border-radius:999px;background:var(--ink3);color:var(--dim)}
+
+/* sessions rsvp */
+.rsvp{width:100%;max-width:420px;background:var(--shell);color:var(--black);border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.rsvp img{width:100%;height:190px;object-fit:cover}
+.rsvp .in{padding:22px}
+.rsvp h4{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.03em;margin:0}
+.rsvp .so{display:inline-block;margin:10px 0 16px;font-family:var(--display);font-weight:700;font-size:12px;background:var(--black);color:var(--must);padding:6px 12px;border-radius:999px}
+.meter{height:10px;border-radius:999px;background:#d9d3c8;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--tea);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.panel.run .meter i{width:100%}
+.rsvp .row2{display:flex;justify-content:space-between;font-family:var(--display);font-weight:600;font-size:13px;margin-top:10px}
+.faces{display:flex;margin-top:16px}
+.faces i{width:30px;height:30px;border-radius:50%;border:2px solid var(--shell);margin-left:-8px}
+.faces i:first-child{margin-left:0}
+.wl{margin-top:16px;width:100%;appearance:none;border:1.5px solid var(--black);background:transparent;border-radius:999px;padding:12px;font-family:var(--display);font-weight:700;font-size:13px}
+
+/* Month doors */
+.doors{display:grid;grid-template-columns:repeat(4,1fr) 1.35fr;gap:16px;margin-top:56px;align-items:end}
+.door{position:relative;aspect-ratio:3/5;border-radius:999px 999px 14px 14px;perspective:1100px;cursor:pointer;appearance:none;border:0;padding:0;background:transparent;text-align:left;color:inherit;font:inherit}
+.door.big{aspect-ratio:4/5}
+.door.big .behind{padding-left:24%}
+.behind{position:absolute;inset:0;border-radius:inherit;background:var(--shell);color:var(--black);padding:28% 16px 20px 30%;border:3px solid var(--c);display:flex;flex-direction:column;justify-content:flex-end;gap:8px;overflow:hidden}
+.behind b{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.02em;line-height:1.1}
+.behind span{font-size:14.5px;line-height:1.45}
+.leaf{position:absolute;inset:0;border-radius:inherit;background:var(--c);color:var(--fc,var(--black));transform-origin:left center;transition:transform .9s cubic-bezier(.3,.7,.2,1),box-shadow .9s;display:flex;flex-direction:column;justify-content:space-between;padding:26% 20px 22px;backface-visibility:hidden}
+.leaf::before{content:"";position:absolute;inset:12px;border-radius:999px 999px 6px 6px;border:1.5px solid currentColor;opacity:.25}
+.leaf .wk{font-family:var(--display);font-weight:900;font-size:clamp(24px,2.6vw,38px);letter-spacing:-.04em;text-align:center;line-height:1}
+.leaf .knob{position:absolute;right:20px;top:55%;width:10px;height:10px;border-radius:50%;background:currentColor;opacity:.7}
+.leaf .lb{font-family:var(--display);font-weight:700;font-size:15px;position:relative}
+.door.open .leaf{transform:rotateY(-74deg);box-shadow:-30px 0 40px rgba(0,0,0,.35)}
+.door:focus-visible{outline:2px solid var(--must);outline-offset:4px}
+.doors-hint{margin-top:18px;font-family:var(--display);font-weight:600;font-size:14px;color:var(--faint)}
+.commit{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:40px;padding:22px 26px;border-radius:20px;background:var(--must);color:var(--black)}
+.commit b{font-family:var(--display);font-weight:900;font-size:30px;letter-spacing:-.04em}
+.commit span{font-size:18px;line-height:1.4;max-width:36em}
+
+/* Day timeline */
+.day-tl{margin-top:56px;display:grid;grid-template-columns:repeat(6,1fr);border-top:2px solid var(--black)}
+.slot{padding:22px 18px 0 0}
+.slot time{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.03em;display:block}
+.slot b{display:block;font-family:var(--display);font-weight:700;font-size:16px;margin:10px 0 6px;line-height:1.25}
+.slot span{font-size:15px;line-height:1.5;color:#3b3a36}
+
+/* Content studio */
+.studio{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center;margin-top:56px}
+.phones{display:flex;gap:18px;align-items:flex-end}
+.phones .phone:nth-child(2){transform:translateY(-40px)}
+.tt-ui{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px 14px 18px;background:linear-gradient(transparent 45%,rgba(0,0,0,.75));color:#fff;font-family:var(--display)}
+.tt-ui .cap{font-weight:900;font-size:21px;line-height:1.05;letter-spacing:-.03em;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.tt-ui .cap mark{background:var(--pink);color:var(--black);padding:0 5px;border-radius:4px}
+.tt-ui .hd{font-weight:700;font-size:12px}
+.tt-ui .ds{font-family:var(--body);font-size:11px;opacity:.85;margin-top:3px}
+.tt-side{position:absolute;right:10px;bottom:90px;display:flex;flex-direction:column;gap:14px}
+.tt-side i{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.85)}
+.tt-top{position:absolute;top:14px;left:0;right:0;text-align:center;color:#fff;font-family:var(--display);font-weight:700;font-size:11px;opacity:.9}
+.ig{background:var(--shell);height:100%;display:flex;flex-direction:column}
+.ig-h{padding:16px 12px 10px;display:flex;align-items:center;gap:10px;font-family:var(--display);color:var(--black)}
+.ig-h img{width:38px;height:38px;border-radius:50%;object-fit:cover;background:var(--black);padding:6px}
+.ig-h b{font-size:13px}
+.ig-h span{display:block;font-size:10px;font-weight:500;color:#555}
+.grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;flex:1;align-content:start}
+.grid9 div{aspect-ratio:4/5;overflow:hidden;display:flex;align-items:flex-end;padding:6px;font-family:var(--display);font-weight:800;font-size:10px;line-height:1.05;letter-spacing:-.01em}
+.grid9 img{width:100%;height:100%;object-fit:cover}
+.grid9 div:has(img){padding:0}
+.series{display:grid;gap:14px}
+.ep{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;padding:18px 0;border-bottom:1px solid var(--line)}
+.ep:first-child{border-top:1px solid var(--line)}
+.ep .chn{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:13px;color:var(--black)}
+.ep b{display:block;font-family:var(--display);font-weight:700;font-size:18px;letter-spacing:-.01em}
+.ep span{color:var(--dim);font-size:16px;line-height:1.5}
 
 /* Quote */
-.quote{font-family:var(--display);font-weight:800;font-size:clamp(28px,3.6vw,48px);line-height:1.12;letter-spacing:-.03em;max-width:24em;margin:0}
-.quote::before{content:"“";display:block;font-size:2.4em;line-height:.6;color:var(--tea);margin-bottom:14px}
-.cite{margin-top:28px;font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.16em;text-transform:uppercase}
-.placeholder{outline:2px dashed var(--tang);outline-offset:10px}
+.quote-sec{background:var(--pink);color:var(--black);padding:120px 0}
+.quote{font-family:var(--display);font-weight:800;font-size:clamp(32px,4.4vw,62px);line-height:1.06;letter-spacing:-.04em;max-width:19em;margin:0}
+.quote::before{content:"“";display:block;font-size:2em;line-height:.6;margin-bottom:8px;color:var(--black);opacity:.35}
+.cite{margin-top:30px;font-family:var(--display);font-weight:700;font-size:16px}
+.cite span{display:block;font-weight:500;font-size:14px;opacity:.75;margin-top:4px}
 
 /* Founder */
-.founder{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:center}
+.founder{display:grid;grid-template-columns:.8fr 1.2fr;gap:72px;align-items:center}
 .founder img.p{border-radius:300px 300px 24px 24px;width:100%;aspect-ratio:3/4;object-fit:cover}
-.logos{display:flex;flex-wrap:wrap;gap:28px 40px;align-items:center;margin-top:40px}
+.logos{display:flex;flex-wrap:wrap;gap:24px 38px;align-items:center;margin-top:40px}
 .logos img{height:22px;width:auto;opacity:.75;filter:brightness(0) invert(.92)}
+.logos img.tall{height:34px}
 
 /* Close */
-.close{background:var(--blue);color:var(--black);padding:120px 0 104px}
-.close h2{font-weight:900;font-size:clamp(52px,9vw,148px);line-height:.9;letter-spacing:-.055em}
+.close{background:var(--blue);color:var(--black);padding:130px 0 110px}
+.close h2{font-family:var(--display);font-weight:900;font-size:clamp(52px,9vw,150px);line-height:.88;letter-spacing:-.06em;margin:0}
+.close p{font-size:22px;max-width:30em;margin:34px 0 0;line-height:1.5}
 
-@media (max-width:980px){
-  .hero-grid,.sessions-grid,.founder{grid-template-columns:1fr}
-  .arch-row{justify-content:flex-start}
-  .stats{grid-template-columns:1fr 1fr}
-  .stat:nth-child(2){border-right:0}
-  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
-  .roles,.phases{grid-template-columns:1fr}
-  .role{min-height:0;padding-top:64px}
-  .built{grid-template-columns:1fr}
-  .span2,.span3,.span4{grid-column:auto}
-  .journey{grid-template-columns:1fr;gap:28px}
-  .engine{grid-template-columns:1fr}
-  .loop,.takeaway{grid-template-columns:1fr 1fr}
-  .loop div:nth-child(2){border-right:0}
-  .loop div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+@media (max-width:1040px){
+  .eco{grid-template-columns:1fr 1fr;gap:16px}
+  .eco svg.wires{display:none}
+  .core{grid-column:1/-1;grid-row:1;width:100%;aspect-ratio:auto;border-radius:28px;padding:34px}
+  .core::before{display:none}
+  .n1,.n2,.n3,.n4,.n5,.n6{grid-column:auto;grid-row:auto}
+  .mission-grid,.people,.founder{grid-template-columns:1fr}
+  .mission-photo{max-width:420px}
+  .mission-photo .tagc{left:16px}
+  .panel{grid-template-columns:1fr}
+  .notes{border-left:0;border-top:1px solid var(--line)}
+  .screen{padding:28px 18px;min-height:420px}
+  .doors{grid-template-columns:repeat(5,minmax(150px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;margin-left:-24px;margin-right:-24px;padding:6px 24px 14px}
+  .door{scroll-snap-align:start}
+  .day-tl{grid-template-columns:1fr 1fr 1fr;row-gap:24px}
+  .studio{grid-template-columns:1fr}
+  .phones{justify-content:center}
   .founder img.p{max-width:380px}
 }
 @media (max-width:640px){
-  .section{padding:80px 0}
-  .match-row{grid-template-columns:1fr;gap:6px}
-  .match-row .arrow{display:none}
-  .month{gap:4px}
-  .day{border-radius:8px;padding:5px;font-size:10px}
-  .day .what{font-size:8px}
-  .card.kit{flex-direction:column;align-items:flex-start}
-  .takeaway,.loop{grid-template-columns:1fr}
-  .loop div{border-right:0;border-bottom:1px solid var(--line)}
-  .stat{padding:24px 14px}
+  .sec{padding:84px 0}
+  .eco{grid-template-columns:1fr}
+  .fit-row,.fit-head{grid-template-columns:1fr}
+  .fit-head span:nth-child(2),.fit-head span:nth-child(3){display:none}
+  .plug{display:none}
+  .fit-row .need{margin-bottom:6px}
+  .strip{grid-template-columns:1fr 1fr;height:auto}
+  .strip img{aspect-ratio:3/4}
+  .strip img:first-child{grid-column:1/-1;aspect-ratio:16/10}
+  .outs{grid-template-columns:1fr}
+  .trk{grid-template-columns:1fr 1fr}
+  .pipe{grid-template-columns:repeat(3,1fr)}
+  .client{grid-template-columns:1fr}
+  .day-tl{grid-template-columns:1fr 1fr}
+  .phones{gap:12px}
+  .phones .phone{width:calc(50% - 6px);max-width:170px;border-radius:28px;padding:6px}
+  .studio{min-width:0}
+  .doors{grid-template-columns:repeat(5,minmax(210px,1fr))}
+  .phones .phone .scr{border-radius:24px}
+  .phones .phone:nth-child(2){transform:none}
+  .tt-ui .cap{font-size:16px}
+  .nums b{font-size:38px}
 }
-@media (prefers-reduced-motion:reduce){.js .arch{transform:none;opacity:1;transition:none}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .eco .node,.js .eco .core{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
@@ -188,220 +344,356 @@
 <header class="site-header">
 <div class="wrap ow-top">
 <a class="logo" href="index.html"><img src="assets/logo/creer-social-logo-creer-blue.svg" alt="Créer Social home" width="205" height="24"></a>
-<span class="ow-x">Créer Social <b>×</b> OpenWorks LA</span>
+<span class="ow-x">Créer Social <b>×</b> OpenWorks, Los Angeles</span>
 </div>
 </header>
 
 <main id="main">
 
-<!-- HERO -->
+<!-- 1. HERO: the ecosystem -->
 <section class="hero">
 <div class="wrap">
-<div class="masthead" style="margin-bottom:56px"><span>Partner application</span><span>Prepared for the OpenWorks team</span><span>Los Angeles</span></div>
-<div class="hero-grid">
+<span class="live-pill"><span class="dot" aria-hidden="true"></span>Running today in Los Angeles</span>
+<h1>A turnkey AI ecosystem for LA's founders. Already live.</h1>
+<p class="sub">Créer Social brings a real community, systems we built with AI, and a content engine that's already on air. OpenWorks brings the program. Plug the two together and the founders who need help most, including the ones who can't afford an agency yet, get it right away.</p>
+
+<div class="eco" id="eco" aria-label="The Créer Social ecosystem, ready for OpenWorks">
+<svg class="wires" aria-hidden="true"></svg>
+<div class="node n1" data-c="#5FA393"><div class="nt"><h3>Community</h3><span class="status"><span class="dot"></span>Live</span></div><p>300+ founders, creatives and owners we know by name, built in person.</p></div>
+<div class="node n6" data-c="#EAA7C7"><div class="nt"><h3>The Sessions</h3><span class="status"><span class="dot"></span>Live</span></div><p>Our IRL gatherings. Two sold out in 24 to 48 hours.</p></div>
+<div class="node n2" data-c="#ED773C"><div class="nt"><h3>Systems</h3><span class="status"><span class="dot"></span>Live</span></div><p>Client operations, outreach and websites we built with AI and use daily.</p></div>
+<div class="core"><small>Plugs in here</small><strong>OpenWorks LA</strong><span>Four build days and one workshop, every month</span></div>
+<div class="node n3" data-c="#EAC119"><div class="nt"><h3>Content</h3><span class="status"><span class="dot"></span>Live</span></div><p>@hello_vashti on TikTok and @creersocial on Instagram, posting now.</p></div>
+<div class="node n5" data-c="#B0C4DE"><div class="nt"><h3>Brand partners</h3><span class="status"><span class="dot"></span>Live</span></div><p>Donna's Recipe, Tab &amp; Chance, Bicycle Playing Cards and more.</p></div>
+<div class="node n4" data-c="#EAE4DA"><div class="nt"><h3>The firm</h3><span class="status"><span class="dot"></span>Live</span></div><p>A strategic partnerships and advisory team that runs it all with care.</p></div>
+</div>
+</div>
+</section>
+
+<!-- 2. MISSION -->
+<section class="sec mission">
+<div class="wrap mission-grid">
 <div>
-<p class="label">Why Créer Social</p>
-<h1>We already run the room. <span class="i">Let's bring AI into it.</span></h1>
-<p class="lede">Créer Social is a Los Angeles strategic partnerships and advisory firm. We gather founders and small business owners in real life, we build our own business on AI every day, and we know how to tell the story so the next business wants in. That is the whole job of an OpenWorks partner. We are already doing it.</p>
-<div class="btns"><a class="btn" href="#plan">See the partnership plan</a><a class="btn ghost" href="mailto:contact@creersocial.com?subject=Cr%C3%A9er%20Social%20%C3%97%20OpenWorks">Talk with Vashti</a></div>
+<p class="k">Why this matters to me</p>
+<p class="letter">Helping people is the center of everything I do. I see the gold in people and their ideas, and I can't unsee it.</p>
+<p class="letter">Some of the founders who come to Créer Social can't afford our services yet. They're often the ones with the most heart and the least support. OpenWorks is how I get to help them anyway, with the same systems our paying clients get.</p>
+<div class="sig"><img src="assets/img/hi-im-vashti.png" alt="Hi, I'm Vashti"><span>Vashti Bryant, founder and CEO</span></div>
 </div>
-<div class="arch-row" aria-hidden="true">
-<div class="arch"><img src="assets/img/entrance_tea.jpg" alt=""><div class="arch-tag"><span>The room</span></div></div>
-<div class="arch"><img src="assets/img/table_mustard.jpg" alt=""><div class="arch-tag"><span>The build</span></div></div>
-<div class="arch"><img src="assets/img/duo_pink.jpg" alt="" style="object-position:22% 50%"><div class="arch-tag"><span>The story</span></div></div>
-</div>
+<div class="mission-photo">
+<img src="assets/img/duo_pink.jpg" alt="Two guests at a Créer Social Session" style="object-position:22% 50%">
+<div class="tagc">Impact over influence.</div>
 </div>
 </div>
 </section>
 
-<!-- STATS -->
-<section aria-label="By the numbers">
+<!-- 3. THE PEOPLE -->
+<section class="sec">
 <div class="wrap">
-<div class="stats">
-<div class="stat reveal"><div class="n c-tea"><span data-count="300">300</span>+</div><div class="t">people in the Créer Social community, built in person</div></div>
-<div class="stat reveal"><div class="n c-pink"><span data-count="41">41</span></div><div class="t">RSVPs plus a waitlist in 48 hours for one Session</div></div>
-<div class="stat reveal"><div class="n c-tang"><span data-count="2">2</span></div><div class="t">Sessions sold out within 24 to 48 hours</div></div>
-<div class="stat reveal"><div class="n c-must"><span data-count="4">4</span>+1</div><div class="t">days a month, plus a monthly workshop. Committed.</div></div>
+<div class="sec-head">
+<p class="k">Our people are your people</p>
+<h2 class="ttl">A real community, full of exactly who OpenWorks wants to reach.</h2>
+<p class="sub">Not followers. People who show up, sit at the table and come back. Small business owners and founders who are curious about AI and need someone they trust to show them how.</p>
+</div>
+<div class="people">
+<div class="who" aria-label="Who is in our community">
+<span>Founders</span><span>Beauty pros</span><span>Salon owners</span><span>Wellness brands</span><span>Creatives</span><span>Food makers</span><span>Stylists</span><span>Event producers</span><span>Shop owners</span><span>Side hustlers going full time</span>
+</div>
+<div class="nums">
+<div><b data-count="300">300</b><span>community members and growing, met in person</span></div>
+<div><b data-count="41">41</b><span>RSVPs plus a waitlist in 48 hours</span></div>
+<div><b>24 to 48</b><span>hours for two Sessions to sell out</span></div>
+<div><b>100%</b><span>referral based. Trust is how people find us.</span></div>
+</div>
+</div>
+<div class="strip">
+<img src="assets/img/gamenight_pink.jpg" alt="A full room at a Créer Social Session" loading="lazy">
+<img src="assets/img/entrance_tea.jpg" alt="Guests arriving at a Session" loading="lazy">
+<img class="l" src="assets/img/duo_pink.jpg" alt="Two guests laughing at a Session" loading="lazy">
 </div>
 </div>
 </section>
 
-<!-- THREE ROLES -->
-<section class="section">
+<!-- 4. FIT MAP -->
+<section class="sec light">
 <div class="wrap">
-<p class="label">The fit, in one line</p>
-<h2 class="h2" style="max-width:15em">Most partners can do one of these. Créer Social does all three.</h2>
-<div class="roles">
-<article class="role bg-tea reveal"><div class="k">01</div><h3>The room</h3><p>We host The Créer Social Sessions, intimate IRL gatherings for founders, creatives and local business owners, with brand partners at the table. Getting the right people in a room is what we do best.</p></article>
-<article class="role bg-pink reveal"><div class="k">02</div><h3>The builder</h3><p>Our agency runs on systems we built with AI: client operations, partnership frameworks, outreach engines and live websites. We teach from what we use, not from slides.</p></article>
-<article class="role bg-tang reveal"><div class="k">03</div><h3>The storyteller</h3><p>Vashti documents the work on her own TikTok, @hello_vashti, and on @creersocial. Every business we help becomes a story that brings in the next one.</p></article>
+<div class="sec-head">
+<p class="k">How we line up</p>
+<h2 class="ttl">Everything OpenWorks needs, we already do.</h2>
+</div>
+<div class="fit" id="fit">
+<div class="fit-head"><span>OpenWorks needs</span><span></span><span>Créer Social, today</span></div>
+<div class="fit-row"><div class="need">Trust with local small businesses</div><div class="plug" style="--c:var(--tea)"><i></i></div><div class="have"><b>Referral-only firm.</b> Every client and community member came through someone they trust.</div></div>
+<div class="fit-row"><div class="need">Hands-on sessions people actually attend</div><div class="plug" style="--c:var(--pink)"><i></i></div><div class="have"><b>The Créer Social Sessions.</b> Waitlists, sponsors, sold-out rooms.</div></div>
+<div class="fit-row"><div class="need">Real, daily fluency with AI</div><div class="plug" style="--c:var(--tang)"><i></i></div><div class="have"><b>Our firm runs on it.</b> See the build lab below. We also co-hosted Geek Day, a tool-sharing day with a small group of creators.</div></div>
+<div class="fit-row"><div class="need">Speaks owner, not engineer</div><div class="plug" style="--c:var(--must)"><i></i></div><div class="have"><b>A founder who's been there.</b> Luxury retail at houses like Salvatore Ferragamo, then built her own label from zero.</div></div>
+<div class="fit-row"><div class="need">Shows up, month after month</div><div class="plug" style="--c:var(--blue)"><i></i></div><div class="have"><b>Yes to four days a month plus a monthly workshop,</b> with a team and systems behind it.</div></div>
+<div class="fit-row"><div class="need">Brings the next business in</div><div class="plug" style="--c:var(--black)"><i></i></div><div class="have"><b>A content engine on TikTok and Instagram,</b> plus brand partners who already show up for our people.</div></div>
 </div>
 </div>
 </section>
 
-<!-- MATCH -->
-<section class="section light">
+<!-- 5. BUILD LAB -->
+<section class="sec lab" id="lab">
 <div class="wrap">
-<p class="label on-light">What OpenWorks needs, and what we already have</p>
-<h2 class="h2" style="max-width:14em">This isn't a new job for us. It's a bigger stage.</h2>
-<div class="match">
-<div class="match-row match-head" style="border:0;padding-bottom:0"><span>A great OpenWorks partner</span><span></span><span>Créer Social today</span></div>
-<div class="match-row reveal"><div class="need">Trusted by local small businesses</div><div class="arrow">→</div><div class="have">Our business is referral based. Founders come to us through people they trust, and our community is built face to face in Los Angeles.</div></div>
-<div class="match-row reveal"><div class="need">Can host practical, hands-on sessions</div><div class="arrow">→</div><div class="have">The Créer Social Sessions are already a working format, with RSVPs, waitlists, sponsors and a community that keeps coming back.</div></div>
-<div class="match-row reveal"><div class="need">Real fluency with AI tools</div><div class="arrow">→</div><div class="have">We build our operations, client systems, outreach and websites with AI every week. We also co-hosted Geek Day, a coworking and tool-sharing day with a small group of creators.</div></div>
-<div class="match-row reveal"><div class="need">Speaks the language of owners, not engineers</div><div class="arrow">→</div><div class="have">Vashti came up through luxury retail at some of the top fashion houses, including Salvatore Ferragamo, and built her own brand from scratch. She talks revenue, time and customers.</div></div>
-<div class="match-row reveal"><div class="need">Shows up consistently</div><div class="arrow">→</div><div class="have">Yes to four full days a month plus one monthly workshop, run through Créer Social with a team and systems behind it.</div></div>
-<div class="match-row reveal"><div class="need">Brings more businesses in</div><div class="arrow">→</div><div class="have">A built-in content engine on TikTok and Instagram, plus partner brands that already show up for our community.</div></div>
+<div class="sec-head">
+<p class="k">The build lab</p>
+<h2 class="ttl">See it working.</h2>
+<p class="sub">Real systems from inside Créer Social, built with AI and in use every week. Each one is the kind of thing an LA business could walk out with after a build day.</p>
 </div>
+
+<div class="tabs" role="tablist" aria-label="Systems we built">
+<button class="tab" role="tab" id="t-voice" aria-controls="p-voice" aria-selected="true" style="--c:var(--pink)"><span class="sw"></span>Talk to type</button>
+<button class="tab" role="tab" id="t-ops" aria-controls="p-ops" aria-selected="false" style="--c:var(--tea)" tabindex="-1"><span class="sw"></span>Client command center</button>
+<button class="tab" role="tab" id="t-prop" aria-controls="p-prop" aria-selected="false" style="--c:var(--blue)" tabindex="-1"><span class="sw"></span>Proposals</button>
+<button class="tab" role="tab" id="t-kit" aria-controls="p-kit" aria-selected="false" style="--c:var(--pink)" tabindex="-1"><span class="sw"></span>Media kit websites</button>
+<button class="tab" role="tab" id="t-fund" aria-controls="p-fund" aria-selected="false" style="--c:var(--must)" tabindex="-1"><span class="sw"></span>Fundraiser outreach</button>
+<button class="tab" role="tab" id="t-ses" aria-controls="p-ses" aria-selected="false" style="--c:var(--tang)" tabindex="-1"><span class="sw"></span>Sessions and community</button>
+</div>
+
+<div class="stage">
+
+<!-- talk to type -->
+<div class="panel" role="tabpanel" id="p-voice" aria-labelledby="t-voice">
+<div class="screen">
+<div class="win"><div class="win-bar"><i></i><i></i><i></i><span>Voice note to follow-up</span></div>
+<div class="win-body t2t" id="t2t">
+<div class="voice"><div class="mic"><svg viewBox="0 0 24 24" fill="#1D1D1B"><path d="M12 15a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V21h2v-2.1A7 7 0 0 0 19 12h-2Z"/></svg></div>
+<div style="flex:1"><div class="wave" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><p id="vtext"></p></div></div>
+<div class="outs">
+<div class="out" id="o1"><h4>Follow-up email <em>Drafted</em></h4><div class="mail" id="mail"></div></div>
+<div style="display:grid;gap:12px">
+<div class="out" id="o2"><h4>Client tracker <em>Added</em></h4><div class="row"><span>Dana R.</span><span class="chip-s">Discovery</span></div><div class="row"><span>Next step</span><span>Intake form</span></div></div>
+<div class="out" id="o3"><h4>Reminder <em>Set</em></h4><div class="row"><span>Follow up with Dana</span><span>Thursday</span></div></div>
+</div>
+</div>
+<button class="playbtn" id="play" type="button">Replay demo</button>
+</div></div>
+</div>
+<div class="notes" style="--c:var(--pink)">
+<span class="badge"><span class="dot"></span>How we work every day</span>
+<h3>Talk it out. AI does the typing.</h3>
+<p class="what">Vashti runs much of Créer Social by voice. One quick note after a meeting becomes the email, the tracker update and the reminder, so no lead gets forgotten.</p>
+<dl>
+<dt>What it replaces</dt><dd>Sticky notes, lost DMs and follow-ups that never got sent.</dd>
+<dt>What a business leaves with</dt><dd>Their own voice-to-follow-up setup, using tools they already have.</dd>
+</dl>
+<p class="ipnote">Sample contact shown. Dana is not a real client.</p>
+</div>
+</div>
+
+<!-- ops -->
+<div class="panel" role="tabpanel" id="p-ops" aria-labelledby="t-ops" hidden>
+<div class="screen">
+<div class="win"><div class="win-bar"><i></i><i></i><i></i><span>Créer Social · Client Dashboard</span></div>
+<div class="win-body">
+<div class="trk">
+<div><b>5</b><span>Open spots this season</span></div>
+<div><b>0</b><span>Late payments</span></div>
+<div><b>0</b><span>Proposals waiting</span></div>
+<div><b>0</b><span>Intakes missing</span></div>
+</div>
+<div class="pipe"><div>Lead</div><div>Discovery</div><div>Proposal</div><div>Signed</div><div class="act">Active</div></div>
+<div class="client"><div><b>Sample client</b><br><span style="color:#6b675f">Fieldnote · Advisory</span></div><div style="color:#6b675f">Next call Nov 18</div><div class="checks" title="Agreement, payment, intake, kickoff"><i>✓</i><i>✓</i><i>✓</i><i class="no">✓</i></div></div>
+</div></div>
+</div>
+<div class="notes" style="--c:var(--tea)">
+<span class="badge"><span class="dot"></span>In use today</span>
+<h3>One place to run every client.</h3>
+<p class="what">A single tracker and dashboard that flags what needs attention: late payments, missing intakes, renewals coming up. A start-here hub sits on top so a new hire knows exactly what to do.</p>
+<dl>
+<dt>What it replaces</dt><dd>A pile of spreadsheets, and the founder carrying everything in her head.</dd>
+<dt>What a business leaves with</dt><dd>A simple customer tracker that tells them who to call today.</dd>
+</dl>
+<p class="ipnote">Sample data. Fees, formulas and our internal method are hidden.</p>
+</div>
+</div>
+
+<!-- proposals -->
+<div class="panel" role="tabpanel" id="p-prop" aria-labelledby="t-prop" hidden>
+<div class="screen">
+<div class="decks"><span class="lock"><svg width="11" height="12" viewBox="0 0 11 12" fill="currentColor"><path d="M2 5V3.5a3.5 3.5 0 0 1 7 0V5h1v7H1V5h1Zm1.5 0h4V3.5a2 2 0 0 0-4 0V5Z"/></svg>Inside pages stay private</span>
+<img class="back" src="assets/openworks/proposal-inside-blur.jpg" alt="" aria-hidden="true">
+<img class="front" src="assets/openworks/proposal-cover.jpg" alt="Cover of a Créer Social sample proposal for a fictional client">
+</div>
+</div>
+<div class="notes" style="--c:var(--blue)">
+<span class="badge"><span class="dot"></span>In use today</span>
+<h3>Proposals in hours, not weeks.</h3>
+<p class="what">A branded proposal system our whole team can edit. From discovery notes to a finished, on-brand deck the same day.</p>
+<dl>
+<dt>What it replaces</dt><dd>Starting from a blank page for every new client.</dd>
+<dt>What a business leaves with</dt><dd>Their own branded quote or pitch template, ready to send.</dd>
+</dl>
+<p class="ipnote">Fictional client used for training. Our structure, services and pricing stay in house.</p>
+</div>
+</div>
+
+<!-- media kit -->
+<div class="panel" role="tabpanel" id="p-kit" aria-labelledby="t-kit" hidden>
+<div class="screen">
+<img class="kit-img" src="assets/img/kit_card_phone.png" alt="Kelly Nicole Wood's live media kit website on a phone">
+</div>
+<div class="notes" style="--c:var(--pink)">
+<span class="badge"><span class="dot"></span>Live on the web</span>
+<h3>A real website, built in days.</h3>
+<p class="what">A custom, mobile-first media kit site for the talent we represent. Kelly's went from idea to live link fast, and brands can now see her world in one tap.</p>
+<dl>
+<dt>What it replaces</dt><dd>A PDF nobody opens, or a website that costs months and thousands.</dd>
+<dt>What a business leaves with</dt><dd>A clean one-page site or link-in-bio they can update themselves.</dd>
+</dl>
+<a class="btn ghost" style="align-self:flex-start" href="https://kits.creersocial.com/kelly-nicole-wood">Open Kelly's live site</a>
+</div>
+</div>
+
+<!-- fundraiser -->
+<div class="panel" role="tabpanel" id="p-fund" aria-labelledby="t-fund" hidden>
+<div class="screen">
+<div class="fund">
+<div class="big">$88K</div>
+<div class="lbl">raised for a nonprofit fundraiser</div>
+<div class="track" aria-hidden="true"><span class="b"></span><span class="a"></span></div>
+<div class="legend2"><span><b>$69K</b> before the event started</span><span><b>$88K</b> total</span></div>
+<div class="stages" aria-label="Outreach stages"><span>Researched</span><span>Drafted</span><span>Sent</span><span>Followed up</span><span>Confirmed</span></div>
+</div>
+</div>
+<div class="notes" style="--c:var(--must)">
+<span class="badge"><span class="dot"></span>Proven result</span>
+<h3>Outreach that actually goes out.</h3>
+<p class="what">An AI-assisted outreach system: research, personal messages for every contact, and follow-ups nobody forgets. Most of the money was in before the doors opened.</p>
+<dl>
+<dt>What it replaces</dt><dd>One copy-paste email to everyone, and hoping.</dd>
+<dt>What a business leaves with</dt><dd>A list of who to reach, a personal message for each, and a follow-up plan.</dd>
+</dl>
+</div>
+</div>
+
+<!-- sessions -->
+<div class="panel" role="tabpanel" id="p-ses" aria-labelledby="t-ses" hidden>
+<div class="screen">
+<div class="rsvp">
+<img src="assets/img/table_mustard.jpg" alt="">
+<div class="in">
+<h4>The Créer Social Sessions</h4>
+<span class="so">Sold out in 48 hours</span>
+<div class="meter" aria-hidden="true"><i></i></div>
+<div class="row2"><span>41 RSVPs</span><span>Waitlist open</span></div>
+<div class="faces" aria-hidden="true"><i style="background:var(--tea)"></i><i style="background:var(--pink)"></i><i style="background:var(--tang)"></i><i style="background:var(--must)"></i><i style="background:var(--blue)"></i><i style="background:#1D1D1B"></i></div>
+<button class="wl" type="button" tabindex="-1">Join the waitlist</button>
+</div></div>
+</div>
+<div class="notes" style="--c:var(--tang)">
+<span class="badge"><span class="dot"></span>Running now</span>
+<h3>A room people race to get into.</h3>
+<p class="what">Sign-ups, RSVPs, waitlists and follow-ups for every Session, organized in one place. This is the engine that would fill every OpenWorks workshop.</p>
+<dl>
+<dt>What it replaces</dt><dd>Scattered DMs and guessing who's coming.</dd>
+<dt>What a business leaves with</dt><dd>A simple way to run their own events, classes or launches.</dd>
+</dl>
+</div>
+</div>
+
+</div>
+<p class="ipnote" style="margin-top:20px">We show the results, not the recipes. Our frameworks, including The Storehaus, our talent partnership system, stay in house.</p>
 </div>
 </section>
 
-<!-- BUILT WITH AI -->
-<section class="section">
+<!-- 6. THE MONTH -->
+<section class="sec">
 <div class="wrap">
-<p class="label">Receipts</p>
-<h2 class="h2" style="max-width:14em">Things we've built with AI that run our business right now.</h2>
-<p class="lede">Every one of these is in daily use. Every one is something a small business owner could have by the end of an OpenWorks day.</p>
-<div class="built">
-<article class="card span4 reveal"><span class="tag c-tea">Operations</span><h3>A full client operating system</h3><p>One start-here hub, a single client tracker with a live dashboard, discovery call guides, intake forms and a branded proposal template the whole team can edit. Built so a new hire can run a client from first call to wrap-up without dropping a ball.</p><div class="chips"><span class="chip">Client hub</span><span class="chip">Live tracker</span><span class="chip">Proposal template</span><span class="chip">Call guides</span></div></article>
-<article class="card span2 reveal"><span class="tag c-must">Outreach</span><div class="big">$88K</div><h3>Fundraiser outreach system</h3><p>An AI-assisted outreach engine for a nonprofit fundraiser. $69K was raised before the night even started.</p></article>
-<article class="card kit span3 reveal"><img src="assets/img/kit_card_phone.png" alt="A client's live media kit website on a phone" width="150"><div><span class="tag c-pink">Websites</span><h3 style="margin-top:12px">Live media kit sites</h3><p style="margin-top:12px">Custom, mobile-first websites for the talent we represent, built and launched in days instead of months.</p></div></article>
-<article class="card span3 reveal"><span class="tag c-tang">Partnerships</span><h3>The Storehaus</h3><p>Our framework for representing talent in brand partnerships: positioning, rate logic, pitch materials and deal tracking, rebuilt for each new client in hours.</p><h3 style="margin-top:14px">Community CRM</h3><p>Sign-ups, RSVPs, waitlists and follow-ups for the Sessions, all organized in one place so nobody slips through.</p></article>
+<div class="sec-head">
+<p class="k">The partnership plan</p>
+<h2 class="ttl">Four doors a month. One big room.</h2>
+<p class="sub">Every month we'd open four build days and host one community workshop. Tap a door to see what's behind it.</p>
 </div>
+<div class="doors" id="doors">
+<button class="door" type="button" aria-expanded="false" style="--c:var(--tea);--fc:var(--shell)"><span class="behind"><b>One-on-one builds</b><span>Owners bring their biggest time drain and leave with it fixed.</span></span><span class="leaf"><span class="wk">Wk 1</span><span class="knob"></span><span class="lb">Build day</span></span></button>
+<button class="door" type="button" aria-expanded="false" style="--c:var(--pink)"><span class="behind"><b>Small-group builds</b><span>Grouped by industry so owners learn from each other.</span></span><span class="leaf"><span class="wk">Wk 2</span><span class="knob"></span><span class="lb">Build day</span></span></button>
+<button class="door" type="button" aria-expanded="false" style="--c:var(--tang)"><span class="behind"><b>Office hours</b><span>Fixes, tune-ups and next builds for returning owners.</span></span><span class="leaf"><span class="wk">Wk 3</span><span class="knob"></span><span class="lb">Build day</span></span></button>
+<button class="door" type="button" aria-expanded="false" style="--c:var(--blue)"><span class="behind"><b>Build and share</b><span>Finish builds and, with permission, capture their stories.</span></span><span class="leaf"><span class="wk">Wk 4</span><span class="knob"></span><span class="lb">Build day</span></span></button>
+<button class="door big" type="button" aria-expanded="false" style="--c:var(--must)"><span class="behind"><b>The monthly workshop</b><span>A Créer Social Session built around AI. Everyone in one room, learning, sharing wins and meeting each other.</span></span><span class="leaf"><span class="wk">The room</span><span class="knob"></span><span class="lb">Community workshop</span></span></button>
 </div>
-</section>
-
-<!-- SESSIONS -->
-<section class="section light">
-<div class="wrap sessions-grid">
-<div class="photo-stack reveal">
-<img class="tall" src="assets/img/gamenight_pink.jpg" alt="A full table at a Créer Social Session">
-<img src="assets/img/table_mustard.jpg" alt="Guests working together at a long table">
-<img src="assets/img/duo_pink.jpg" alt="Two guests smiling at a Session">
-</div>
-<div>
-<p class="label on-light">The Créer Social Sessions</p>
-<h2 class="h2">The format is proven. The people already come.</h2>
-<p class="lede" style="color:#3b3a36">Our Sessions bring founders, creatives and local business owners together around a real table, with brand partners who make the night feel generous. An OpenWorks workshop fits right inside this format.</p>
-<ul class="ow-ticks">
-<li><b>300+</b><span>community members, built in person</span></li>
-<li><b>48 hrs</b><span>41 RSVPs plus a waitlist for a single Session</span></li>
-<li><b>24 to 48</b><span>hours for two Sessions to sell out</span></li>
-<li><b>Partners</b><span>Donna's Recipe, Tab &amp; Chance, Bicycle Playing Cards and more</span></li>
-</ul>
-</div>
+<p class="doors-hint">Tap any door to open or close it.</p>
+<div class="commit"><b>Yes.</b><span>Four full days a month plus one monthly workshop, run through Créer Social, starting as soon as you are.</span></div>
 </div>
 </section>
 
-<!-- PLAN -->
-<section class="section" id="plan">
+<!-- 7. A BUILD DAY -->
+<section class="sec light">
 <div class="wrap">
-<p class="label">The partnership plan</p>
-<h2 class="h2" style="max-width:15em">How we'd run OpenWorks in Los Angeles.</h2>
-<p class="lede">Four build days and one community workshop, every month. Here is what a typical month looks like.</p>
-<div class="month" role="img" aria-label="A sample month: four build days and one community workshop">
-<div class="dow">Mon</div><div class="dow">Tue</div><div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div><div class="dow">Sun</div>
-<div class="day">1</div><div class="day">2</div><div class="day on bg-tea" style="color:var(--shell)">3<span class="what">Build day</span></div><div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div>
-<div class="day">8</div><div class="day">9</div><div class="day on bg-pink">10<span class="what">Build day</span></div><div class="day">11</div><div class="day">12</div><div class="day">13</div><div class="day">14</div>
-<div class="day">15</div><div class="day">16</div><div class="day on bg-tang">17<span class="what">Build day</span></div><div class="day on bg-must">18<span class="what">Work&shy;shop</span></div><div class="day">19</div><div class="day">20</div><div class="day">21</div>
-<div class="day">22</div><div class="day">23</div><div class="day on" style="background:var(--blue)">24<span class="what">Build day</span></div><div class="day">25</div><div class="day">26</div><div class="day">27</div><div class="day">28</div>
+<div class="sec-head">
+<p class="k">A build day, hour by hour</p>
+<h2 class="ttl">They walk in with a problem. They walk out with it running.</h2>
 </div>
-<div class="legend"><span><i style="background:var(--blue)"></i>Build days: one-on-one and small group time with businesses</span><span><i style="background:var(--must)"></i>Workshop: a Créer Social Session built around AI</span></div>
-<div class="yes"><span>YES</span>Four full days a month, plus one monthly workshop</div>
-
-<div class="journey">
-<div class="step reveal" style="--c:#5FA393"><span class="num">Step 01</span><h3>Find</h3><p>Businesses come in through our community, our partners and our content, with a short intake so we know their biggest time drain before we meet.</p></div>
-<div class="step reveal" style="--c:var(--pink)"><span class="num">Step 02</span><h3>Diagnose</h3><p>A quick audit of how they sell, serve and follow up. We pick the one workflow where AI saves the most hours.</p></div>
-<div class="step reveal" style="--c:var(--tang)"><span class="num">Step 03</span><h3>Build</h3><p>On a build day we make it together: a follow-up system, a content plan, a client tracker, a better website. They leave with it working.</p></div>
-<div class="step reveal" style="--c:var(--must)"><span class="num">Step 04</span><h3>Gather</h3><p>The monthly workshop brings everyone into one room to learn, share wins and meet each other. Community keeps people using what they built.</p></div>
-<div class="step reveal" style="--c:var(--blue)"><span class="num">Step 05</span><h3>Share</h3><p>With permission, their before and after becomes content, which brings in the next business. The loop feeds itself.</p></div>
+<div class="day-tl">
+<div class="slot"><time>9:30</time><b>Welcome and coffee</b><span>We've read their intake, so we start with their real business.</span></div>
+<div class="slot"><time>10:00</time><b>Find the time drain</b><span>The one task eating their week, where AI helps most.</span></div>
+<div class="slot"><time>10:30</time><b>Build it together</b><span>Hands on, in their own accounts, with tools they already have.</span></div>
+<div class="slot"><time>1:00</time><b>Lunch at the table</b><span>Owners trade ideas. This is where community starts.</span></div>
+<div class="slot"><time>2:00</time><b>Test on real work</b><span>Run it on this week's emails, posts or orders.</span></div>
+<div class="slot"><time>3:30</time><b>Leave with a next step</b><span>It's working, and they know what to build next.</span></div>
 </div>
 </div>
 </section>
 
-<!-- FIRST 90 DAYS -->
-<section class="section light">
+<!-- 8. CONTENT STUDIO -->
+<section class="sec">
 <div class="wrap">
-<p class="label on-light">The first 90 days</p>
-<h2 class="h2" style="max-width:13em">Fast start, then a rhythm that lasts.</h2>
-<div class="phases">
-<div class="phase reveal"><span class="when">Month 1</span><h3>Launch the room</h3><ul><li>Open intake to our community and partner brands</li><li>First four build days with our earliest businesses</li><li>Kickoff workshop as a Créer Social Session</li><li>Start documenting on TikTok and Instagram</li></ul></div>
-<div class="phase reveal"><span class="when">Month 2</span><h3>Build the playbook</h3><ul><li>Turn the most requested builds into repeatable templates</li><li>Group build days by industry: beauty, food, wellness, creative services</li><li>Bring in local partners to co-host</li><li>Share first before and after stories</li></ul></div>
-<div class="phase reveal"><span class="when">Month 3</span><h3>Grow the circle</h3><ul><li>Past participants return as peer helpers</li><li>Workshop opens to a waitlist</li><li>Report back to OpenWorks: who we served, what they built, hours saved</li><li>Plan the next quarter together</li></ul></div>
+<div class="sec-head">
+<p class="k">Built-in reach</p>
+<h2 class="ttl">The content makes itself, and it's good.</h2>
+<p class="sub">Vashti already documents her life and business in public. OpenWorks LA slots right into the shows she's already running, so the program reaches the exact owners who need it.</p>
 </div>
-<p class="label on-light" style="margin-top:72px">What every business walks away with</p>
-<div class="takeaway">
-<div class="reveal"><b>One working system</b>Built on the day, in their own accounts, ready to use the next morning.</div>
-<div class="reveal"><b>Hours back</b>A clear before and after on the task that was eating their week.</div>
-<div class="reveal"><b>A next step</b>The one thing to build next, written down, so momentum doesn't stop.</div>
-<div class="reveal"><b>A community</b>A seat at the monthly workshop with other owners doing the same.</div>
+<div class="studio">
+<div class="phones" aria-hidden="true">
+<div class="phone"><div class="scr"><img src="assets/img/table_mustard.jpg" alt=""><div class="tt-top">Following · For You</div><div class="tt-side"><i></i><i></i><i></i></div><div class="tt-ui"><div class="cap">I'm helping LA founders put <mark>AI to work.</mark> Day 1.</div><div class="hd">@hello_vashti</div><div class="ds">BRAND NÜ · New Money</div></div></div></div>
+<div class="phone"><div class="scr"><div class="ig"><div class="ig-h"><img src="assets/logo/icon-512.png" alt=""><div><b>creersocial</b><span>Créer Social · Los Angeles</span></div></div>
+<div class="grid9">
+<div style="background:var(--tea);color:var(--shell)">Build day 01</div><div><img src="assets/img/duo_pink.jpg" alt=""></div><div style="background:var(--pink)">Before and after</div>
+<div><img src="assets/img/entrance_tea.jpg" alt=""></div><div style="background:var(--must)">Workshop is open</div><div><img src="assets/img/gamenight_pink.jpg" alt=""></div>
+<div style="background:var(--tang)">Owner spotlight</div><div><img src="assets/img/table_mustard.jpg" alt=""></div><div style="background:var(--blue)">3 AI tips</div>
+</div></div></div></div>
+</div>
+<div class="series">
+<div class="ep"><span class="chn" style="background:var(--pink)">TT</span><div><b>BRAND NÜ: New Money</b><span>Build day vlogs and real owners' before and afters, inside Vashti's TikTok series.</span></div></div>
+<div class="ep"><span class="chn" style="background:var(--pink)">TT</span><div><b>One-minute AI tips</b><span>The single most useful thing from each build day, taught in under a minute.</span></div></div>
+<div class="ep"><span class="chn" style="background:var(--tea);color:var(--shell)">IG</span><div><b>Owner spotlights</b><span>Each business we help gets their story told well, in front of a local audience.</span></div></div>
+<div class="ep"><span class="chn" style="background:var(--tea);color:var(--shell)">IG</span><div><b>Workshop recaps and invites</b><span>Carousels that fill the next room before we open the doors.</span></div></div>
+<p class="ipnote">Concept mockups. Every story is shared only with the owner's permission.</p>
+</div>
 </div>
 </div>
 </section>
 
-<!-- CONTENT ENGINE -->
-<section class="section">
+<!-- 9. QUOTE -->
+<section class="quote-sec" aria-label="Client words">
 <div class="wrap">
-<p class="label">Built-in reach</p>
-<h2 class="h2" style="max-width:14em">We don't just do the work. We show it.</h2>
-<p class="lede">Vashti already documents her life and her business in public. OpenWorks LA would live naturally inside that content, so the program gets seen by the exact owners who need it.</p>
-<div class="engine">
-<div class="channel ch-tt reveal">
-<span class="where">TikTok · Founder voice</span>
-<div class="handle">@hello_vashti</div>
-<p>Her direct-to-camera series, <b>BRAND NÜ</b>, follows a real transformation across four pillars. AI for small business fits right inside it.</p>
-<div class="pillars"><span>New Body</span><span>New Hobbies</span><span class="hot">New Money</span><span class="hot">New Connections</span></div>
-<ul><li>Build day vlogs</li><li>Before and after stories</li><li>One-minute AI tips</li><li>Workshop recaps</li></ul>
-</div>
-<div class="channel ch-ig reveal">
-<span class="where">Instagram · Agency voice</span>
-<div class="handle">@creersocial</div>
-<p>The agency channel turns each month into a clean record: who we helped, what they built, and when the next workshop opens.</p>
-<p>It also gives the businesses we help something they rarely get: their story told well, in front of a Los Angeles audience that buys local.</p>
-<ul><li>Business spotlights</li><li>Workshop invites</li><li>Recap carousels</li><li>Partner features</li></ul>
-</div>
-</div>
-<div class="loop">
-<div class="reveal"><b>Help</b><span>A business builds something real on a build day.</span></div>
-<div class="reveal"><b>Show</b><span>With their permission, it becomes a story on TikTok and Instagram.</span></div>
-<div class="reveal"><b>Invite</b><span>Owners who see it sign up for the next workshop.</span></div>
-<div class="reveal"><b>Repeat</b><span>The community grows, and so does the program.</span></div>
-</div>
-</div>
-</section>
-
-<!-- TESTIMONIAL -->
-<section class="section blue" aria-label="Client words">
-<div class="wrap">
-<p class="label" style="color:var(--black)">From a client</p>
 <p class="quote">You are legitimately a genius. Thank you so much for using your superpowers on me and my career.</p>
-<p class="cite">Kelly Nicole Wood · Hair stylist and founder, on her media kit website</p>
+<p class="cite">Kelly Nicole Wood<span>Hair stylist and founder, on the media kit website we built for her</span></p>
 </div>
 </section>
 
-<!-- FOUNDER -->
-<section class="section">
+<!-- 10. FOUNDER -->
+<section class="sec">
 <div class="wrap founder">
-<img class="p reveal" src="assets/img/portrait_tea.jpg" alt="Vashti Bryant, founder of Créer Social">
+<img class="p" src="assets/img/portrait_tea.jpg" alt="Vashti Bryant, founder of Créer Social" loading="lazy" style="object-position:50% 30%">
 <div>
-<p class="label">Who you'd be partnering with</p>
-<h2 class="h2">Vashti Bryant, founder and CEO.</h2>
-<p class="lede">Vashti brings together creative vision, business strategy, and deep-rooted understanding of what makes people, brands, and ideas undeniably magnetic.</p>
-<p class="muted" style="margin-top:20px;max-width:34em">She worked at some of the top luxury fashion houses, including Salvatore Ferragamo, then built her own sustainable label with no outside investors and took it to Oprah's Favorite Things. She has spoken on Shopify panels about brand and scaling, works with the US Black Chambers accelerator, and was selected by USC students to develop the first phase of the Créer Social app. Today she advises founders from early stage to companies doing $100M+ a year.</p>
+<p class="k">Who you'd be partnering with</p>
+<h2 class="ttl">Vashti Bryant</h2>
+<p class="sub" style="font-size:20px;color:var(--dim);margin-top:22px">Vashti brings together creative vision, business strategy, and deep-rooted understanding of what makes people, brands, and ideas undeniably magnetic.</p>
+<p style="color:var(--dim);margin-top:20px;max-width:36em">She worked at some of the top luxury fashion houses, including Salvatore Ferragamo, then built her own sustainable label with no outside investors and took it to Oprah's Favorite Things. She has spoken on Shopify panels about brand and scaling, works with the US Black Chambers accelerator, and was selected by USC students to develop the first phase of the Créer Social app. Today she advises founders from early stage to companies doing $100M+ a year.</p>
 <div class="logos" aria-label="Featured in and partnered with">
-<img src="assets/logos/oprah.svg" alt="Oprah's Favorite Things"><img src="assets/logos/cosmopolitan.svg" alt="Cosmopolitan"><img src="assets/logos/teen-vogue.svg" alt="Teen Vogue"><img src="assets/logos/refinery29.svg" alt="Refinery29"><img src="assets/logos/sxsw.svg" alt="SXSW"><img src="assets/logos/beautycon.svg" alt="Beautycon"><img src="assets/logos/us-black-chambers.svg" alt="US Black Chambers"><img src="assets/logos/usc.svg" alt="USC"><img src="assets/logos/everytable.svg" alt="Everytable"><img src="assets/logos/era-coalition.svg" alt="ERA Coalition">
+<img src="assets/logos/oprah.svg" alt="The Oprah Magazine"><img src="assets/logos/cosmopolitan.svg" alt="Cosmopolitan"><img src="assets/logos/teen-vogue.svg" alt="Teen Vogue"><img class="tall" src="assets/logos/refinery29.svg" alt="Refinery29"><img src="assets/logos/sxsw.svg" alt="SXSW"><img src="assets/logos/beautycon.svg" alt="Beautycon"><img class="tall" src="assets/logos/us-black-chambers.svg" alt="US Black Chambers"><img class="tall" src="assets/logos/usc.svg" alt="USC"><img class="tall" src="assets/logos/everytable.svg" alt="Everytable"><img class="tall" src="assets/logos/era-coalition.svg" alt="ERA Coalition">
 </div>
 </div>
 </div>
 </section>
 
-<!-- CLOSE -->
+<!-- 11. CLOSE -->
 <section class="close">
 <div class="wrap">
-<p class="label" style="color:var(--black)">Créer Social × OpenWorks Los Angeles</p>
-<h2>Let's build LA's AI room.</h2>
-<p style="font-size:22px;max-width:30em;margin:32px 0 0">The community is here, the systems are built and the calendar is open. We would love to bring OpenWorks to the founders and small businesses we already serve.</p>
-<div class="btns"><a class="btn dark" href="mailto:contact@creersocial.com?subject=Cr%C3%A9er%20Social%20%C3%97%20OpenWorks">contact@creersocial.com</a><a class="btn dark-ghost" href="index.html">Visit creersocial.com</a></div>
+<h2>Ready when you are.</h2>
+<p>The community is here, the systems are running and the content is already on air. Let's bring OpenWorks to the LA founders who need it most.</p>
+<div class="btns"><a class="btn dark" href="mailto:contact@creersocial.com?subject=Cr%C3%A9er%20Social%20%C3%97%20OpenWorks">Email Vashti</a><a class="btn dark-ghost" href="index.html">Visit creersocial.com</a></div>
 </div>
 </section>
 
@@ -419,17 +711,64 @@
 (function(){
 document.documentElement.classList.add('js');
 var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
-var arches=document.querySelectorAll('.arch');
-arches.forEach(function(a,i){setTimeout(function(){a.classList.add('up')},reduce?0:150+i*160)});
-function count(el){
-  var to=+el.getAttribute('data-count');if(reduce||to<5){el.textContent=to;return}
-  var t0=null,d=1200;
-  function f(t){if(!t0)t0=t;var p=Math.min((t-t0)/d,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)}
-  el.textContent='0';requestAnimationFrame(f);
+function onView(el,cb,th){if(!el)return;if(!('IntersectionObserver' in window)){cb();return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cb();io.disconnect()}})},{threshold:th||.25});io.observe(el)}
+
+/* ecosystem wires */
+var eco=document.getElementById('eco'),svg=eco.querySelector('svg'),core=eco.querySelector('.core');
+function wires(){
+  if(getComputedStyle(svg).display==='none')return;
+  var r=eco.getBoundingClientRect(),c=core.getBoundingClientRect(),cx=c.left+c.width/2-r.left,cy=c.top+c.height/2-r.top,h='';
+  eco.querySelectorAll('.node').forEach(function(n){var b=n.getBoundingClientRect(),x=b.left+b.width/2-r.left,y=b.top+b.height/2-r.top;
+    h+='<path stroke="'+n.dataset.c+'" stroke-opacity=".6" d="M'+cx+' '+cy+' C '+cx+' '+((cy+y)/2)+', '+x+' '+((cy+y)/2)+', '+x+' '+y+'"/>'});
+  svg.innerHTML=h;
 }
-if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in-view')});return}
-var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in-view');e.target.querySelectorAll('[data-count]').forEach(count);io.unobserve(e.target)}})},{threshold:.15});
-document.querySelectorAll('.reveal').forEach(function(e){io.observe(e)});
+wires();window.addEventListener('resize',wires);
+if(document.fonts)document.fonts.ready.then(wires);
+setTimeout(function(){eco.classList.add('on')},reduce?0:200);
+eco.querySelectorAll('.node,.core').forEach(function(n,i){n.style.transitionDelay=(reduce?0:i*90)+'ms'});
+
+/* fit plugs */
+var fit=document.getElementById('fit');
+fit.querySelectorAll('.plug').forEach(function(p,i){p.style.setProperty('transition-delay',(i*120)+'ms')});
+onView(fit,function(){fit.classList.add('on')},.2);
+
+/* counters */
+document.querySelectorAll('[data-count]').forEach(function(el){
+  onView(el,function(){var to=+el.dataset.count;if(reduce)return;var t0=null;
+    function f(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)))+(el.closest('.nums')&&to===300?'+':'');if(p<1)requestAnimationFrame(f)}
+    requestAnimationFrame(f)},.6);
+});
+
+/* talk to type demo */
+var vt=document.getElementById('vtext'),mail=document.getElementById('mail'),box=document.getElementById('t2t');
+var voice="Just met Dana at the pop-up. She makes candles and wants to get into local boutiques. Follow up Thursday and send her the intake.";
+var email="Hi Dana,\nSo good meeting you at the pop-up today. Your candles stood out.\nHere is our intake so we can map a path into local boutiques together. Want to talk Thursday?\nVashti";
+var timer=[];
+function clear(){timer.forEach(clearTimeout);timer=[]}
+function type(el,txt,speed,done){var i=0;(function s(){el.textContent=txt.slice(0,i);i+=2;if(i<=txt.length+1)timer.push(setTimeout(s,speed));else done&&done()})()}
+function runDemo(){
+  clear();vt.textContent='';mail.textContent='';['o1','o2','o3'].forEach(function(id){document.getElementById(id).classList.remove('show')});
+  if(reduce){vt.textContent=voice;mail.textContent=email;['o1','o2','o3'].forEach(function(id){document.getElementById(id).classList.add('show')});return}
+  box.classList.add('playing');
+  type(vt,voice,28,function(){box.classList.remove('playing');document.getElementById('o1').classList.add('show');
+    type(mail,email,18,function(){timer.push(setTimeout(function(){document.getElementById('o2').classList.add('show')},250));timer.push(setTimeout(function(){document.getElementById('o3').classList.add('show')},650))})});
+}
+document.getElementById('play').addEventListener('click',runDemo);
+onView(document.getElementById('lab'),runDemo,.3);
+
+/* tabs */
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+function select(t){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-selected',on);x.tabIndex=on?0:-1;var p=document.getElementById(x.getAttribute('aria-controls'));p.hidden=!on;p.classList.remove('run');});
+  var p=document.getElementById(t.getAttribute('aria-controls'));requestAnimationFrame(function(){requestAnimationFrame(function(){p.classList.add('run')})});
+  if(t.id==='t-voice')runDemo();}
+tabs.forEach(function(t,i){t.addEventListener('click',function(){select(t)});
+  t.addEventListener('keydown',function(e){var k=e.key,n=null;if(k==='ArrowRight')n=tabs[(i+1)%tabs.length];if(k==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];if(n){e.preventDefault();n.focus();select(n)}})});
+
+/* doors */
+var doors=[].slice.call(document.querySelectorAll('.door'));
+doors.forEach(function(d){d.addEventListener('click',function(){var o=!d.classList.contains('open');d.classList.toggle('open',o);d.setAttribute('aria-expanded',o)})});
+onView(document.getElementById('doors'),function(){doors.forEach(function(d,i){setTimeout(function(){d.classList.add('open');d.setAttribute('aria-expanded','true')},reduce?0:300+i*260)})},.4);
 })();
 </script>
 </body>
