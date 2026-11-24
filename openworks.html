@@ -37,34 +37,45 @@
 @media (max-width:640px){.ow-x{display:none}}
 
 /* HERO: ecosystem */
-.hero{padding:72px 0 40px}
-.hero h1{font-family:var(--display);font-weight:900;font-size:clamp(44px,7.2vw,112px);line-height:.92;letter-spacing:-.055em;margin:0;max-width:11.5em}
+.hero{position:relative;padding:96px 0 120px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:radial-gradient(rgba(234,228,218,.10) 1px,transparent 1px);background-size:26px 26px;-webkit-mask-image:radial-gradient(80% 70% at 70% 40%,#000 30%,transparent 80%);mask-image:radial-gradient(80% 70% at 70% 40%,#000 30%,transparent 80%)}
+.hero-bg::after{content:"";position:absolute;right:-10%;top:-20%;width:60%;height:120%;background:radial-gradient(closest-side,rgba(176,196,222,.16),transparent);filter:blur(10px)}
+.hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.hero h1{font-family:var(--display);font-weight:900;font-size:clamp(42px,5.6vw,88px);line-height:.95;letter-spacing:-.05em;margin:0}
+.hero h1 .lv{display:block;background:linear-gradient(90deg,var(--blue),var(--pink) 55%,var(--must));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .btns{margin-top:36px}
+.console{background:rgba(38,38,36,.85);border:1px solid var(--line);border-radius:22px;box-shadow:0 40px 100px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.04);overflow:hidden;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.c-bar{display:flex;align-items:center;gap:7px;padding:14px 18px;border-bottom:1px solid var(--line)}
+.c-bar i{width:10px;height:10px;border-radius:50%;background:#3d3c38}
+.c-bar span{margin-left:10px;font-family:var(--display);font-weight:600;font-size:12px;color:var(--faint)}
+.c-body{padding:10px 18px 20px}
+.c-row{display:grid;grid-template-columns:12px 1fr auto;gap:16px;align-items:center;padding:14px 4px;border-bottom:1px solid rgba(234,228,218,.08)}
+.c-sw{width:12px;height:12px;border-radius:4px;background:var(--c)}
+.c-name{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em;line-height:1.2}
+.c-name small{display:block;font-family:var(--body);font-weight:400;font-size:14px;color:var(--faint);letter-spacing:0;margin-top:3px}
+.c-st{font-family:var(--display);font-weight:600;font-size:12px;padding:6px 11px;border-radius:999px;color:var(--live);background:rgba(123,211,137,.12);display:inline-flex;align-items:center;gap:7px}
+.c-st::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.c-foot{padding:18px 4px 0}
+.c-prog{height:6px;border-radius:999px;background:rgba(234,228,218,.1);overflow:hidden}
+.c-prog i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--tea),var(--pink),var(--tang),var(--must),var(--blue));border-radius:999px}
+.c-msg{display:flex;justify-content:space-between;align-items:center;margin-top:12px;font-family:var(--display);font-size:13px}
+.c-count{color:var(--faint);font-weight:600}
+.c-ready{color:var(--shell);font-weight:800;font-size:15px}
+/* check animation */
+.js .console.run .c-row{opacity:.35}
+.js .console.run .c-row .c-st{color:var(--faint);background:rgba(234,228,218,.06)}
+.js .console.run .c-row .c-st::before{animation:blink .6s infinite}
+.js .console.run .c-row.ok{opacity:1;transition:opacity .3s}
+.js .console.run .c-row.ok .c-st{color:var(--live);background:rgba(123,211,137,.12)}
+.js .console.run .c-row.ok .c-st::before{animation:none}
+.js .console.run .c-prog i{width:var(--p,0%);transition:width .45s ease}
+.js .console.run .c-ready{opacity:0;transition:opacity .4s}
+.js .console.run.done .c-ready{opacity:1}
+@keyframes blink{50%{opacity:.2}}
 .hero .sub{font-size:21px;line-height:1.55;color:var(--dim);max-width:34em;margin:30px 0 0}
 .live-pill{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:600;font-size:13px;border:1px solid var(--line);border-radius:999px;padding:8px 16px 8px 12px;margin-bottom:28px}
 .dot{width:9px;height:9px;border-radius:50%;background:var(--live);box-shadow:0 0 0 0 rgba(123,211,137,.6);animation:pulse 2.4s infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(123,211,137,.55)}70%{box-shadow:0 0 0 10px rgba(123,211,137,0)}100%{box-shadow:0 0 0 0 rgba(123,211,137,0)}}
-
-.eco{position:relative;margin-top:72px;display:grid;grid-template-columns:1fr 1.1fr 1fr;grid-template-rows:auto auto auto;gap:28px 40px;align-items:center}
-.eco svg.wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-.eco svg path{fill:none;stroke-width:1.5;stroke-dasharray:5 7}
-.node{position:relative;z-index:1;background:var(--ink2);border:1px solid var(--line);border-radius:18px;padding:22px 24px;text-align:left}
-.node .nt{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
-.node h3{font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:-.02em;margin:0}
-.node p{margin:0;font-size:16px;line-height:1.5;color:var(--dim)}
-.node .status{display:inline-flex;align-items:center;gap:7px;font-family:var(--display);font-weight:600;font-size:12px;color:var(--live)}
-.node .status .dot{width:7px;height:7px}
-.node .bar{position:absolute;left:24px;right:24px;top:0;height:4px;border-radius:0 0 4px 4px}
-.n1{grid-column:1;grid-row:1}.n2{grid-column:3;grid-row:1}.n3{grid-column:1;grid-row:3}.n4{grid-column:3;grid-row:3}.n5{grid-column:2;grid-row:3}.n6{grid-column:2;grid-row:1}
-.core{grid-column:2;grid-row:2;position:relative;z-index:1;justify-self:center;width:min(100%,360px);aspect-ratio:1;border-radius:50%;background:var(--blue);color:var(--black);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px}
-.core::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px dashed rgba(176,196,222,.5);animation:spin 60s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.core small{font-family:var(--display);font-weight:600;font-size:13px}
-.core strong{font-family:var(--display);font-weight:900;font-size:clamp(30px,3vw,42px);letter-spacing:-.04em;line-height:.95;margin:10px 0}
-.core span{font-size:15px;line-height:1.4;max-width:15em}
-.js .eco .node,.js .eco .core{opacity:0;transform:translateY(14px) scale(.98);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
-.js .eco.on .node,.js .eco.on .core{opacity:1;transform:none}
-.js .eco svg path{stroke-dashoffset:400;transition:stroke-dashoffset 1.6s ease .5s}
-.js .eco.on svg path{stroke-dashoffset:0}
 
 /* Mission */
 .mission{background:var(--shell);color:var(--black)}
@@ -328,11 +339,8 @@
 .close p{font-size:22px;max-width:30em;margin:34px 0 0;line-height:1.5}
 
 @media (max-width:1040px){
-  .eco{grid-template-columns:1fr 1fr;gap:16px}
-  .eco svg.wires{display:none}
-  .core{grid-column:1/-1;grid-row:1;width:100%;aspect-ratio:auto;border-radius:28px;padding:34px}
-  .core::before{display:none}
-  .n1,.n2,.n3,.n4,.n5,.n6{grid-column:auto;grid-row:auto}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero{padding:64px 0 88px}
   .mission-grid,.people,.founder{grid-template-columns:1fr}
   .mission-photo{max-width:420px}
   .panel{grid-template-columns:1fr}
@@ -349,7 +357,6 @@
 }
 @media (max-width:640px){
   .sec{padding:84px 0}
-  .eco{grid-template-columns:1fr}
   .fit-row,.fit-head{grid-template-columns:1fr}
   .fit-head span:nth-child(2),.fit-head span:nth-child(3){display:none}
   .plug{display:none}
@@ -374,8 +381,45 @@
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
-  .js .eco .node,.js .eco .core{opacity:1;transform:none}
 }
+
+.req{display:inline-flex;align-items:center;flex-wrap:wrap;gap:8px 10px;margin:0 0 22px;padding:7px 14px 7px 7px;border-radius:999px;border:1px solid var(--line);font-family:var(--display);font-size:13px;font-weight:600;color:var(--faint)}
+.req .ck{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--live);color:var(--black);font-size:12px;font-weight:900}
+.req b{color:var(--shell);font-weight:700}
+.light .req,.mission .req{border-color:rgba(29,29,27,.18);color:#55524b}
+.light .req b,.mission .req b{color:var(--black)}
+.light .req .ck,.mission .req .ck{background:var(--tea);color:var(--shell)}
+.planner-sec{background:radial-gradient(70% 60% at 90% 10%,rgba(234,167,199,.10),transparent 60%),var(--black)}
+.planner{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;margin-top:56px;align-items:start}
+.pl{font-family:var(--display);font-weight:600;font-size:14px;color:var(--faint);margin:0 0 12px}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.opts button{appearance:none;cursor:pointer;font-family:var(--display);font-weight:600;font-size:15px;padding:12px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--shell);transition:background .2s,color .2s,border-color .2s}
+.opts button:hover{border-color:var(--shell)}
+.opts button[aria-checked="true"]{background:var(--shell);color:var(--black);border-color:var(--shell)}
+.plan-out{background:var(--ink2);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.45)}
+.po-bar{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);font-family:var(--display);font-weight:600;font-size:13px;color:var(--faint)}
+.po-free{color:var(--live);background:rgba(123,211,137,.12);padding:6px 11px;border-radius:999px}
+.po-body{padding:28px}
+.po-body h3{font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.03em;line-height:1.1;margin:0}
+.po-meta{margin:8px 0 22px;color:var(--faint);font-size:15px}
+.po-body ol{list-style:none;counter-reset:st;margin:0 0 24px;padding:0;display:grid;gap:10px}
+.po-body li{counter-increment:st;display:grid;grid-template-columns:30px 1fr;gap:12px;align-items:start;font-size:17px;line-height:1.45;padding:12px 14px;border-radius:14px;background:rgba(234,228,218,.05);animation:fadein .4s ease both}
+.po-body li::before{content:counter(st);width:26px;height:26px;border-radius:50%;background:var(--pink);color:var(--black);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:13px}
+.po-body li:nth-child(2){animation-delay:.08s}.po-body li:nth-child(3){animation-delay:.16s}
+@keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.po-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;border-top:1px solid var(--line);padding-top:20px}
+.po-l{display:block;font-family:var(--display);font-weight:600;font-size:13px;color:var(--blue);margin-bottom:6px}
+.po-grid span:not(.po-l){font-size:16px;line-height:1.45}
+@media (max-width:1040px){.planner{grid-template-columns:1fr}}
+@media (max-width:640px){.po-grid{grid-template-columns:1fr}.po-body{padding:22px}.opts button{font-size:14px;padding:11px 15px}}
+
+.first{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;margin-top:20px;padding:30px;border-radius:22px;background:#fff;border:1px solid rgba(29,29,27,.12)}
+.first .fl{display:block;font-family:var(--display);font-weight:600;font-size:13px;color:var(--tea);margin-bottom:8px}
+.first b{font-family:var(--display);font-weight:800;font-size:24px;letter-spacing:-.02em;line-height:1.15}
+.first p{margin:0;font-size:17px;line-height:1.55;color:#3b3a36}
+.qreq{border-color:rgba(29,29,27,.25)!important;color:#3b3a36!important;margin-bottom:28px}
+.qreq b{color:var(--black)!important}.qreq .ck{background:var(--black)!important;color:var(--pink)!important}
+@media (max-width:640px){.first{grid-template-columns:1fr;padding:24px}}
 </style>
 </head>
 <body>
@@ -389,22 +433,27 @@
 
 <main id="main">
 
-<!-- 1. HERO: the ecosystem -->
+<!-- 1. HERO: live system check -->
 <section class="hero">
-<div class="wrap">
-<span class="live-pill"><span class="dot" aria-hidden="true"></span>Running today in Los Angeles</span>
-<h1>A turnkey AI ecosystem for LA's founders. Already live.</h1>
-<p class="sub">A real community, systems built with AI and a content engine, all running today. Plug OpenWorks in, and LA founders get help right away.</p>
-
-<div class="eco" id="eco" aria-label="The Créer Social ecosystem, ready for OpenWorks">
-<svg class="wires" aria-hidden="true"></svg>
-<div class="node n1" data-c="#5FA393"><div class="nt"><h3>Community</h3><span class="status"><span class="dot"></span>Live</span></div><p>300+ people, met in person.</p></div>
-<div class="node n6" data-c="#EAA7C7"><div class="nt"><h3>The Sessions</h3><span class="status"><span class="dot"></span>Live</span></div><p>Sold out in 24 to 48 hours.</p></div>
-<div class="node n2" data-c="#ED773C"><div class="nt"><h3>Systems</h3><span class="status"><span class="dot"></span>Live</span></div><p>Built with AI, used daily.</p></div>
-<div class="core"><small>Plugs in here</small><strong>OpenWorks LA</strong><span>Four build days and one workshop, every month</span></div>
-<div class="node n3" data-c="#EAC119"><div class="nt"><h3>Content</h3><span class="status"><span class="dot"></span>Live</span></div><p>TikTok and Instagram, posting now.</p></div>
-<div class="node n5" data-c="#B0C4DE"><div class="nt"><h3>Brand partners</h3><span class="status"><span class="dot"></span>Live</span></div><p>Brands already at our table.</p></div>
-<div class="node n4" data-c="#EAE4DA"><div class="nt"><h3>The firm</h3><span class="status"><span class="dot"></span>Live</span></div><p>Advisory team running it all.</p></div>
+<div class="hero-bg" aria-hidden="true"></div>
+<div class="wrap hero-grid">
+<div class="hero-copy">
+<span class="live-pill"><span class="dot" aria-hidden="true"></span>Partner application · Los Angeles</span>
+<h1>Everything OpenWorks asks for. <span class="lv">Already running in LA.</span></h1>
+<p class="sub">Créer Social is a turnkey ecosystem: a real community, systems built with AI and content that teaches. Plug OpenWorks in and Los Angeles small businesses get free, hands-on AI help from day one.</p>
+<div class="btns"><a class="btn" href="#try">Try the build day planner</a><a class="btn ghost" href="mailto:contact@creersocial.com?subject=Cr%C3%A9er%20Social%20%C3%97%20OpenWorks">Let's talk</a></div>
+</div>
+<div class="console" id="console" role="img" aria-label="Partner fit check: Créer Social meets all six things OpenWorks asks of a partner.">
+<div class="c-bar"><i></i><i></i><i></i><span>openworks-la · partner fit check</span></div>
+<div class="c-body">
+<div class="c-row" style="--c:#5FA393"><span class="c-sw"></span><span class="c-name">Technically capable<small>We build practical AI tools for our firm and clients every week</small></span><span class="c-st">Ready</span></div>
+<div class="c-row" style="--c:var(--pink)"><span class="c-sw"></span><span class="c-name">Collaborative and practical<small>We listen first, then build what owners actually need</small></span><span class="c-st">Ready</span></div>
+<div class="c-row" style="--c:var(--tang)"><span class="c-sw"></span><span class="c-name">Community-oriented, here to give back<small>300+ local community, built in person</small></span><span class="c-st">Ready</span></div>
+<div class="c-row" style="--c:var(--must)"><span class="c-sw"></span><span class="c-name">Days each month with local businesses<small>Four full days, on projects owners choose</small></span><span class="c-st">Ready</span></div>
+<div class="c-row" style="--c:var(--blue)"><span class="c-sw"></span><span class="c-name">A monthly workshop<small>The Créer Social Sessions, sold out in 24 to 48 hrs</small></span><span class="c-st">Ready</span></div>
+<div class="c-row" style="--c:var(--shell)"><span class="c-sw"></span><span class="c-name">Practical AI skills for owners and employees<small>Every build ends with the owner running it alone</small></span><span class="c-st">Ready</span></div>
+<div class="c-foot"><div class="c-prog"><i></i></div><div class="c-msg"><span class="c-count">6 of 6 ready</span><b class="c-ready">Strong fit. Ready to launch in LA</b></div></div>
+</div>
 </div>
 </div>
 </section>
@@ -413,7 +462,7 @@
 <section class="sec mission">
 <div class="wrap mission-grid">
 <div>
-<p class="k">Why this matters to me</p>
+<p class="req"><span class="ck" aria-hidden="true">✓</span><span>OpenWorks asks for</span><b>people motivated to give back</b></p>
 <p class="letter">Helping people is the center of everything I do. I see the gold in people and their ideas, and I can't unsee it.</p>
 <p class="letter">Some of the founders who come to Créer Social can't afford our services yet. They're often the ones with the most heart and the least support. OpenWorks is how I get to help them anyway, with the same systems our paying clients get.</p>
 <div class="sig"><img src="assets/img/hi-im-vashti.png" alt="Hi, I'm Vashti"><span>Vashti, founder and CEO</span></div>
@@ -425,29 +474,45 @@
 </div>
 </section>
 
-<!-- 3. THE PEOPLE -->
-<section class="sec">
+<!-- 2b. PLANNER -->
+<section class="sec planner-sec" id="try">
 <div class="wrap">
 <div class="sec-head">
-<p class="k">Our people are your people</p>
-<h2 class="ttl">A real community, full of exactly who OpenWorks wants to reach.</h2>
-<p class="sub">Not followers. People who show up, sit at the table and come back.</p>
+<p class="req"><span class="ck" aria-hidden="true">✓</span><span>OpenWorks asks for</span><b>projects owners choose</b></p>
+<h2 class="ttl">Owners choose the project. We build it together.</h2>
+<p class="sub">Pick a business and a goal to see how we would spend a build day with them, using tools they already have. Try it.</p>
 </div>
-<div class="people">
-<div class="who" aria-label="Who is in our community">
-<span>Founders</span><span>Beauty pros</span><span>Shop owners</span><span>Wellness brands</span><span>Creatives</span><span>Food makers</span>
+<div class="planner">
+<div class="pick">
+<p class="pl">The business</p>
+<div class="opts" role="radiogroup" aria-label="Business type" id="biz">
+<button type="button" role="radio" aria-checked="true" data-v="salon">Salon or beauty studio</button>
+<button type="button" role="radio" aria-checked="false" data-v="food">Restaurant or café</button>
+<button type="button" role="radio" aria-checked="false" data-v="shop">Local retailer</button>
+<button type="button" role="radio" aria-checked="false" data-v="crea">Service firm</button>
+<button type="button" role="radio" aria-checked="false" data-v="well">Small maker</button>
 </div>
-<div class="nums">
-<div><b data-count="300">300</b><span>community members and growing, met in person</span></div>
-<div><b data-count="41">41</b><span>RSVPs plus a waitlist in 48 hours</span></div>
-<div><b>24 to 48</b><span>hours for two Sessions to sell out</span></div>
-<div><b>100%</b><span>referral based. Trust is how people find us.</span></div>
+<p class="pl">The project they choose</p>
+<div class="opts" role="radiogroup" aria-label="Project" id="proj">
+<button type="button" role="radio" aria-checked="true" data-v="follow">Never miss a follow-up</button>
+<button type="button" role="radio" aria-checked="false" data-v="content">Post content consistently</button>
+<button type="button" role="radio" aria-checked="false" data-v="crm">Track customers in one place</button>
+<button type="button" role="radio" aria-checked="false" data-v="site">Get a simple website</button>
+<button type="button" role="radio" aria-checked="false" data-v="quote">Send quotes faster</button>
 </div>
 </div>
-<div class="strip">
-<figure><img src="assets/openworks/crowd.jpg" alt="Guests greeting each other at a Créer Social gathering" loading="lazy"><figcaption>Where people meet</figcaption></figure>
-<figure><img src="assets/img/table_mustard.jpg" alt="Owners at a long table at a Créer Social Session" loading="lazy"><figcaption>The Sessions</figcaption></figure>
-<figure><img src="assets/openworks/creators.jpg" alt="A small group of creators together" loading="lazy"><figcaption>A small group of creators</figcaption></figure>
+<div class="plan-out" aria-live="polite">
+<div class="po-bar"><span>Build day plan</span><span class="po-free">Free through OpenWorks</span></div>
+<div class="po-body">
+<h3 id="po-title"></h3>
+<p class="po-meta" id="po-meta"></p>
+<ol id="po-steps"></ol>
+<div class="po-grid">
+<div><span class="po-l">Tools</span><span id="po-tools"></span></div>
+<div><span class="po-l">Skill they keep</span><span id="po-skill"></span></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
@@ -456,8 +521,8 @@
 <section class="sec lab" id="lab">
 <div class="wrap">
 <div class="sec-head">
-<p class="k">The build lab</p>
-<h2 class="ttl">See it working.</h2>
+<p class="req"><span class="ck" aria-hidden="true">✓</span><span>OpenWorks asks for</span><b>technical skills to build practical solutions</b></p>
+<h2 class="ttl">We already build this. See it working.</h2>
 <p class="sub">Real systems from inside Créer Social, built with AI and used every week. Tap through.</p>
 </div>
 
@@ -590,13 +655,40 @@
 </div>
 </section>
 
+<!-- 3. THE PEOPLE -->
+<section class="sec">
+<div class="wrap">
+<div class="sec-head">
+<p class="req"><span class="ck" aria-hidden="true">✓</span><span>OpenWorks asks for</span><b>a monthly workshop in your community</b></p>
+<h2 class="ttl">A workshop room people already line up for.</h2>
+<p class="sub">The Créer Social Sessions are our proven format, filled with exactly the owners OpenWorks wants to reach.</p>
+</div>
+<div class="people">
+<div class="who" aria-label="Who is in our community">
+<span>Founders</span><span>Beauty pros</span><span>Shop owners</span><span>Wellness brands</span><span>Creatives</span><span>Food makers</span>
+</div>
+<div class="nums">
+<div><b data-count="300">300</b><span>community members and growing, met in person</span></div>
+<div><b data-count="41">41</b><span>RSVPs plus a waitlist in 48 hours</span></div>
+<div><b>24 to 48</b><span>hours for two Sessions to sell out</span></div>
+<div><b>100%</b><span>referral based. Trust is how people find us.</span></div>
+</div>
+</div>
+<div class="strip">
+<figure><img src="assets/openworks/crowd.jpg" alt="Guests greeting each other at a Créer Social gathering" loading="lazy"><figcaption>Where people meet</figcaption></figure>
+<figure><img src="assets/img/table_mustard.jpg" alt="Owners at a long table at a Créer Social Session" loading="lazy"><figcaption>The Sessions</figcaption></figure>
+<figure><img src="assets/openworks/creators.jpg" alt="A small group of creators together" loading="lazy"><figcaption>A small group of creators</figcaption></figure>
+</div>
+</div>
+</section>
+
 <!-- 6. THE MONTH -->
 <section class="sec light">
 <div class="wrap">
 <div class="sec-head">
-<p class="k">The partnership plan</p>
-<h2 class="ttl">Four doors a month. One big room.</h2>
-<p class="sub">Four build days and one community workshop, every month.</p>
+<p class="req"><span class="ck" aria-hidden="true">✓</span><span>OpenWorks asks for</span><b>days each month with local businesses</b></p>
+<h2 class="ttl">Four build days. One workshop. Every month.</h2>
+<p class="sub">Here is how a month would run.</p>
 </div>
 <div class="plan">
 <div class="pc" style="--c:var(--tea);--fc:var(--shell)"><span class="wk">Week 1</span><b>One-on-one builds</b><span>Owners bring their biggest time drain and leave with it fixed.</span></div>
@@ -604,6 +696,10 @@
 <div class="pc" style="--c:var(--tang)"><span class="wk">Week 3</span><b>Office hours</b><span>Fixes and next builds for returning owners.</span></div>
 <div class="pc" style="--c:var(--blue)"><span class="wk">Week 4</span><b>Build and share</b><span>Finish builds and, with permission, tell their stories.</span></div>
 <div class="pc big" style="--c:var(--must)"><span class="wk">Every month</span><b>The community workshop</b><span>A Créer Social Session built around AI. Everyone in one room.</span></div>
+</div>
+<div class="first">
+<div><span class="fl">Our first community day</span><b>Beauty and wellness owners from our community, at a Créer Social Session.</b></div>
+<p>Salon owners, stylists and wellness studios each choose one project: client follow-ups, booking content or a simple tracker. They build it with us that day, then run it on their own.</p>
 </div>
 <div class="commit"><b>Yes.</b><span>Four full days a month plus one monthly workshop, run through Créer Social, starting as soon as you are.</span></div>
 </div>
@@ -613,9 +709,9 @@
 <section class="sec">
 <div class="wrap">
 <div class="sec-head">
-<p class="k">Built-in reach</p>
-<h2 class="ttl">Content that teaches, not just posts.</h2>
-<p class="sub">Every build day becomes a lesson other owners can learn from, shared on the channels Vashti already runs.</p>
+<p class="req"><span class="ck" aria-hidden="true">✓</span><span>OpenWorks asks for</span><b>practical AI skills for owners and employees</b></p>
+<h2 class="ttl">Skills that stay after we leave.</h2>
+<p class="sub">Every build day ends with the owner running it themselves. Then the lesson goes out on our channels, so more owners and their staff can learn it too.</p>
 </div>
 <div class="chan2">
 <a class="ch ch-tt" href="https://www.tiktok.com/@hello_vashti" target="_blank" rel="noopener">
@@ -640,6 +736,7 @@
 <!-- 9. QUOTE -->
 <section class="quote-sec" aria-label="Client words">
 <div class="wrap">
+<p class="req qreq"><span class="ck" aria-hidden="true">✓</span><span>OpenWorks asks for</span><b>people who listen first</b></p>
 <p class="quote">You are legitimately a genius. Thank you so much for using your superpowers on me and my career.</p>
 <p class="cite">Kelly Nicole Wood<span>Hair stylist and founder, on the media kit website we built for her</span></p>
 </div>
@@ -650,10 +747,11 @@
 <div class="wrap founder">
 <img class="p" src="assets/img/portrait_tea.jpg" alt="Vashti, founder of Créer Social" loading="lazy" style="object-position:50% 30%">
 <div>
-<p class="k">Who you'd be partnering with</p>
+<p class="req"><span class="ck" aria-hidden="true">✓</span><span>OpenWorks asks for</span><b>small teams, alongside client work</b></p>
 <h2 class="ttl">Meet Vashti.</h2>
 <p class="sub" style="font-size:20px;color:var(--dim);margin-top:22px">Vashti brings together creative vision, business strategy, and deep-rooted understanding of what makes people, brands, and ideas undeniably magnetic.</p>
 <p style="color:var(--dim);margin-top:20px;max-width:34em">She worked at top luxury fashion houses including Salvatore Ferragamo, then built her own label with no outside investors and took it to Oprah's Favorite Things. Today she advises founders from early stage to $100M+ companies.</p>
+<p style="color:var(--dim);margin-top:16px;max-width:34em">Créer Social is a small, hands-on team that builds with AI for clients every week. OpenWorks runs alongside that client work, not instead of it.</p>
 <div class="logos" aria-label="Featured in and partnered with">
 <img src="assets/logos/oprah.svg" alt="The Oprah Magazine"><img src="assets/logos/cosmopolitan.svg" alt="Cosmopolitan"><img src="assets/logos/teen-vogue.svg" alt="Teen Vogue"><img class="tall" src="assets/logos/refinery29.svg" alt="Refinery29"><img src="assets/logos/sxsw.svg" alt="SXSW"><img src="assets/logos/beautycon.svg" alt="Beautycon"><img class="tall" src="assets/logos/us-black-chambers.svg" alt="US Black Chambers"><img class="tall" src="assets/logos/usc.svg" alt="USC"><img class="tall" src="assets/logos/everytable.svg" alt="Everytable"><img class="tall" src="assets/logos/era-coalition.svg" alt="ERA Coalition">
 </div>
@@ -687,20 +785,37 @@ var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').mat
 function onView(el,cb,th){if(!el)return;if(!('IntersectionObserver' in window)){cb();return}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){cb();io.disconnect()}})},{threshold:th||.25});io.observe(el)}
 
-/* ecosystem wires */
-var eco=document.getElementById('eco'),svg=eco.querySelector('svg'),core=eco.querySelector('.core');
-function wires(){
-  if(getComputedStyle(svg).display==='none')return;
-  var r=eco.getBoundingClientRect(),c=core.getBoundingClientRect(),cx=c.left+c.width/2-r.left,cy=c.top+c.height/2-r.top,h='';
-  eco.querySelectorAll('.node').forEach(function(n){var b=n.getBoundingClientRect(),x=b.left+b.width/2-r.left,y=b.top+b.height/2-r.top;
-    h+='<path stroke="'+n.dataset.c+'" stroke-opacity=".6" d="M'+cx+' '+cy+' C '+cx+' '+((cy+y)/2)+', '+x+' '+((cy+y)/2)+', '+x+' '+y+'"/>'});
-  svg.innerHTML=h;
+/* readiness check */
+var con=document.getElementById('console');
+if(con&&!reduce){
+  var rows=[].slice.call(con.querySelectorAll('.c-row')),cnt=con.querySelector('.c-count'),k=0;
+  con.classList.add('run');cnt.textContent='Checking 0 of 6';
+  rows.forEach(function(r){r.querySelector('.c-st').textContent='Checking'});
+  (function step(){if(k>=rows.length){con.classList.add('done');cnt.textContent='6 of 6 ready';return}
+    var r=rows[k];r.classList.add('ok');r.querySelector('.c-st').textContent='Ready';k++;
+    con.style.setProperty('--p',(k/rows.length*100)+'%');con.querySelector('.c-prog i').style.width=(k/rows.length*100)+'%';
+    cnt.textContent='Checking '+k+' of 6';setTimeout(step,420)})();
 }
-wires();window.addEventListener('resize',wires);
-if(document.fonts)document.fonts.ready.then(wires);
-setTimeout(function(){eco.classList.add('on')},reduce?0:200);
-eco.querySelectorAll('.node,.core').forEach(function(n,i){n.style.transitionDelay=(reduce?0:i*90)+'ms'});
 
+
+/* planner */
+var B={salon:['salon or beauty studio','client','appointments and looks'],food:['restaurant or café','guest','dishes and specials'],shop:['local retailer','customer','products'],crea:['service firm','client','projects'],well:['small maker','buyer','products and process']};
+var P={follow:{t:'Never miss a follow-up',st:['Set up a voice-note to follow-up flow in ChatGPT','Write ready-to-send messages in the owner\'s own voice','Add a weekly reminder so no {c} slips through'],tools:'ChatGPT, Gmail and their phone',sk:'Turning a 30-second voice note into a finished follow-up'},
+content:{t:'Post content consistently',st:['Turn their real {w} into a month of post ideas','Draft captions in their voice with ChatGPT','Set a simple posting rhythm they can keep'],tools:'ChatGPT, Canva, Instagram',sk:'Planning a week of posts in one sitting'},
+crm:{t:'Track customers in one place',st:['Build one simple sheet for every {c}','Use ChatGPT to summarize who needs attention this week','Capture notes by voice after every visit'],tools:'ChatGPT, Google Sheets',sk:'Asking AI who to reach out to today'},
+site:{t:'Get a simple website',st:['Write the site copy from the owner\'s own words','Build a clean one-page site or link-in-bio','Add one clear button to book or buy'],tools:'ChatGPT, a site builder they choose',sk:'Updating their own site without a developer'},
+quote:{t:'Send quotes faster',st:['Create a branded quote template','Use ChatGPT to turn notes into clear options for each {c}','Add a friendly follow-up for every quote sent'],tools:'ChatGPT, Google Docs',sk:'Drafting a professional quote in minutes'}};
+function val(id){return document.querySelector('#'+id+' [aria-checked="true"]').dataset.v}
+function render(){var b=B[val('biz')],p=P[val('proj')];
+  document.getElementById('po-title').textContent=p.t;
+  document.getElementById('po-meta').textContent='For a '+b[0]+' · one build day · owner\'s choice';
+  document.getElementById('po-steps').innerHTML=p.st.map(function(x){return '<li>'+x.replace('{c}',b[1]).replace('{w}',b[2])+'</li>'}).join('');
+  document.getElementById('po-tools').textContent=p.tools;document.getElementById('po-skill').textContent=p.sk;}
+['biz','proj'].forEach(function(id){var g=document.getElementById(id),bs=[].slice.call(g.querySelectorAll('button'));
+  bs.forEach(function(btn,i){btn.tabIndex=btn.getAttribute('aria-checked')==='true'?0:-1;
+    btn.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-checked','false');x.tabIndex=-1});btn.setAttribute('aria-checked','true');btn.tabIndex=0;render()});
+    btn.addEventListener('keydown',function(e){var n=null;if(e.key==='ArrowRight'||e.key==='ArrowDown')n=bs[(i+1)%bs.length];if(e.key==='ArrowLeft'||e.key==='ArrowUp')n=bs[(i-1+bs.length)%bs.length];if(n){e.preventDefault();n.focus();n.click()}})})});
+render();
 
 /* counters */
 document.querySelectorAll('[data-count]').forEach(function(el){
