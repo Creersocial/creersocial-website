@@ -20,7 +20,7 @@
 :root{--ink2:#262624;--ink3:#302F2C;--live:#7BD389}
 .k{font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.01em;color:var(--blue);margin:0 0 14px}
 .light .k{color:var(--tea)}
-.sec{padding:120px 0}
+.sec{padding:140px 0}
 .sec-head{max-width:760px}
 .sec-head p.sub{font-size:20px;color:var(--dim);margin:22px 0 0;max-width:36em}
 .light .sec-head p.sub{color:#3b3a36}
@@ -43,7 +43,7 @@
 .eco{position:relative;margin-top:72px;display:grid;grid-template-columns:1fr 1.1fr 1fr;grid-template-rows:auto auto auto;gap:28px 40px;align-items:center}
 .eco svg.wires{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
 .eco svg path{fill:none;stroke-width:1.5;stroke-dasharray:5 7}
-.node{position:relative;z-index:1;background:var(--ink2);border:1px solid var(--line);border-radius:120px 120px 18px 18px;padding:34px 24px 22px;text-align:left}
+.node{position:relative;z-index:1;background:var(--ink2);border:1px solid var(--line);border-radius:18px;padding:22px 24px;text-align:left}
 .node .nt{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}
 .node h3{font-family:var(--display);font-weight:800;font-size:23px;letter-spacing:-.02em;margin:0}
 .node p{margin:0;font-size:16px;line-height:1.5;color:var(--dim)}
@@ -184,6 +184,10 @@
 .phone .scr{border-radius:30px;overflow:hidden;aspect-ratio:9/19.2;position:relative;background:#111}
 .phone .scr img{width:100%;height:100%;object-fit:cover}
 .phone .scr .ig-h img{width:38px;height:38px;flex:none;object-fit:contain}
+.live-link{display:flex;flex-direction:column;align-items:center;gap:16px;text-decoration:none;color:var(--shell);transition:transform .3s}
+.live-link:hover{transform:translateY(-4px)}
+.live-link .tap{font-family:var(--display);font-weight:600;font-size:13px;border:1px solid var(--line);border-radius:999px;padding:8px 14px}
+.live-link:hover .tap{border-color:var(--shell)}
 .kit-img{width:270px;filter:drop-shadow(0 30px 60px rgba(0,0,0,.55))}
 
 /* fundraiser */
@@ -217,7 +221,13 @@
 .wl{margin-top:16px;width:100%;appearance:none;border:1.5px solid var(--black);background:transparent;border-radius:999px;padding:12px;font-family:var(--display);font-weight:700;font-size:13px}
 
 /* Month doors */
-.doors{display:grid;grid-template-columns:repeat(4,1fr) 1.35fr;gap:16px;margin-top:56px;align-items:end}
+.plan{display:grid;grid-template-columns:repeat(4,1fr) 1.3fr;gap:14px;margin-top:56px;align-items:stretch}
+.pc{background:var(--c);color:var(--fc,var(--black));border-radius:200px 200px 18px 18px;padding:72px 22px 26px;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;min-height:340px}
+.pc .wk{font-family:var(--display);font-weight:600;font-size:13px;opacity:.75}
+.pc b{font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:-.02em;line-height:1.1}
+.pc span:last-child{font-size:15.5px;line-height:1.45}
+.pc.big b{font-size:26px}
+.doors-old{display:grid;grid-template-columns:repeat(4,1fr) 1.35fr;gap:16px;margin-top:56px;align-items:end}
 .door{position:relative;aspect-ratio:3/5;border-radius:999px 999px 14px 14px;perspective:1100px;cursor:pointer;appearance:none;border:0;padding:0;background:transparent;text-align:left;color:inherit;font:inherit}
 .door.big{aspect-ratio:4/5}
 .door.big .behind{padding-left:24%}
@@ -232,7 +242,8 @@
 .door.open .leaf{transform:rotateY(-74deg);box-shadow:-30px 0 40px rgba(0,0,0,.35)}
 .door:focus-visible{outline:2px solid var(--must);outline-offset:4px}
 .doors-hint{margin-top:18px;font-family:var(--display);font-weight:600;font-size:14px;color:var(--faint)}
-.commit{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:40px;padding:22px 26px;border-radius:20px;background:var(--must);color:var(--black)}
+.commit{display:flex;flex-wrap:wrap;align-items:center;gap:18px;margin-top:20px;padding:22px 26px;border-radius:20px;background:var(--black);color:var(--shell)}
+.commit b{color:var(--must)}
 .commit b{font-family:var(--display);font-weight:900;font-size:30px;letter-spacing:-.04em}
 .commit span{font-size:18px;line-height:1.4;max-width:36em}
 
@@ -244,7 +255,20 @@
 .slot span{font-size:15px;line-height:1.5;color:#3b3a36}
 
 /* Content studio */
-.studio{display:grid;grid-template-columns:auto 1fr;gap:56px;align-items:center;margin-top:56px}
+.chan2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:56px}
+.ch{display:flex;flex-direction:column;gap:16px;border-radius:26px;padding:40px;min-height:340px;text-decoration:none;transition:transform .3s}
+.ch:hover{transform:translateY(-4px)}
+.ch .where{font-family:var(--display);font-weight:600;font-size:13px;opacity:.75}
+.ch .handle{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.4vw,60px);letter-spacing:-.045em;line-height:1}
+.ch .desc{font-size:18px;line-height:1.55;max-width:26em}
+.ch .go{margin-top:auto;align-self:flex-start;font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;border:1.5px solid currentColor;border-radius:999px;padding:13px 22px}
+.ch-tt{background:var(--pink);color:var(--black)}
+.ch-ig{background:var(--tea);color:var(--shell)}
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(560px,100%)}
+.reels figure{margin:0;position:relative;border-radius:18px;overflow:hidden;aspect-ratio:9/16}
+.reels img{width:100%;height:100%;object-fit:cover}
+.reels figcaption{position:absolute;left:12px;right:12px;bottom:12px;font-family:var(--display);font-weight:700;font-size:14px;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.studio{display:grid;grid-template-columns:auto 1fr;gap:72px;align-items:center;margin-top:56px}
 .phones{display:flex;gap:18px;align-items:flex-end}
 .phones .phone:nth-child(2){transform:translateY(-40px)}
 .tt-ui{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px 14px 18px;background:linear-gradient(transparent 45%,rgba(0,0,0,.75));color:#fff;font-family:var(--display)}
@@ -305,7 +329,9 @@
   .doors{grid-template-columns:repeat(5,minmax(150px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;margin-left:-24px;margin-right:-24px;padding:6px 24px 14px}
   .door{scroll-snap-align:start}
   .day-tl{grid-template-columns:1fr 1fr 1fr;row-gap:24px}
-  .studio{grid-template-columns:1fr}
+  .plan{grid-template-columns:1fr 1fr}
+  .pc.big{grid-column:1/-1;min-height:240px}
+  .chan2{grid-template-columns:1fr}
   .phones{justify-content:center}
   .founder img.p{max-width:380px}
 }
@@ -326,7 +352,8 @@
   .day-tl{grid-template-columns:1fr 1fr}
   .phones{gap:12px}
   .phones .phone{width:calc(50% - 6px);max-width:170px;border-radius:28px;padding:6px}
-  .studio{min-width:0}
+  .plan{grid-template-columns:1fr}
+  .pc{min-height:0;padding-top:56px}
   .doors{grid-template-columns:repeat(5,minmax(210px,1fr))}
   .phones .phone .scr{border-radius:24px}
   .phones .phone:nth-child(2){transform:none}
@@ -343,7 +370,7 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
 <div class="wrap ow-top">
-<a class="logo" href="index.html"><img src="assets/logo/creer-social-logo-creer-blue.svg" alt="Créer Social home" width="205" height="24"></a>
+<a class="logo" href="https://creersocial.com"><img src="assets/logo/creer-social-logo-creer-blue.svg" alt="Créer Social home" width="205" height="24"></a>
 <span class="ow-x">Créer Social <b>×</b> OpenWorks, Los Angeles</span>
 </div>
 </header>
@@ -355,17 +382,17 @@
 <div class="wrap">
 <span class="live-pill"><span class="dot" aria-hidden="true"></span>Running today in Los Angeles</span>
 <h1>A turnkey AI ecosystem for LA's founders. Already live.</h1>
-<p class="sub">Créer Social brings a real community, systems we built with AI, and a content engine that's already on air. OpenWorks brings the program. Plug the two together and the founders who need help most, including the ones who can't afford an agency yet, get it right away.</p>
+<p class="sub">A real community, systems built with AI and a content engine, all running today. Plug OpenWorks in, and LA founders get help right away.</p>
 
 <div class="eco" id="eco" aria-label="The Créer Social ecosystem, ready for OpenWorks">
 <svg class="wires" aria-hidden="true"></svg>
-<div class="node n1" data-c="#5FA393"><div class="nt"><h3>Community</h3><span class="status"><span class="dot"></span>Live</span></div><p>300+ founders, creatives and owners we know by name, built in person.</p></div>
-<div class="node n6" data-c="#EAA7C7"><div class="nt"><h3>The Sessions</h3><span class="status"><span class="dot"></span>Live</span></div><p>Our IRL gatherings. Two sold out in 24 to 48 hours.</p></div>
-<div class="node n2" data-c="#ED773C"><div class="nt"><h3>Systems</h3><span class="status"><span class="dot"></span>Live</span></div><p>Client operations, outreach and websites we built with AI and use daily.</p></div>
+<div class="node n1" data-c="#5FA393"><div class="nt"><h3>Community</h3><span class="status"><span class="dot"></span>Live</span></div><p>300+ people, met in person.</p></div>
+<div class="node n6" data-c="#EAA7C7"><div class="nt"><h3>The Sessions</h3><span class="status"><span class="dot"></span>Live</span></div><p>Sold out in 24 to 48 hours.</p></div>
+<div class="node n2" data-c="#ED773C"><div class="nt"><h3>Systems</h3><span class="status"><span class="dot"></span>Live</span></div><p>Built with AI, used daily.</p></div>
 <div class="core"><small>Plugs in here</small><strong>OpenWorks LA</strong><span>Four build days and one workshop, every month</span></div>
-<div class="node n3" data-c="#EAC119"><div class="nt"><h3>Content</h3><span class="status"><span class="dot"></span>Live</span></div><p>@hello_vashti on TikTok and @creersocial on Instagram, posting now.</p></div>
-<div class="node n5" data-c="#B0C4DE"><div class="nt"><h3>Brand partners</h3><span class="status"><span class="dot"></span>Live</span></div><p>Donna's Recipe, Tab &amp; Chance, Bicycle Playing Cards and more.</p></div>
-<div class="node n4" data-c="#EAE4DA"><div class="nt"><h3>The firm</h3><span class="status"><span class="dot"></span>Live</span></div><p>A strategic partnerships and advisory team that runs it all with care.</p></div>
+<div class="node n3" data-c="#EAC119"><div class="nt"><h3>Content</h3><span class="status"><span class="dot"></span>Live</span></div><p>TikTok and Instagram, posting now.</p></div>
+<div class="node n5" data-c="#B0C4DE"><div class="nt"><h3>Brand partners</h3><span class="status"><span class="dot"></span>Live</span></div><p>Brands already at our table.</p></div>
+<div class="node n4" data-c="#EAE4DA"><div class="nt"><h3>The firm</h3><span class="status"><span class="dot"></span>Live</span></div><p>Advisory team running it all.</p></div>
 </div>
 </div>
 </section>
@@ -377,7 +404,7 @@
 <p class="k">Why this matters to me</p>
 <p class="letter">Helping people is the center of everything I do. I see the gold in people and their ideas, and I can't unsee it.</p>
 <p class="letter">Some of the founders who come to Créer Social can't afford our services yet. They're often the ones with the most heart and the least support. OpenWorks is how I get to help them anyway, with the same systems our paying clients get.</p>
-<div class="sig"><img src="assets/img/hi-im-vashti.png" alt="Hi, I'm Vashti"><span>Vashti Bryant, founder and CEO</span></div>
+<div class="sig"><img src="assets/img/hi-im-vashti.png" alt="Hi, I'm Vashti"><span>Vashti, founder and CEO</span></div>
 </div>
 <div class="mission-photo">
 <img src="assets/img/duo_pink.jpg" alt="Two guests at a Créer Social Session" style="object-position:22% 50%">
@@ -392,11 +419,11 @@
 <div class="sec-head">
 <p class="k">Our people are your people</p>
 <h2 class="ttl">A real community, full of exactly who OpenWorks wants to reach.</h2>
-<p class="sub">Not followers. People who show up, sit at the table and come back. Small business owners and founders who are curious about AI and need someone they trust to show them how.</p>
+<p class="sub">Not followers. People who show up, sit at the table and come back.</p>
 </div>
 <div class="people">
 <div class="who" aria-label="Who is in our community">
-<span>Founders</span><span>Beauty pros</span><span>Salon owners</span><span>Wellness brands</span><span>Creatives</span><span>Food makers</span><span>Stylists</span><span>Event producers</span><span>Shop owners</span><span>Side hustlers going full time</span>
+<span>Founders</span><span>Beauty pros</span><span>Shop owners</span><span>Wellness brands</span><span>Creatives</span><span>Food makers</span>
 </div>
 <div class="nums">
 <div><b data-count="300">300</b><span>community members and growing, met in person</span></div>
@@ -408,26 +435,7 @@
 <div class="strip">
 <img src="assets/img/gamenight_pink.jpg" alt="A full room at a Créer Social Session" loading="lazy">
 <img src="assets/img/entrance_tea.jpg" alt="Guests arriving at a Session" loading="lazy">
-<img class="l" src="assets/img/duo_pink.jpg" alt="Two guests laughing at a Session" loading="lazy">
-</div>
-</div>
-</section>
-
-<!-- 4. FIT MAP -->
-<section class="sec light">
-<div class="wrap">
-<div class="sec-head">
-<p class="k">How we line up</p>
-<h2 class="ttl">Everything OpenWorks needs, we already do.</h2>
-</div>
-<div class="fit" id="fit">
-<div class="fit-head"><span>OpenWorks needs</span><span></span><span>Créer Social, today</span></div>
-<div class="fit-row"><div class="need">Trust with local small businesses</div><div class="plug" style="--c:var(--tea)"><i></i></div><div class="have"><b>Referral-only firm.</b> Every client and community member came through someone they trust.</div></div>
-<div class="fit-row"><div class="need">Hands-on sessions people actually attend</div><div class="plug" style="--c:var(--pink)"><i></i></div><div class="have"><b>The Créer Social Sessions.</b> Waitlists, sponsors, sold-out rooms.</div></div>
-<div class="fit-row"><div class="need">Real, daily fluency with AI</div><div class="plug" style="--c:var(--tang)"><i></i></div><div class="have"><b>Our firm runs on it.</b> See the build lab below. We also co-hosted Geek Day, a tool-sharing day with a small group of creators.</div></div>
-<div class="fit-row"><div class="need">Speaks owner, not engineer</div><div class="plug" style="--c:var(--must)"><i></i></div><div class="have"><b>A founder who's been there.</b> Luxury retail at houses like Salvatore Ferragamo, then built her own label from zero.</div></div>
-<div class="fit-row"><div class="need">Shows up, month after month</div><div class="plug" style="--c:var(--blue)"><i></i></div><div class="have"><b>Yes to four days a month plus a monthly workshop,</b> with a team and systems behind it.</div></div>
-<div class="fit-row"><div class="need">Brings the next business in</div><div class="plug" style="--c:var(--black)"><i></i></div><div class="have"><b>A content engine on TikTok and Instagram,</b> plus brand partners who already show up for our people.</div></div>
+<img src="assets/img/table_mustard.jpg" alt="Owners at a long table at a Session" loading="lazy">
 </div>
 </div>
 </section>
@@ -438,16 +446,15 @@
 <div class="sec-head">
 <p class="k">The build lab</p>
 <h2 class="ttl">See it working.</h2>
-<p class="sub">Real systems from inside Créer Social, built with AI and in use every week. Each one is the kind of thing an LA business could walk out with after a build day.</p>
+<p class="sub">Real systems from inside Créer Social, built with AI and used every week. Tap through.</p>
 </div>
 
 <div class="tabs" role="tablist" aria-label="Systems we built">
 <button class="tab" role="tab" id="t-voice" aria-controls="p-voice" aria-selected="true" style="--c:var(--pink)"><span class="sw"></span>Talk to type</button>
 <button class="tab" role="tab" id="t-ops" aria-controls="p-ops" aria-selected="false" style="--c:var(--tea)" tabindex="-1"><span class="sw"></span>Client command center</button>
-<button class="tab" role="tab" id="t-prop" aria-controls="p-prop" aria-selected="false" style="--c:var(--blue)" tabindex="-1"><span class="sw"></span>Proposals</button>
 <button class="tab" role="tab" id="t-kit" aria-controls="p-kit" aria-selected="false" style="--c:var(--pink)" tabindex="-1"><span class="sw"></span>Media kit websites</button>
+<button class="tab" role="tab" id="t-site" aria-controls="p-site" aria-selected="false" style="--c:var(--blue)" tabindex="-1"><span class="sw"></span>Our website</button>
 <button class="tab" role="tab" id="t-fund" aria-controls="p-fund" aria-selected="false" style="--c:var(--must)" tabindex="-1"><span class="sw"></span>Fundraiser outreach</button>
-<button class="tab" role="tab" id="t-ses" aria-controls="p-ses" aria-selected="false" style="--c:var(--tang)" tabindex="-1"><span class="sw"></span>Sessions and community</button>
 </div>
 
 <div class="stage">
@@ -508,30 +515,10 @@
 </div>
 </div>
 
-<!-- proposals -->
-<div class="panel" role="tabpanel" id="p-prop" aria-labelledby="t-prop" hidden>
-<div class="screen">
-<div class="decks"><span class="lock"><svg width="11" height="12" viewBox="0 0 11 12" fill="currentColor"><path d="M2 5V3.5a3.5 3.5 0 0 1 7 0V5h1v7H1V5h1Zm1.5 0h4V3.5a2 2 0 0 0-4 0V5Z"/></svg>Inside pages stay private</span>
-<img class="back" src="assets/openworks/proposal-inside-blur.jpg" alt="" aria-hidden="true">
-<img class="front" src="assets/openworks/proposal-cover.jpg" alt="Cover of a Créer Social sample proposal for a fictional client">
-</div>
-</div>
-<div class="notes" style="--c:var(--blue)">
-<span class="badge"><span class="dot"></span>In use today</span>
-<h3>Proposals in hours, not weeks.</h3>
-<p class="what">A branded proposal system our whole team can edit. From discovery notes to a finished, on-brand deck the same day.</p>
-<dl>
-<dt>What it replaces</dt><dd>Starting from a blank page for every new client.</dd>
-<dt>What a business leaves with</dt><dd>Their own branded quote or pitch template, ready to send.</dd>
-</dl>
-<p class="ipnote">Fictional client used for training. Our structure, services and pricing stay in house.</p>
-</div>
-</div>
-
 <!-- media kit -->
 <div class="panel" role="tabpanel" id="p-kit" aria-labelledby="t-kit" hidden>
 <div class="screen">
-<img class="kit-img" src="assets/img/kit_card_phone.png" alt="Kelly Nicole Wood's live media kit website on a phone">
+<a class="live-link" href="https://kits.creersocial.com/kelly-nicole-wood" target="_blank" rel="noopener" aria-label="Open Kelly's live media kit site"><img class="kit-img" src="assets/img/kit_card_phone.png" alt="Kelly Nicole Wood's live media kit website on a phone"><span class="tap">Tap to open the live site</span></a>
 </div>
 <div class="notes" style="--c:var(--pink)">
 <span class="badge"><span class="dot"></span>Live on the web</span>
@@ -541,7 +528,26 @@
 <dt>What it replaces</dt><dd>A PDF nobody opens, or a website that costs months and thousands.</dd>
 <dt>What a business leaves with</dt><dd>A clean one-page site or link-in-bio they can update themselves.</dd>
 </dl>
-<a class="btn ghost" style="align-self:flex-start" href="https://kits.creersocial.com/kelly-nicole-wood">Open Kelly's live site</a>
+<a class="btn ghost" style="align-self:flex-start" href="https://kits.creersocial.com/kelly-nicole-wood" target="_blank" rel="noopener">Open Kelly's live site</a>
+</div>
+</div>
+
+<!-- website -->
+<div class="panel" role="tabpanel" id="p-site" aria-labelledby="t-site" hidden>
+<div class="screen">
+<a class="live-link" href="https://creersocial.com" target="_blank" rel="noopener" aria-label="Open creersocial.com">
+<div class="win" style="max-width:600px"><div class="win-bar"><i></i><i></i><i></i><span>creersocial.com</span></div><img src="assets/openworks/site-home.jpg" alt="The Créer Social homepage" style="width:100%;display:block"></div>
+<span class="tap">Tap to open the live site</span></a>
+</div>
+<div class="notes" style="--c:var(--blue)">
+<span class="badge"><span class="dot"></span>Live on the web</span>
+<h3>Our own site, built with AI.</h3>
+<p class="what">Créer Social's website, including the Find Your Door quiz that sends every visitor to the right next step.</p>
+<dl>
+<dt>What it replaces</dt><dd>An expensive agency build, or a template that looks like everyone else's.</dd>
+<dt>What a business leaves with</dt><dd>A site that sounds like them and points customers to one clear next step.</dd>
+</dl>
+<a class="btn ghost" style="align-self:flex-start" href="https://creersocial.com" target="_blank" rel="noopener">Visit creersocial.com</a>
 </div>
 </div>
 
@@ -567,71 +573,27 @@
 </div>
 </div>
 
-<!-- sessions -->
-<div class="panel" role="tabpanel" id="p-ses" aria-labelledby="t-ses" hidden>
-<div class="screen">
-<div class="rsvp">
-<img src="assets/img/table_mustard.jpg" alt="">
-<div class="in">
-<h4>The Créer Social Sessions</h4>
-<span class="so">Sold out in 48 hours</span>
-<div class="meter" aria-hidden="true"><i></i></div>
-<div class="row2"><span>41 RSVPs</span><span>Waitlist open</span></div>
-<div class="faces" aria-hidden="true"><i style="background:var(--tea)"></i><i style="background:var(--pink)"></i><i style="background:var(--tang)"></i><i style="background:var(--must)"></i><i style="background:var(--blue)"></i><i style="background:#1D1D1B"></i></div>
-<button class="wl" type="button" tabindex="-1">Join the waitlist</button>
-</div></div>
-</div>
-<div class="notes" style="--c:var(--tang)">
-<span class="badge"><span class="dot"></span>Running now</span>
-<h3>A room people race to get into.</h3>
-<p class="what">Sign-ups, RSVPs, waitlists and follow-ups for every Session, organized in one place. This is the engine that would fill every OpenWorks workshop.</p>
-<dl>
-<dt>What it replaces</dt><dd>Scattered DMs and guessing who's coming.</dd>
-<dt>What a business leaves with</dt><dd>A simple way to run their own events, classes or launches.</dd>
-</dl>
-</div>
-</div>
-
 </div>
 <p class="ipnote" style="margin-top:20px">We show the results, not the recipes. Our frameworks, including The Storehaus, our talent partnership system, stay in house.</p>
 </div>
 </section>
 
 <!-- 6. THE MONTH -->
-<section class="sec">
+<section class="sec light">
 <div class="wrap">
 <div class="sec-head">
 <p class="k">The partnership plan</p>
 <h2 class="ttl">Four doors a month. One big room.</h2>
-<p class="sub">Every month we'd open four build days and host one community workshop. Tap a door to see what's behind it.</p>
+<p class="sub">Four build days and one community workshop, every month.</p>
 </div>
-<div class="doors" id="doors">
-<button class="door" type="button" aria-expanded="false" style="--c:var(--tea);--fc:var(--shell)"><span class="behind"><b>One-on-one builds</b><span>Owners bring their biggest time drain and leave with it fixed.</span></span><span class="leaf"><span class="wk">Wk 1</span><span class="knob"></span><span class="lb">Build day</span></span></button>
-<button class="door" type="button" aria-expanded="false" style="--c:var(--pink)"><span class="behind"><b>Small-group builds</b><span>Grouped by industry so owners learn from each other.</span></span><span class="leaf"><span class="wk">Wk 2</span><span class="knob"></span><span class="lb">Build day</span></span></button>
-<button class="door" type="button" aria-expanded="false" style="--c:var(--tang)"><span class="behind"><b>Office hours</b><span>Fixes, tune-ups and next builds for returning owners.</span></span><span class="leaf"><span class="wk">Wk 3</span><span class="knob"></span><span class="lb">Build day</span></span></button>
-<button class="door" type="button" aria-expanded="false" style="--c:var(--blue)"><span class="behind"><b>Build and share</b><span>Finish builds and, with permission, capture their stories.</span></span><span class="leaf"><span class="wk">Wk 4</span><span class="knob"></span><span class="lb">Build day</span></span></button>
-<button class="door big" type="button" aria-expanded="false" style="--c:var(--must)"><span class="behind"><b>The monthly workshop</b><span>A Créer Social Session built around AI. Everyone in one room, learning, sharing wins and meeting each other.</span></span><span class="leaf"><span class="wk">The room</span><span class="knob"></span><span class="lb">Community workshop</span></span></button>
+<div class="plan">
+<div class="pc" style="--c:var(--tea);--fc:var(--shell)"><span class="wk">Week 1</span><b>One-on-one builds</b><span>Owners bring their biggest time drain and leave with it fixed.</span></div>
+<div class="pc" style="--c:var(--pink)"><span class="wk">Week 2</span><b>Small-group builds</b><span>Grouped by industry, so owners learn from each other.</span></div>
+<div class="pc" style="--c:var(--tang)"><span class="wk">Week 3</span><b>Office hours</b><span>Fixes and next builds for returning owners.</span></div>
+<div class="pc" style="--c:var(--blue)"><span class="wk">Week 4</span><b>Build and share</b><span>Finish builds and, with permission, tell their stories.</span></div>
+<div class="pc big" style="--c:var(--must)"><span class="wk">Every month</span><b>The community workshop</b><span>A Créer Social Session built around AI. Everyone in one room.</span></div>
 </div>
-<p class="doors-hint">Tap any door to open or close it.</p>
 <div class="commit"><b>Yes.</b><span>Four full days a month plus one monthly workshop, run through Créer Social, starting as soon as you are.</span></div>
-</div>
-</section>
-
-<!-- 7. A BUILD DAY -->
-<section class="sec light">
-<div class="wrap">
-<div class="sec-head">
-<p class="k">A build day, hour by hour</p>
-<h2 class="ttl">They walk in with a problem. They walk out with it running.</h2>
-</div>
-<div class="day-tl">
-<div class="slot"><time>9:30</time><b>Welcome and coffee</b><span>We've read their intake, so we start with their real business.</span></div>
-<div class="slot"><time>10:00</time><b>Find the time drain</b><span>The one task eating their week, where AI helps most.</span></div>
-<div class="slot"><time>10:30</time><b>Build it together</b><span>Hands on, in their own accounts, with tools they already have.</span></div>
-<div class="slot"><time>1:00</time><b>Lunch at the table</b><span>Owners trade ideas. This is where community starts.</span></div>
-<div class="slot"><time>2:00</time><b>Test on real work</b><span>Run it on this week's emails, posts or orders.</span></div>
-<div class="slot"><time>3:30</time><b>Leave with a next step</b><span>It's working, and they know what to build next.</span></div>
-</div>
 </div>
 </section>
 
@@ -641,26 +603,23 @@
 <div class="sec-head">
 <p class="k">Built-in reach</p>
 <h2 class="ttl">The content makes itself, and it's good.</h2>
-<p class="sub">Vashti already documents her life and business in public. OpenWorks LA slots right into the shows she's already running, so the program reaches the exact owners who need it.</p>
+<p class="sub">OpenWorks LA slots right into the shows Vashti already runs on TikTok and Instagram.</p>
 </div>
-<div class="studio">
-<div class="phones" aria-hidden="true">
-<div class="phone"><div class="scr"><img src="assets/img/table_mustard.jpg" alt=""><div class="tt-top">Following · For You</div><div class="tt-side"><i></i><i></i><i></i></div><div class="tt-ui"><div class="cap">I'm helping LA founders put <mark>AI to work.</mark> Day 1.</div><div class="hd">@hello_vashti</div><div class="ds">BRAND NÜ · New Money</div></div></div></div>
-<div class="phone"><div class="scr"><div class="ig"><div class="ig-h"><img src="assets/logo/icon-512.png" alt=""><div><b>creersocial</b><span>Créer Social · Los Angeles</span></div></div>
-<div class="grid9">
-<div style="background:var(--tea);color:var(--shell)">Build day 01</div><div><img src="assets/img/duo_pink.jpg" alt=""></div><div style="background:var(--pink)">Before and after</div>
-<div><img src="assets/img/entrance_tea.jpg" alt=""></div><div style="background:var(--must)">Workshop is open</div><div><img src="assets/img/gamenight_pink.jpg" alt=""></div>
-<div style="background:var(--tang)">Owner spotlight</div><div><img src="assets/img/table_mustard.jpg" alt=""></div><div style="background:var(--blue)">3 AI tips</div>
-</div></div></div></div>
+<div class="chan2">
+<a class="ch ch-tt" href="https://www.tiktok.com/@hello_vashti" target="_blank" rel="noopener">
+<span class="where">TikTok · Founder voice</span>
+<span class="handle">@hello_vashti</span>
+<span class="desc">Build days and real owners' before and afters, told inside BRAND NÜ, the series Vashti already runs.</span>
+<span class="go">Open TikTok</span>
+</a>
+<a class="ch ch-ig" href="https://www.instagram.com/creersocial" target="_blank" rel="noopener">
+<span class="where">Instagram · Agency voice</span>
+<span class="handle">@creersocial</span>
+<span class="desc">Owner spotlights and workshop invites that fill the next room before the doors open.</span>
+<span class="go">Open Instagram</span>
+</a>
 </div>
-<div class="series">
-<div class="ep"><span class="chn" style="background:var(--pink)">TT</span><div><b>BRAND NÜ: New Money</b><span>Build day vlogs and real owners' before and afters, inside Vashti's TikTok series.</span></div></div>
-<div class="ep"><span class="chn" style="background:var(--pink)">TT</span><div><b>One-minute AI tips</b><span>The single most useful thing from each build day, taught in under a minute.</span></div></div>
-<div class="ep"><span class="chn" style="background:var(--tea);color:var(--shell)">IG</span><div><b>Owner spotlights</b><span>Each business we help gets their story told well, in front of a local audience.</span></div></div>
-<div class="ep"><span class="chn" style="background:var(--tea);color:var(--shell)">IG</span><div><b>Workshop recaps and invites</b><span>Carousels that fill the next room before we open the doors.</span></div></div>
-<p class="ipnote">Concept mockups. Every story is shared only with the owner's permission.</p>
-</div>
-</div>
+<p class="ipnote">Every owner story is shared only with their permission.</p>
 </div>
 </section>
 
@@ -675,12 +634,12 @@
 <!-- 10. FOUNDER -->
 <section class="sec">
 <div class="wrap founder">
-<img class="p" src="assets/img/portrait_tea.jpg" alt="Vashti Bryant, founder of Créer Social" loading="lazy" style="object-position:50% 30%">
+<img class="p" src="assets/img/portrait_tea.jpg" alt="Vashti, founder of Créer Social" loading="lazy" style="object-position:50% 30%">
 <div>
 <p class="k">Who you'd be partnering with</p>
-<h2 class="ttl">Vashti Bryant</h2>
+<h2 class="ttl">Meet Vashti.</h2>
 <p class="sub" style="font-size:20px;color:var(--dim);margin-top:22px">Vashti brings together creative vision, business strategy, and deep-rooted understanding of what makes people, brands, and ideas undeniably magnetic.</p>
-<p style="color:var(--dim);margin-top:20px;max-width:36em">She worked at some of the top luxury fashion houses, including Salvatore Ferragamo, then built her own sustainable label with no outside investors and took it to Oprah's Favorite Things. She has spoken on Shopify panels about brand and scaling, works with the US Black Chambers accelerator, and was selected by USC students to develop the first phase of the Créer Social app. Today she advises founders from early stage to companies doing $100M+ a year.</p>
+<p style="color:var(--dim);margin-top:20px;max-width:34em">She worked at top luxury fashion houses including Salvatore Ferragamo, then built her own label with no outside investors and took it to Oprah's Favorite Things. Today she advises founders from early stage to $100M+ companies.</p>
 <div class="logos" aria-label="Featured in and partnered with">
 <img src="assets/logos/oprah.svg" alt="The Oprah Magazine"><img src="assets/logos/cosmopolitan.svg" alt="Cosmopolitan"><img src="assets/logos/teen-vogue.svg" alt="Teen Vogue"><img class="tall" src="assets/logos/refinery29.svg" alt="Refinery29"><img src="assets/logos/sxsw.svg" alt="SXSW"><img src="assets/logos/beautycon.svg" alt="Beautycon"><img class="tall" src="assets/logos/us-black-chambers.svg" alt="US Black Chambers"><img class="tall" src="assets/logos/usc.svg" alt="USC"><img class="tall" src="assets/logos/everytable.svg" alt="Everytable"><img class="tall" src="assets/logos/era-coalition.svg" alt="ERA Coalition">
 </div>
@@ -693,7 +652,7 @@
 <div class="wrap">
 <h2>Ready when you are.</h2>
 <p>The community is here, the systems are running and the content is already on air. Let's bring OpenWorks to the LA founders who need it most.</p>
-<div class="btns"><a class="btn dark" href="mailto:contact@creersocial.com?subject=Cr%C3%A9er%20Social%20%C3%97%20OpenWorks">Email Vashti</a><a class="btn dark-ghost" href="index.html">Visit creersocial.com</a></div>
+<div class="btns"><a class="btn dark" href="mailto:contact@creersocial.com?subject=Cr%C3%A9er%20Social%20%C3%97%20OpenWorks">Email Vashti</a><a class="btn dark-ghost" href="https://creersocial.com" target="_blank" rel="noopener">Visit creersocial.com</a></div>
 </div>
 </section>
 
@@ -701,7 +660,7 @@
 
 <footer class="site-footer ruled">
 <div class="wrap">
-<a href="index.html" class="foot-logo" aria-label="Créer Social home"><img src="assets/logo/creer-social-logo-creer-blue.svg" alt="" width="188" height="22"></a>
+<a href="https://creersocial.com" class="foot-logo" aria-label="Créer Social home"><img src="assets/logo/creer-social-logo-creer-blue.svg" alt="" width="188" height="22"></a>
 <nav aria-label="Footer"><a href="https://www.tiktok.com/@hello_vashti">TikTok</a><a href="https://www.instagram.com/creersocial">Instagram</a><a href="https://www.linkedin.com/in/cr%C3%A9ersocial">LinkedIn</a><a href="mailto:contact@creersocial.com">Email</a></nav>
 <span>© 2026 Créer Social · Los Angeles</span>
 </div>
@@ -728,10 +687,6 @@ if(document.fonts)document.fonts.ready.then(wires);
 setTimeout(function(){eco.classList.add('on')},reduce?0:200);
 eco.querySelectorAll('.node,.core').forEach(function(n,i){n.style.transitionDelay=(reduce?0:i*90)+'ms'});
 
-/* fit plugs */
-var fit=document.getElementById('fit');
-fit.querySelectorAll('.plug').forEach(function(p,i){p.style.setProperty('transition-delay',(i*120)+'ms')});
-onView(fit,function(){fit.classList.add('on')},.2);
 
 /* counters */
 document.querySelectorAll('[data-count]').forEach(function(el){
@@ -765,10 +720,6 @@ function select(t){tabs.forEach(function(x){var on=x===t;x.setAttribute('aria-se
 tabs.forEach(function(t,i){t.addEventListener('click',function(){select(t)});
   t.addEventListener('keydown',function(e){var k=e.key,n=null;if(k==='ArrowRight')n=tabs[(i+1)%tabs.length];if(k==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];if(n){e.preventDefault();n.focus();select(n)}})});
 
-/* doors */
-var doors=[].slice.call(document.querySelectorAll('.door'));
-doors.forEach(function(d){d.addEventListener('click',function(){var o=!d.classList.contains('open');d.classList.toggle('open',o);d.setAttribute('aria-expanded',o)})});
-onView(document.getElementById('doors'),function(){doors.forEach(function(d,i){setTimeout(function(){d.classList.add('open');d.setAttribute('aria-expanded','true')},reduce?0:300+i*260)})},.4);
 })();
 </script>
 </body>
