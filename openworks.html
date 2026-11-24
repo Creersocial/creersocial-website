@@ -31,6 +31,10 @@
 .ow-top .logo img{height:22px}
 .ow-x{font-family:var(--display);font-weight:600;font-size:13px;color:var(--faint)}
 .ow-x b{color:var(--shell)}
+.site-header{position:sticky;top:0;z-index:20;background:rgba(29,29,27,.9);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.ow-right{display:flex;align-items:center;gap:20px}
+.ow-cta{padding:12px 20px;font-size:12px}
+@media (max-width:640px){.ow-x{display:none}}
 
 /* HERO: ecosystem */
 .hero{padding:72px 0 40px}
@@ -73,7 +77,7 @@
 .sig span{font-family:var(--display);font-weight:600;font-size:14px;color:#3b3a36}
 .mission-photo{position:relative}
 .mission-photo img{border-radius:300px 300px 22px 22px;width:100%;aspect-ratio:3/4;object-fit:cover}
-.mission-photo .tagc{position:absolute;left:-28px;bottom:36px;background:var(--black);color:var(--shell);border-radius:16px;padding:16px 20px;font-family:var(--display);font-weight:700;font-size:15px;line-height:1.3;max-width:220px}
+.mission-photo .tagc{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);white-space:nowrap;background:var(--black);color:var(--shell);border-radius:999px;padding:14px 24px;font-family:var(--display);font-weight:700;font-size:15px;line-height:1}
 
 /* Audience */
 .people{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:56px}
@@ -322,7 +326,6 @@
   .n1,.n2,.n3,.n4,.n5,.n6{grid-column:auto;grid-row:auto}
   .mission-grid,.people,.founder{grid-template-columns:1fr}
   .mission-photo{max-width:420px}
-  .mission-photo .tagc{left:16px}
   .panel{grid-template-columns:1fr}
   .notes{border-left:0;border-top:1px solid var(--line)}
   .screen{padding:28px 18px;min-height:420px}
@@ -371,7 +374,7 @@
 <header class="site-header">
 <div class="wrap ow-top">
 <a class="logo" href="https://creersocial.com"><img src="assets/logo/creer-social-logo-creer-blue.svg" alt="Créer Social home" width="205" height="24"></a>
-<span class="ow-x">Créer Social <b>×</b> OpenWorks, Los Angeles</span>
+<div class="ow-right"><span class="ow-x">Créer Social <b>×</b> OpenWorks, Los Angeles</span><a class="btn ow-cta" href="mailto:contact@creersocial.com?subject=Cr%C3%A9er%20Social%20%C3%97%20OpenWorks">Let's talk</a></div>
 </div>
 </header>
 
@@ -407,7 +410,7 @@
 <div class="sig"><img src="assets/img/hi-im-vashti.png" alt="Hi, I'm Vashti"><span>Vashti, founder and CEO</span></div>
 </div>
 <div class="mission-photo">
-<img src="assets/img/duo_pink.jpg" alt="Two guests at a Créer Social Session" style="object-position:22% 50%">
+<img src="assets/img/duo_pink.jpg" alt="Two guests at a Créer Social Session" style="object-position:12% 50%">
 <div class="tagc">Impact over influence.</div>
 </div>
 </div>
