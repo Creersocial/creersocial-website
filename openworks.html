@@ -95,7 +95,9 @@
 .nums b{display:block;font-family:var(--display);font-weight:900;font-size:clamp(40px,4.4vw,60px);letter-spacing:-.045em;line-height:1}
 .nums span{display:block;margin-top:8px;color:var(--dim);font-size:16px;line-height:1.45}
 .strip{display:grid;grid-template-columns:1.2fr .8fr 1fr;gap:14px;margin-top:56px;height:340px}
+.strip figure{margin:0;position:relative;min-width:0}
 .strip img{width:100%;height:340px;min-height:0;object-fit:cover;border-radius:18px}
+.strip figcaption{position:absolute;left:14px;bottom:14px;font-family:var(--display);font-weight:600;font-size:13px;background:var(--black);color:var(--shell);padding:8px 13px;border-radius:999px}
 .strip img.l{object-position:22% 50%}
 
 /* Fit map */
@@ -196,6 +198,9 @@
 
 /* fundraiser */
 .fund{width:100%;max-width:560px}
+.clip{margin:0 0 28px;background:#fff;border-radius:14px;padding:14px;box-shadow:0 30px 70px rgba(0,0,0,.45);transform:rotate(-1.5deg);max-width:340px}
+.clip img{border-radius:6px;width:100%;max-height:300px;object-fit:cover;object-position:top}
+.clip figcaption{font-family:var(--display);font-weight:600;font-size:12px;color:#6b675f;margin-top:10px}
 .fund .big{font-family:var(--display);font-weight:900;font-size:clamp(64px,8vw,112px);letter-spacing:-.06em;line-height:.9;color:var(--must)}
 .fund .lbl{font-family:var(--display);font-weight:600;font-size:14px;color:var(--dim);margin-top:10px}
 .track{margin-top:34px;height:18px;border-radius:999px;background:var(--ink3);position:relative;overflow:hidden}
@@ -266,6 +271,9 @@
 .ch .handle{font-family:var(--display);font-weight:900;font-size:clamp(36px,4.4vw,60px);letter-spacing:-.045em;line-height:1}
 .ch .desc{font-size:18px;line-height:1.55;max-width:26em}
 .ch .go{margin-top:auto;align-self:flex-start;font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;border:1.5px solid currentColor;border-radius:999px;padding:13px 22px}
+.ch .stats{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:4px}
+.ch .stats>span{font-size:14px;line-height:1.3}
+.ch .stats b{display:block;font-family:var(--display);font-weight:900;font-size:30px;letter-spacing:-.03em}
 .ch-tt{background:var(--pink);color:var(--black)}
 .ch-ig{background:var(--tea);color:var(--shell)}
 .reels{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(560px,100%)}
@@ -410,7 +418,7 @@
 <div class="sig"><img src="assets/img/hi-im-vashti.png" alt="Hi, I'm Vashti"><span>Vashti, founder and CEO</span></div>
 </div>
 <div class="mission-photo">
-<img src="assets/img/duo_pink.jpg" alt="Two guests at a Créer Social Session" style="object-position:12% 50%">
+<img src="assets/openworks/hosting.jpg" alt="Hosting guests at a Créer Social gathering">
 <div class="tagc">Impact over influence.</div>
 </div>
 </div>
@@ -436,9 +444,9 @@
 </div>
 </div>
 <div class="strip">
-<img src="assets/img/gamenight_pink.jpg" alt="A full room at a Créer Social Session" loading="lazy">
-<img src="assets/img/entrance_tea.jpg" alt="Guests arriving at a Session" loading="lazy">
-<img src="assets/img/table_mustard.jpg" alt="Owners at a long table at a Session" loading="lazy">
+<figure><img src="assets/openworks/crowd.jpg" alt="Guests greeting each other at a Créer Social gathering" loading="lazy"><figcaption>Where people meet</figcaption></figure>
+<figure><img src="assets/img/table_mustard.jpg" alt="Owners at a long table at a Créer Social Session" loading="lazy"><figcaption>The Sessions</figcaption></figure>
+<figure><img src="assets/openworks/creators.jpg" alt="A small group of creators together" loading="lazy"><figcaption>A small group of creators</figcaption></figure>
 </div>
 </div>
 </section>
@@ -558,11 +566,11 @@
 <div class="panel" role="tabpanel" id="p-fund" aria-labelledby="t-fund" hidden>
 <div class="screen">
 <div class="fund">
+<figure class="clip"><img src="assets/openworks/press-era.jpg" alt="Press coverage: Santa Monica tribute to Gloria Steinem raises more than $80,000 for ERA"><figcaption>As covered in the press</figcaption></figure>
 <div class="big">$88K</div>
 <div class="lbl">raised for a nonprofit fundraiser</div>
 <div class="track" aria-hidden="true"><span class="b"></span><span class="a"></span></div>
 <div class="legend2"><span><b>$69K</b> before the event started</span><span><b>$88K</b> total</span></div>
-<div class="stages" aria-label="Outreach stages"><span>Researched</span><span>Drafted</span><span>Sent</span><span>Followed up</span><span>Confirmed</span></div>
 </div>
 </div>
 <div class="notes" style="--c:var(--must)">
@@ -613,12 +621,14 @@
 <span class="where">TikTok · Founder voice</span>
 <span class="handle">@hello_vashti</span>
 <span class="desc">Build days and real owners' before and afters, told inside BRAND NÜ, the series Vashti already runs.</span>
+<span class="stats"><span><b>79.7K</b>likes</span><span><b>64K</b>views on one video</span><span><b>5,855</b>followers</span></span>
 <span class="go">Open TikTok</span>
 </a>
 <a class="ch ch-ig" href="https://www.instagram.com/creersocial" target="_blank" rel="noopener">
 <span class="where">Instagram · Agency voice</span>
 <span class="handle">@creersocial</span>
 <span class="desc">Owner spotlights and workshop invites that fill the next room before the doors open.</span>
+<span class="stats"><span><b>6.3K</b>views in the last 30 days</span></span>
 <span class="go">Open Instagram</span>
 </a>
 </div>
