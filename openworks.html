@@ -407,6 +407,12 @@
 .po-body li::before{content:counter(st);width:26px;height:26px;border-radius:50%;background:var(--pink);color:var(--black);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:13px}
 .po-body li:nth-child(2){animation-delay:.08s}.po-body li:nth-child(3){animation-delay:.16s}
 @keyframes fadein{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.pl-note{display:block;font-weight:500;font-size:12px;color:var(--faint);opacity:.85;margin-top:4px}
+.own{margin:-14px 0 26px}
+.own label{display:block;font-family:var(--display);font-weight:600;font-size:14px;margin-bottom:8px}
+.own input{width:100%;font:16px var(--body);padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--ink2);color:var(--shell)}
+.own input:focus{outline:2px solid var(--pink);outline-offset:2px}
+.po-body li .ph{display:block;font-family:var(--display);font-weight:700;font-size:13px;color:var(--pink);margin-bottom:2px}
 .po-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;border-top:1px solid var(--line);padding-top:20px}
 .po-l{display:block;font-family:var(--display);font-weight:600;font-size:13px;color:var(--blue);margin-bottom:6px}
 .po-grid span:not(.po-l){font-size:16px;line-height:1.45}
@@ -488,7 +494,7 @@
 <div class="wrap">
 <div class="sec-head">
 <p class="k">Projects owners choose</p><h2 class="ttl">Owners choose the project. We build it together.</h2>
-<p class="sub">Pick a business and a goal to see how we would spend a build day with them, using tools they already have. Try it.</p>
+<p class="sub">Every business is different, so every build day starts with one question: what would you like AI to help you build? Pick an example, or type your own.</p>
 </div>
 <div class="planner">
 <div class="pick">
@@ -500,17 +506,19 @@
 <button type="button" role="radio" aria-checked="false" data-v="crea">Service firm</button>
 <button type="button" role="radio" aria-checked="false" data-v="well">Small maker</button>
 </div>
-<p class="pl">The project they choose</p>
+<p class="pl">What they want built <span class="pl-note">Examples only. Owners can bring anything.</span></p>
 <div class="opts" role="radiogroup" aria-label="Project" id="proj">
 <button type="button" role="radio" aria-checked="true" data-v="follow">Never miss a follow-up</button>
 <button type="button" role="radio" aria-checked="false" data-v="content">Post content consistently</button>
 <button type="button" role="radio" aria-checked="false" data-v="crm">Track customers in one place</button>
 <button type="button" role="radio" aria-checked="false" data-v="site">Get a simple website</button>
 <button type="button" role="radio" aria-checked="false" data-v="quote">Send quotes faster</button>
+<button type="button" role="radio" aria-checked="false" data-v="other">Something else</button>
 </div>
+<div class="own" id="own" hidden><label for="own-in">What would they like built?</label><input id="own-in" type="text" maxlength="80" placeholder="For example: a weekly inventory check" autocomplete="off"></div>
 </div>
 <div class="plan-out" aria-live="polite">
-<div class="po-bar"><span>Build day plan</span><span class="po-free">Free through OpenWorks</span></div>
+<div class="po-bar"><span>Example build day</span><span class="po-free">Free through OpenWorks</span></div>
 <div class="po-body">
 <h3 id="po-title"></h3>
 <p class="po-meta" id="po-meta"></p>
@@ -795,21 +803,28 @@ if(con&&!reduce){
 
 /* planner */
 var B={salon:['salon or beauty studio','client','appointments and looks'],food:['restaurant or café','guest','dishes and specials'],shop:['local retailer','customer','products'],crea:['service firm','client','projects'],well:['small maker','buyer','products and process']};
-var P={follow:{t:'Never miss a follow-up',st:['Set up a voice-note to follow-up flow in ChatGPT','Write ready-to-send messages in the owner\'s own voice','Add a weekly reminder so no {c} slips through'],tools:'ChatGPT, Gmail and their phone',sk:'Turning a 30-second voice note into a finished follow-up'},
-content:{t:'Post content consistently',st:['Turn their real {w} into a month of post ideas','Draft captions in their voice with ChatGPT','Set a simple posting rhythm they can keep'],tools:'ChatGPT, Canva, Instagram',sk:'Planning a week of posts in one sitting'},
-crm:{t:'Track customers in one place',st:['Build one simple sheet for every {c}','Use ChatGPT to summarize who needs attention this week','Capture notes by voice after every visit'],tools:'ChatGPT, Google Sheets',sk:'Asking AI who to reach out to today'},
-site:{t:'Get a simple website',st:['Write the site copy from the owner\'s own words','Build a clean one-page site or link-in-bio','Add one clear button to book or buy'],tools:'ChatGPT, a site builder they choose',sk:'Updating their own site without a developer'},
-quote:{t:'Send quotes faster',st:['Create a branded quote template','Use ChatGPT to turn notes into clear options for each {c}','Add a friendly follow-up for every quote sent'],tools:'ChatGPT, Google Docs',sk:'Drafting a professional quote in minutes'}};
+var P={follow:{t:'Never miss a follow-up',st:['Hear where follow-ups slip today, and with which {c}s','Set up a voice-note to follow-up flow in ChatGPT, in the owner\'s own voice','Run it on this week\'s real {c}s, so they can keep it going alone'],tools:'ChatGPT, Gmail and their phone',sk:'Turning a 30-second voice note into a finished follow-up'},
+content:{t:'Post content consistently',st:['Hear what they want to be known for and what stops them posting','Turn their real {w} into post ideas and captions with ChatGPT','Plan their next week together, so they can repeat it on their own'],tools:'ChatGPT, Canva, Instagram',sk:'Planning a week of posts in one sitting'},
+crm:{t:'Track customers in one place',st:['Hear how they keep track of each {c} today','Build one simple sheet and a ChatGPT prompt that flags who needs attention','Load their real list, so they can run it daily on their own'],tools:'ChatGPT, Google Sheets',sk:'Asking AI who to reach out to today'},
+site:{t:'Get a simple website',st:['Hear what a visitor should do and who they want to reach','Write the copy from the owner\'s own words and build a one-page site','Show them how to update it, so they never need a developer for changes'],tools:'ChatGPT, a site builder they choose',sk:'Updating their own site without help'},
+quote:{t:'Send quotes faster',st:['Hear how they price and where quotes get stuck','Build a branded quote template and a ChatGPT prompt that turns notes into clear options','Send a real quote together, so the next one takes minutes'],tools:'ChatGPT, Google Docs',sk:'Drafting a professional quote in minutes'},
+other:{t:'',st:['Hear what "{x}" would change for the business, and where the time goes today','Explore what ChatGPT can do for it and build the first version together','Test it on real work, then teach them to run and change it on their own'],tools:'ChatGPT, plus the tools they already use',sk:'Shaping AI around their own work'}};
+var PH=['Listen','Build together','They own it'];
 function val(id){return document.querySelector('#'+id+' [aria-checked="true"]').dataset.v}
-function render(){var b=B[val('biz')],p=P[val('proj')];
-  document.getElementById('po-title').textContent=p.t;
-  document.getElementById('po-meta').textContent='For a '+b[0]+' · one build day · owner\'s choice';
-  document.getElementById('po-steps').innerHTML=p.st.map(function(x){return '<li>'+x.replace('{c}',b[1]).replace('{w}',b[2])+'</li>'}).join('');
+var ownBox=document.getElementById('own'),ownIn=document.getElementById('own-in');
+function render(){var b=B[val('biz')],k=val('proj'),p=P[k];ownBox.hidden=k!=='other';
+  var x=(ownIn.value||'').trim()||'their idea';
+  var ot=(ownIn.value||'').trim();document.getElementById('po-title').textContent=k==='other'?(ot?ot.charAt(0).toUpperCase()+ot.slice(1):'Their own idea'):p.t;
+  document.getElementById('po-meta').textContent='For a '+b[0]+' · their project, their choice';
+  var ol=document.getElementById('po-steps');ol.textContent='';
+  p.st.forEach(function(t,i){var li=document.createElement('li'),d=document.createElement('div'),ph=document.createElement('b');ph.className='ph';ph.textContent=PH[i];
+    d.appendChild(ph);d.appendChild(document.createTextNode(t.split('{c}').join(b[1]).split('{w}').join(b[2]).split('{x}').join(x)));li.appendChild(d);ol.appendChild(li)});
   document.getElementById('po-tools').textContent=p.tools;document.getElementById('po-skill').textContent=p.sk;}
 ['biz','proj'].forEach(function(id){var g=document.getElementById(id),bs=[].slice.call(g.querySelectorAll('button'));
   bs.forEach(function(btn,i){btn.tabIndex=btn.getAttribute('aria-checked')==='true'?0:-1;
     btn.addEventListener('click',function(){bs.forEach(function(x){x.setAttribute('aria-checked','false');x.tabIndex=-1});btn.setAttribute('aria-checked','true');btn.tabIndex=0;render()});
     btn.addEventListener('keydown',function(e){var n=null;if(e.key==='ArrowRight'||e.key==='ArrowDown')n=bs[(i+1)%bs.length];if(e.key==='ArrowLeft'||e.key==='ArrowUp')n=bs[(i-1+bs.length)%bs.length];if(n){e.preventDefault();n.focus();n.click()}})})});
+ownIn.addEventListener('input',render);
 render();
 
 /* counters */
